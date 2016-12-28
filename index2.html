@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Webviz trial </title>
+    <!-- site dependencies -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://seiyria.com/bootstrap-slider/css/bootstrap-slider.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
+    <link href="assets/css/crossfilter_demo/style.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="d3.parcoords.css"> 
+    <link rel="stylesheet" type="text/css" href="d3.parcoords.css"> 
+<!--or href="static/css/style2.css" -->
+</head>
+
+
+<h1 id='data-title'>Peru draft visualization</h1>
+
+<!-- Add Natcap logo -->
+<!--
+<a href="http://www.naturalcapitalproject.org"><img style="position: absolute; top: 0; right: 0; border: 0; size: 1" src="data/images/natcap-logo.png" alt="The Natural Capital Project Img"></a>
+-->
+
+<h3>Brushing</h3>
+<p>Click and drag along an axis to filter data</p>
+<div id="example1" class="parcoords"></div>
+<pre><a href="#" class="show-code" data-code="brushing">Show code</a></pre>
+
+
+<h3>Statistical Coloring</h3>
+
+<div id="example-zscore" class="parcoords"></div>
+
+<pre><a href="#" class="show-code" data-code="zscore">Show code</a></pre>
+
+<!--Select weights-->
+<div class=".col-xs-12 .col-md-8">
+  <div class="well" style="background-color:#D0D18A" ">
+    Livestock weight :&nbsp&nbsp <b>0</b>
+    <input id="input1_slider" type="text " /> <b>1</b>
+  </div>
+
+  <div class="well" style="background-color:#E6D23E" ">
+    SWY weight :&nbsp&nbsp <b>0</b>
+    <input id="input2_slider" type="text " /> <b>1</b>
+  </div>
+
+  <div class="well" style="background-color:#EAEBA3" ">
+    SDR Weight :&nbsp&nbsp <b>0</b>
+    <input id="input3_slider" type="text " /> <b>1</b>
+  </div>
+</div>
+
+<!--Footer-->
+<div id="footer ">
+  <div class="container ">
+     <p class="text-muted credit">
+      <a href="https://github.com/charlottegiseleweil/">Charlotte Gisèle Weil</a> 
+      </a>
+    </p>
+  </div>
+</div>
+
+<script src="examples/lib/d3.min.js"></script>
+<script src="examples/lib/sylvester.js"></script>
+<script src="examples/lib/slickgrid/jquery-1.7.min.js"></script>
+<script src="examples/lib/underscore.js"></script>
+<script src="examples/lib/underscore.math.js"></script>
+<script src="d3.parcoords.js"></script>
+
+</html>
+

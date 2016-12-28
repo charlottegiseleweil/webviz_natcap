@@ -1,0 +1,88 @@
+body {
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	background: #fefefe;
+	width: 1000px;
+	margin: 2 auto;
+}
+
+a:link {
+	color: royalblue;
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+#mcviz {
+	position: absolute;
+	top: 50px;
+	width: 100%;
+}
+
+#title {
+	position: absolute;
+	font-size: 30px;
+	font-weight: 100;
+	top: 20px;
+}
+
+#chart-holder {
+	width: 1000px;
+	height: 700px;
+	position: relative;
+}
+
+#chart-holder svg {
+	width: 100%;
+	height: 100%;
+}
+
+#frontier-plot, #point-report, #map-box, #pie-plot {
+	position: absolute;
+}
+
+#frontier-plot {
+	top: 0px;
+	height: 350px;
+	left: 0px;
+	width: 600px;
+}
+
+.fdot {
+	fill: rebeccapurple;
+	r: 5;
+}
+.fdot.active {
+	fill: red;
+	r: 6;
+}
+
+.axis { font: 10px sans-serif; }
+.axis path, .axis line {
+	fill: none;
+	stroke: #000;
+	shape-rendering: crispEdges;
+}
+
+#point-report {
+	top: 0px;
+	height: 350px;
+	left: 600px;
+	width: 400px;
+}
+
+#map-box {
+	top:350px;
+	height: 350px;
+	left: 0px;
+	width: 650px;
+}
+
+#pie-plot {
+	top:350px;
+	height: 350px;
+	left: 650px;
+	width: 350px;
+
+}

@@ -1,0 +1,9 @@
+#barchart .x.axis text {
+    text-anchor: end !important;
+    transform: rotate(-50deg);
+}
+
+#barchart .y.axis text {
+    text-anchor: end !important;
+    transform: rotate(-45deg);
+}
