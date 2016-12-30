@@ -1,10 +1,10 @@
 
-// FRANCOIS' VERSION 
+/*
+Updated version with D to store stuffs
 
+*/
 //We use D to store some stuff
 var D = {};
-//var vil_brequin;
-
 
 d3.parcoords = function(config) {
   var __ = {
@@ -1058,9 +1058,6 @@ var brush = {
     return this.modes[this.mode];
   }
 };
-
-
-
 
 //CHAB BLOCK
 

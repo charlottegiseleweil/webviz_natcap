@@ -19,7 +19,7 @@ function crossfiltering(){
     // in sliders_plot
 
     /*Grouping*/
-    var group = dimensions[c].group();
+    //var group = dimensions[c].group();
 
 
 
