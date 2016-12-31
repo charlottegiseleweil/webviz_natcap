@@ -1,4 +1,7 @@
 <!doctype html>
+
+<html>
+
 <head>
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta content="utf-8" http-equiv="encoding">
@@ -6,13 +9,6 @@
   <link rel="stylesheet" type="text/css" href="css/d3.parcoords.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   
-  <script src="js/d3.js"></script>
-  <script src="js/crossfiltering.js"></script>
-  <script src="js/d3.svg.multibrush.js"></script>
-  <script src="js/d3.parcoords.js"></script>
-  <script src="js/parallel_coord_brush.js"></script>
-  <script src="js/sliders.js"></script>
-  <script src="js/main.js"></script>
 
   <!--Crossfilter et sliders (ai-je besoin de tout though?)-->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.16/processing.min.js'></script>
@@ -24,6 +20,16 @@
 
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
   <link href="http://seiyria.com/bootstrap-slider/css/bootstrap-slider.css" rel="stylesheet">
+
+    <script src="js/d3.js"></script>
+  <script src="js/crossfiltering.js"></script>
+  <script src="js/d3.svg.multibrush.js"></script>
+  <script src="js/d3.parcoords.js"></script>
+  <script src="js/parallel_coord_brush.js"></script>
+  <script src="js/sliders.js"></script>
+  <script src="js/main.js"></script>
+
+
 </head>
 
 <!--
@@ -41,14 +47,14 @@ Pour les sliders:
 -->
 <body onload="main()">
 
-<h1 id='title'>Draft Tana Viz</h1>
+<h1> Draft Tana Viz </h1>
 
 
-<div id="parcoords_canvas" class="parcoords" style="width:960px;height:200px;"></div>
-<p>Download <a href="data/score_simplified_summary2.csv">data file</a>
+<div id="parcoords_canvas" class="parcoords" style="width:960px;height:200px;"> </div> <button id="btnHelp_parcoords">?</button>
 
 <p>
   <button id="btnReset">Reset all selections</button>
+    
 </p>
 
 <p id="pStrums" style="visibility: hidden;">Strumming is a 2D selection brushing method, also called pinches by Alfred Inselberg.
@@ -58,14 +64,27 @@ After releasing the mouse button, the selection will contain all lines that pass
 <!-- Question: pourquoi cette commande ne remplace-t-elle pas le script ci-dessous ?
 <script src="js/parallel_coord_brush.js"></script>
 -->
-<script src="js/parallel_coord_brush.js ">
+<script src="js/parallel_coord_brush.js "> </script>
 
+<!--Toggle button-->
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+<div class=".col-xs-12 .col-md-8">
+<input type="checkbox" checked data-toggle="toggle" data-on="Objective<br>score maps" data-off="Land cover<br>maps" data-onstyle="warning" data-offstyle="info" data-size="mini"> <!-- other colors: "primary", "success" , "danger" -->
+</div>
+
+<script>
+  $(function() {
+    $('#toggle-one').bootstrapToggle();
+  })
 </script>
-
 
 <!--Sliders to select weights"-->
 
-<div class=".col-xs-12 .col-md-8">
+<div class=".col-xs-12 .col-md-8" id=sliders_canvas>
+<p> Objective weights <button id="btnHelp_sliders">?</button> </p>
+
   <div class="well" style="background-color:#D0D18A" ">
     AWY weight :&nbsp&nbsp <b>0</b>
     <input id="obj1_slider" type="text " /> &nbsp&nbsp <b>100%</b>
@@ -80,12 +99,17 @@ After releasing the mouse button, the selection will contain all lines that pass
     SWY Weight :&nbsp&nbsp <b>0</b>
     <input id="obj3_slider" type="text " /> &nbsp&nbsp <b>100%</b>
   </div>
+
 </div>
 
 
 
 <!--Logo-->
-<a href="http://www.naturalcapitalproject.org"><img style="position: absolute; top: 0; right: 0; border: 0;" HR WIDTH="5%" src="data/images/natcap-logo.png" alt="The Natural Capital Project Img"></a>
+<a href="http://www.naturalcapitalproject.org"><img style="position: absolute; top: 0; right: 0; border: 3;" HR WIDTH="5%" src="data/images/natcap-logo.png" alt="The Natural Capital Project Img"></a>
+
+<p>Download <a href="data/score_simplified_summary2.csv">data file</a>
+
 
 </body>
 
+</html>

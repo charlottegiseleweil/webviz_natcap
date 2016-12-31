@@ -12,14 +12,39 @@ function crossfiltering(){
         });
     });
 
+
+
     //Sanity check
     //console.log(dimensions["awy_weight"].top(Infinity).length);
 
     /*Filters*/
     // in sliders_plot
 
-    /*Grouping*/
-    //var group = dimensions[c].group();
+    /*Grouping*/ //TODO: automatiser le grouping
+   var group_awy_weight = dimensions["awy_weight"].group();
+  //console.log(group_awy_weight)
+
+var reduce_init = function() {
+  return {"count": 0, "total": 0};
+}
+var reduce_add = function(p, v, nf) {
+  ++p.count;
+  p.total += v.g_all;
+  return p;
+}
+var reduce_remove = function(p, v, nf) {
+  --p.count;
+  p.total -= v.g_all;
+  return p;
+}
+
+group_awy_weight.reduce(reduce_add, reduce_remove, reduce_init);
+
+group_awy_weight
+    .top(Infinity)
+    .forEach(function(d,i){ 
+        console.log(JSON.stringify(d)); 
+    })
 
 
 

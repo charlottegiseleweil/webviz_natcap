@@ -1,6 +1,7 @@
 .parcoords > canvas {
   font: 14px sans-serif;
   position: absolute;
+  float:left;
 }
 .parcoords > canvas {
   pointer-events: none;
@@ -21,6 +22,7 @@
 .parcoords canvas.faded {
   opacity: 0.25;
 }
+
 .parcoords {
   -webkit-touch-callout: none;
   -webkit-user-select: none;

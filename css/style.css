@@ -2,11 +2,24 @@ body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background: #fefefe;
 	width: 1000px;
-	margin: 2 auto;
+	margin: 3 3 3 3;
 }
 
+p,ul,li,td {
+	color:black;
+}
+
+h1 {
+ font-size: 400%; 
+ color: blue; 
+ text-align: center;
+ font-size: 30px;
+ font-weight: 20;
+ top: 20px;
+ }
+
 a:link {
-	color: royalblue;
+	color: grey;
 	text-decoration: none;
 }
 
@@ -14,17 +27,19 @@ a:hover {
 	text-decoration: underline;
 }
 
+
+#sliders_canvas {
+	float:right;
+}
+
+#btnHelp_parcoords{
+	position:relative;
+	float: right;
+}
 #mcviz {
 	position: absolute;
 	top: 50px;
 	width: 100%;
-}
-
-#title {
-	position: absolute;
-	font-size: 30px;
-	font-weight: 100;
-	top: 20px;
 }
 
 #chart-holder {
