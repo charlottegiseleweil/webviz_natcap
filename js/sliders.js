@@ -27,7 +27,7 @@ function sliders_plot(){
              "value": [0, 100]
    });
 
-  var brushes = D.brushExtents()
+  var brushes = D.brushExtents();
 
 
 obj1_slider.on("slide", function(interval_percent) {
@@ -35,57 +35,24 @@ obj1_slider.on("slide", function(interval_percent) {
    // d3.select("#obj1_slider_txt").text("min: " + e[0] + ", max: " + e[1]);
 
    /* CROSSFILTERING */
-   interval = interval_percent.map((z)=>z/100)
-   dimensions["awy_weight"].filter(interval);
+    interval = interval_percent.map((z)=>z/100)
+    var theData = dimensions["awy_weight"].filter(interval).top(Infinity);
+    parcoords
+        .data(theData)
+        .render();
 
-   //Some checkpoints
-   //console.log(interval_percent);
-   console.log(interval);
-   //console.log(dimensions["awy_weight"].top(Infinity).length);
-
-   //LINK TO ZE PLOTS
-   //my_plot_function( group_player.top(Infinity) );
-   /*parcoords
-      .data(full_data) //data brushed here ?
-      //.hideAxis(["sde_weight","sdl_weight", "awy_weight"])    //modular: names of hidden axis in the parcoord plot
-      .composite("darker")
-      .render()
-      .shadows()
-      .reorderable()
-      .brushMode("1D-axes");  // enable brushing*/
-
-    //Link to parcoords
-  brushes['awy_weight'] = interval
-  D.pc.brushExtents(brushes)
 });
 
 obj2_slider.on("slide", function(interval_percent) {
    // Pour afficher le range séléctioné (need to do a #obj1_slider_txt object in html):
    // d3.select("#obj1_slider_txt").text("min: " + e[0] + ", max: " + e[1]);
 
-   /* CROSSFILTERING */
-   interval = interval_percent.map((z)=>z/100)
-   dimensions["sde_weight"].filter(interval);
+    interval = interval_percent.map((z)=>z/100)
+    var theData = dimensions["sdl_weight"].filter(interval).top(Infinity);
 
-   //Some checkpoints
-   //console.log(interval_percent);
-   console.log(interval);
-   //console.log(dimensions["awy_weight"].top(Infinity).length);
-
-   //LINK TO ZE PLOTS
-   //my_plot_function( group_player.top(Infinity) );
-   /*parcoords
-      .data(full_data) //data brushed here ?
-      //.hideAxis(["sde_weight","sdl_weight", "awy_weight"])    //modular: names of hidden axis in the parcoord plot
-      .composite("darker")
-      .render()
-      .shadows()
-      .reorderable()
-      .brushMode("1D-axes");  // enable brushing*/
-
-    //Link to parcoords
-  brushes['sde_weight'] = interval
-  D.pc.brushExtents(brushes)
+    parcoords
+        .data(theData)
+        .render();
 });
 
 obj3_slider.on("slide", function(interval_percent) {
@@ -94,27 +61,11 @@ obj3_slider.on("slide", function(interval_percent) {
 
    /* CROSSFILTERING */
    interval = interval_percent.map((z)=>z/100)
-   dimensions["sdl_weight"].filter(interval);
+   var theData = dimensions["sdl_weight"].filter(interval).top(Infinity);
 
-   //Some checkpoints
-   //console.log(interval_percent);
-   console.log(interval);
-   //console.log(dimensions["awy_weight"].top(Infinity).length);
-
-   //LINK TO ZE PLOTS
-   //my_plot_function( group_player.top(Infinity) );
-   /*parcoords
-      .data(full_data) //data brushed here ?
-      //.hideAxis(["sde_weight","sdl_weight", "awy_weight"])    //modular: names of hidden axis in the parcoord plot
-      .composite("darker")
-      .render()
-      .shadows()
-      .reorderable()
-      .brushMode("1D-axes");  // enable brushing*/
-
-    //Link to parcoords
-  brushes['sdl_weight'] = interval
-  D.pc.brushExtents(brushes)
+   parcoords
+       .data(theData)
+       .render();
 });
 
 };

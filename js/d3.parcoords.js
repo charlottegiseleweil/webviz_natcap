@@ -1161,6 +1161,20 @@ pc.brushMode = function(mode) {
     var actives = d3.keys(__.dimensions).filter(is_brushed),
         extents = actives.map(function(p) { return brushes[p].extent(); });
 
+
+      if (actives.length === 0) return false;
+      // Resolves broken examples for now. They expect to get the full dataset back from empty brushes
+      if (actives.length === 0) return __.data;
+
+
+      // actives is the array of dimensions on which brushing is active
+      // extents is the array of the min-max extent for every active dimension
+    actives.forEach(function(brushedDimension, index){
+        dimensions[brushedDimension].filter(extents[index]);
+    });
+
+
+    return dimensions[actives[0]].top(Infinity);
 		// We don't want to return the full data set when there are no axes brushed.
 		// Actually, when there are no axes brushed, by definition, no items are
 		// selected. So, let's avoid the filtering and just return false.
@@ -1168,7 +1182,7 @@ pc.brushMode = function(mode) {
 
 		// Resolves broken examples for now. They expect to get the full dataset back from empty brushes
 		if (actives.length === 0) return __.data;
-
+/*
 		// test if within range
 		var within = {
 			"date": function(d,p,dimension) {
@@ -1190,7 +1204,7 @@ pc.brushMode = function(mode) {
       }
     };
 
-    return __.data
+    var d = __.data
       .filter(function(d) {
         switch(brush.predicate) {
         case "AND":
@@ -1205,6 +1219,7 @@ pc.brushMode = function(mode) {
           throw new Error("Unknown brush predicate " + __.brushPredicate);
         }
       });
+    return d;*/
   };
 
   function brushExtents(extents) {

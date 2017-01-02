@@ -2,7 +2,14 @@ var full_data;
   
   //load csv data file & creates plots
   function main(){
-    d3.csv('data/fake1.csv', function(data) { 
+    d3.csv('data/fake1.csv', function(row) {
+      var object = {};
+      var keys = Object.keys(row);
+      keys.forEach(function(key){
+        object[key] = parseFloat(row[key]);
+      });
+      return object;
+    }, function(data) {
       full_data = data;
       parcoords_plot();
       sliders_plot();
