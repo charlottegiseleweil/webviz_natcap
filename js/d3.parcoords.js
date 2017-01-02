@@ -416,6 +416,7 @@ pc.render = function() {
   }
   pc.autoscale();
 
+
   pc.render[__.mode]();
 
   events.render.call(this);
@@ -450,6 +451,7 @@ pc.render.default = function() {
   pc.clear('highlight');
 
   pc.renderBrushed.default();
+
 
   __.data.forEach(path_foreground);
 };
@@ -1156,71 +1158,63 @@ pc.brushMode = function(mode) {
 		return !brushes[p].empty();
 	}
 
-  // data within extents
-  function selected() {
-    var actives = d3.keys(__.dimensions).filter(is_brushed),
-        extents = actives.map(function(p) { return brushes[p].extent(); });
+    // data within extents
+    function selected() {
+        var actives = d3.keys(__.dimensions).filter(is_brushed),
+            extents = actives.map(function(p) { return brushes[p].extent(); });
 
+        console.log(extents);
+        // We don't want to return the full data set when there are no axes brushed.
+        // Actually, when there are no axes brushed, by definition, no items are
+        // selected. So, let's avoid the filtering and just return false.
+        //if (actives.length === 0) return false;
 
-      if (actives.length === 0) return false;
-      // Resolves broken examples for now. They expect to get the full dataset back from empty brushes
-      if (actives.length === 0) return __.data;
+        // Resolves broken examples for now. They expect to get the full dataset back from empty brushes
+        if (actives.length === 0) return __.data;
+        // test if within range
+        var within = {
+            "date": function(d,p,dimension,b) {
+                if (typeof __.dimensions[p].yscale.rangePoints === "function") { // if it is ordinal
+                    return b[0] <= __.dimensions[p].yscale(d[p]) && __.dimensions[p].yscale(d[p]) <= b[1]
+                } else {
+                    return b[0] <= d[p] && d[p] <= b[1]
+                }
+            },
+            "number": function(d,p,dimension,b) {
+                //console.log(d,'-', p,  dimension, 'b', b[0]);
+                if (typeof __.dimensions[p].yscale.rangePoints === "function") { // if it is ordinal
+                    return b[0] <= __.dimensions[p].yscale(d[p]) && __.dimensions[p].yscale(d[p]) <= b[1]
+                } else {
+                    return b[0] <= d[p] && d[p] <= b[1]
+                }
+            },
+            "string": function(d,p,dimension,b) {
+                return b[0] <= __.dimensions[p].yscale(d[p]) && __.dimensions[p].yscale(d[p]) <= b[1]
+            }
+        };
 
-
-      // actives is the array of dimensions on which brushing is active
-      // extents is the array of the min-max extent for every active dimension
-    actives.forEach(function(brushedDimension, index){
-        dimensions[brushedDimension].filter(extents[index]);
-    });
-
-
-    return dimensions[actives[0]].top(Infinity);
-		// We don't want to return the full data set when there are no axes brushed.
-		// Actually, when there are no axes brushed, by definition, no items are
-		// selected. So, let's avoid the filtering and just return false.
-		//if (actives.length === 0) return false;
-
-		// Resolves broken examples for now. They expect to get the full dataset back from empty brushes
-		if (actives.length === 0) return __.data;
-/*
-		// test if within range
-		var within = {
-			"date": function(d,p,dimension) {
-	if (typeof __.dimensions[p].yscale.rangePoints === "function") { // if it is ordinal
-          return extents[dimension][0] <= __.dimensions[p].yscale(d[p]) && __.dimensions[p].yscale(d[p]) <= extents[dimension][1]
-        } else {
-          return extents[dimension][0] <= d[p] && d[p] <= extents[dimension][1]
-        }
-      },
-      "number": function(d,p,dimension) {
-        if (typeof __.dimensions[p].yscale.rangePoints === "function") { // if it is ordinal
-          return extents[dimension][0] <= __.dimensions[p].yscale(d[p]) && __.dimensions[p].yscale(d[p]) <= extents[dimension][1]
-        } else {
-          return extents[dimension][0] <= d[p] && d[p] <= extents[dimension][1]
-        }
-      },
-      "string": function(d,p,dimension) {
-        return extents[dimension][0] <= __.dimensions[p].yscale(d[p]) && __.dimensions[p].yscale(d[p]) <= extents[dimension][1]
-      }
+        var d =  __.data
+            .filter(function(d) {
+                switch(brush.predicate) {
+                    case "AND":
+                        return actives.every(function(p, dimension) {
+                            return extents[dimension].some(function(b) {
+                                return within[__.dimensions[p].type](d,p,dimension,extents[dimension]);
+                            });
+                        });
+                    case "OR":
+                        return actives.some(function(p, dimension) {
+                            return extents[dimension].some(function(b) {
+                                return within[__.dimensions[p].type](d,p,dimension,b);
+                            });
+                        });
+                    default:
+                        throw "Unknown brush predicate " + __.brushPredicate;
+                }
+            });
+        console.log(d);
+        return d;
     };
-
-    var d = __.data
-      .filter(function(d) {
-        switch(brush.predicate) {
-        case "AND":
-          return actives.every(function(p, dimension) {
-            return within[__.dimensions[p].type](d,p,dimension);
-          });
-        case "OR":
-          return actives.some(function(p, dimension) {
-            return within[__.dimensions[p].type](d,p,dimension);
-          });
-        default:
-          throw new Error("Unknown brush predicate " + __.brushPredicate);
-        }
-      });
-    return d;*/
-  };
 
   function brushExtents(extents) {
     if(typeof(extents) === 'undefined')

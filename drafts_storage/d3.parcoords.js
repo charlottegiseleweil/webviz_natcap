@@ -1124,7 +1124,7 @@ pc.brushMode = function(mode) {
 
   // data within extents
   function selected() {
-    var actives = d3.keys(__.dimensions).filter(is_brushed), // Cha .filter ! 
+    var actives = d3.keys(__.dimensions).filter(is_brushed),
         extents = actives.map(function(p) { return brushes[p].extent(); });
 
 		// We don't want to return the full data set when there are no axes brushed.

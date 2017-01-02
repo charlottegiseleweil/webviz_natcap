@@ -35,11 +35,17 @@ obj1_slider.on("slide", function(interval_percent) {
    // d3.select("#obj1_slider_txt").text("min: " + e[0] + ", max: " + e[1]);
 
    /* CROSSFILTERING */
-    interval = interval_percent.map((z)=>z/100)
+   // c'est un peu le break-techte.. soit un pars sur un principe ou un brush tout ou un brush rien
+    // MAIS en meme temps on je trouve bien d'avoir les datas 'brushables' a la parcoord quand on brush sur
+    // parcoord
+
+    interval = interval_percent.map( (z) => z / 100);
     var theData = dimensions["awy_weight"].filter(interval).top(Infinity);
+    var be = parcoords.brushExtents();
     parcoords
         .data(theData)
         .render();
+    parcoords.brushExtents(be);
 
 });
 
@@ -49,10 +55,11 @@ obj2_slider.on("slide", function(interval_percent) {
 
     interval = interval_percent.map((z)=>z/100)
     var theData = dimensions["sdl_weight"].filter(interval).top(Infinity);
-
+    var be = parcoords.brushExtents();
     parcoords
         .data(theData)
         .render();
+    parcoords.brushExtents(be);
 });
 
 obj3_slider.on("slide", function(interval_percent) {
@@ -61,11 +68,13 @@ obj3_slider.on("slide", function(interval_percent) {
 
    /* CROSSFILTERING */
    interval = interval_percent.map((z)=>z/100)
+    var be = parcoords.brushExtents();
    var theData = dimensions["sdl_weight"].filter(interval).top(Infinity);
 
    parcoords
        .data(theData)
        .render();
+    parcoords.brushExtents(be);
 });
 
 };
