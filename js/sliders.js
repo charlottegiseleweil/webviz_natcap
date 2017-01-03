@@ -29,53 +29,30 @@ function sliders_plot(){
 
   var brushes = D.brushExtents();
 
-
 obj1_slider.on("slide", function(interval_percent) {
    // Pour afficher le range séléctioné (need to do a #obj1_slider_txt object in html):
    // d3.select("#obj1_slider_txt").text("min: " + e[0] + ", max: " + e[1]);
-
-   /* CROSSFILTERING */
-   // c'est un peu le break-techte.. soit un pars sur un principe ou un brush tout ou un brush rien
-    // MAIS en meme temps on je trouve bien d'avoir les datas 'brushables' a la parcoord quand on brush sur
-    // parcoord
-
-    interval = interval_percent.map( (z) => z / 100);
-    var theData = dimensions["awy_weight"].filter(interval).top(Infinity);
-    var be = parcoords.brushExtents();
-    parcoords
-        .data(theData)
-        .render();
-    parcoords.brushExtents(be);
+    slideDimension(interval_percent, 'awy_weight');
 
 });
-
 obj2_slider.on("slide", function(interval_percent) {
-   // Pour afficher le range séléctioné (need to do a #obj1_slider_txt object in html):
-   // d3.select("#obj1_slider_txt").text("min: " + e[0] + ", max: " + e[1]);
+    slideDimension(interval_percent, 'sde_weight');
 
-    interval = interval_percent.map((z)=>z/100)
-    var theData = dimensions["sdl_weight"].filter(interval).top(Infinity);
+});
+obj3_slider.on("slide", function(interval_percent) {
+    slideDimension(interval_percent, 'sld_weight');
+});
+
+function slideDimension(intervalPercent, dimensionName) {
+    interval = intervalPercent.map((z)=>z/100);
     var be = parcoords.brushExtents();
+    var theData = dimensions[dimensionName].filter(interval).top(Infinity);
+
     parcoords
         .data(theData)
         .render();
     parcoords.brushExtents(be);
-});
-
-obj3_slider.on("slide", function(interval_percent) {
-   // Pour afficher le range séléctioné (need to do a #obj1_slider_txt object in html):
-   // d3.select("#obj1_slider_txt").text("min: " + e[0] + ", max: " + e[1]);
-
-   /* CROSSFILTERING */
-   interval = interval_percent.map((z)=>z/100)
-    var be = parcoords.brushExtents();
-   var theData = dimensions["sdl_weight"].filter(interval).top(Infinity);
-
-   parcoords
-       .data(theData)
-       .render();
-    parcoords.brushExtents(be);
-});
+}
 
 };
 
