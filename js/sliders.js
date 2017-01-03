@@ -40,7 +40,7 @@ obj2_slider.on("slide", function(interval_percent) {
 
 });
 obj3_slider.on("slide", function(interval_percent) {
-    slideDimension(interval_percent, 'sld_weight');
+    slideDimension(interval_percent, 'sdl_weight');
 });
 
 function slideDimension(intervalPercent, dimensionName) {
