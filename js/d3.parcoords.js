@@ -425,9 +425,17 @@ pc.render = function() {
 pc.renderBrushed = function() {
   if (!d3.keys(__.dimensions).length) pc.detectDimensions();
 
-  pc.renderBrushed[__.mode]();
+  //pc.renderBrushed[__.mode]();
+  //console.log(D.brushExtents());
 
-  events.render.call(this);
+  //Upon render brushed we update crossfilter's object: 
+dimensions.awy_score.filter(D.brushExtents().awy_score); 
+dimensions.sde_score.filter(D.brushExtents().sde_score); 
+brushed_data = dimensions.sdl_score.filter(D.brushExtents().sdl_score).top(Infinity); 
+renderAll_brushed();
+    // End of Charlie's addition to update crossfilter
+
+  //events.render.call(this);
   return this;
 };
 
@@ -1158,6 +1166,7 @@ pc.brushMode = function(mode) {
 
   // data within extents
   function selected() {
+    return __.data; //Chab's 
     var actives = d3.keys(__.dimensions).filter(is_brushed),
         extents = actives.map(function(p) { return brushes[p].extent(); });
 
@@ -1256,6 +1265,7 @@ pc.brushMode = function(mode) {
 
 			//redraw the chart
 			pc.renderBrushed();
+
 
 			return pc;
 		}

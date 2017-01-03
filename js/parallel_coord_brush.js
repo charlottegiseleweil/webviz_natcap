@@ -10,14 +10,14 @@
     return blue_to_brown(d['sde_score']);
   };
 
-  var parcoords = d3.parcoords()("#parcoords_canvas")
+  parcoords = d3.parcoords()("#parcoords_canvas")
       .color(color)
       .alpha(0.4);
 
   //Create Parallel Coordinates chart
   parcoords
       .data(full_data)
-      //.hideAxis(["sde_weight","sdl_weight", "awy_weight"])    //modular: names of hidden axis in the parcoord plot
+      .hideAxis(["sde_weight","sdl_weight", "awy_weight"])    //modular: names of hidden axis in the parcoord plot
       .composite("darker")
       .render()
       .shadows()
