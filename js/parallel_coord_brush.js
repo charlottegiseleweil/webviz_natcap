@@ -3,7 +3,7 @@
   // quantitative color scale
   var blue_to_brown = d3.scale.linear()
     .domain([20, 50])                 //modular: get min/max of colored axis
-    .range(["steelblue", "green"])
+    .range(["red", "steelblue"])
     .interpolate(d3.interpolateLab);
 
   var color = function(d) { 

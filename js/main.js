@@ -3,7 +3,7 @@ var dimensions = {};
 var cf;
 var brushed_data = full_data;
 var parcoords;
-
+ 
 
 
   function main(){

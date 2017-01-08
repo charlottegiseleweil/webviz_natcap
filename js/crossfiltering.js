@@ -66,7 +66,6 @@ group_awy_weight.reduce(reduce_add, reduce_remove, reduce_init);
 
 
 /* Stratégie machiavélique de François pr updater les brush de parcoords: 
-
 var ao = D.brushExtents()
 ao['awy_score'] = [22,30]
 D.pc.brushExtents(ao) */
