@@ -420,6 +420,7 @@ d3.parcoords = function(config) {
     pc.renderBrushed = function() {
         if (!d3.keys(__.dimensions).length) pc.detectDimensions();
 
+
         pc.renderBrushed[__.mode]();
 
         events.render.call(this);
@@ -443,7 +444,6 @@ d3.parcoords = function(config) {
     pc.render.default = function() {
         pc.clear('foreground');
         pc.clear('highlight');
-
         pc.renderBrushed.default();
 
         __.data.forEach(path_foreground);
@@ -1176,6 +1176,7 @@ d3.parcoords = function(config) {
                 });
         };
 
+
         function brushExtents(extents) {
             if(typeof(extents) === 'undefined')
             {
@@ -1308,7 +1309,6 @@ d3.parcoords = function(config) {
                 .style("fill", "rgba(0,0,0,0.1)");
 
             D.brushExtents = pc.brushExtents = brushExtents;
-
             pc.brushReset = brushReset;
             return pc;
         };
@@ -1325,6 +1325,7 @@ d3.parcoords = function(config) {
             brushState: brushExtents
         }
     })();
+
 // brush mode: 2D-strums
 // bl.ocks.org/syntagmatic/5441022
 

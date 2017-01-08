@@ -27,33 +27,31 @@ function sliders_plot(){
              "value": [0, 100]
    });
 
-  var brushes = D.brushExtents();
+    obj1_slider.on("slide", function(interval_percent) {
+       // Pour afficher le range séléctioné (need to do a #obj1_slider_txt object in html):
+       // d3.select("#obj1_slider_txt").text("min: " + e[0] + ", max: " + e[1]);
+        slideDimension(interval_percent, 'awy_weight');
 
-obj1_slider.on("slide", function(interval_percent) {
-   // Pour afficher le range séléctioné (need to do a #obj1_slider_txt object in html):
-   // d3.select("#obj1_slider_txt").text("min: " + e[0] + ", max: " + e[1]);
-    slideDimension(interval_percent, 'awy_weight');
+    });
+    obj2_slider.on("slide", function(interval_percent) {
+        slideDimension(interval_percent, 'sde_weight');
+    });
+    obj3_slider.on("slide", function(interval_percent) {
+        slideDimension(interval_percent, 'sdl_weight');
+    });
 
-});
-obj2_slider.on("slide", function(interval_percent) {
-    slideDimension(interval_percent, 'sde_weight');
+    function slideDimension(intervalPercent, dimensionName) {
+        interval = intervalPercent.map((z)=>z/100);
+        var be = parcoords.brushExtents();
+        var theData = dimensions[dimensionName].filter(interval).top(Infinity);
 
-});
-obj3_slider.on("slide", function(interval_percent) {
-    slideDimension(interval_percent, 'sdl_weight');
-});
-
-function slideDimension(intervalPercent, dimensionName) {
-    interval = intervalPercent.map((z)=>z/100);
-    var be = parcoords.brushExtents();
-    var theData = dimensions[dimensionName].filter(interval).top(Infinity);
-
-    parcoords
-        .data(theData)
-        .render();
-    parcoords.brushExtents(be);
+        // un appel a render ne suffit pas.. il faut recalculer les brush pour que tout marche
+        // comme on veut
+        parcoords
+            .data(theData)
+            .render();
+        parcoords.brushExtents(be);
+    }
 }
-
-};
 
            
