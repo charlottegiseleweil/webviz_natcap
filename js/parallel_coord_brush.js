@@ -1,4 +1,5 @@
-  function parcoords_plot(){
+var parcoords;
+function parcoords_plot(){
 
   // quantitative color scale
   var blue_to_brown = d3.scale.linear()

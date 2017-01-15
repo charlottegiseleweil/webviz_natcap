@@ -8,6 +8,7 @@ var parcoords;
 
   function main(){
 
+
     //load csv data file & creates plots
     d3.csv('data/fake1.csv', function(row) { 
       // This function to parse String data in Floats
