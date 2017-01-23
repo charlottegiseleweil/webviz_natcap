@@ -24,6 +24,7 @@ var parcoords;
       parcoords_plot();
       sliders_plot();
       crossfiltering();
+      map();
     });
 
 

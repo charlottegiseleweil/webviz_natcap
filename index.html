@@ -5,34 +5,48 @@
 <head>
   <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
   <meta content="utf-8" http-equiv="encoding">
-  <title>Brushing Example</title>
+  <title>NatCapViz draft</title>
   <link rel="stylesheet" type="text/css" href="css/d3.parcoords.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
   
 
   <!--Crossfilter et sliders (ai-je besoin de tout though?)-->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/processing.js/1.4.16/processing.min.js'></script>
     <!-- <script src='assets/js/random_triangle_meshes/random_triangle_meshes.js'></script> -->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js'></script>
-
 <script
   src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
-
-  <script src='  https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.4/bootstrap-slider.min.js
-'></script> <!--Sliders library-->
-
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.4/css/bootstrap-slider.min.css" rel="stylesheet">
 
-    <script src="js/d3.js"></script>
+  <!-- D3 -->
+
+
+  <script src="js/d3.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Crossfiltering -->
   <script src="js/crossfiltering.js"></script>
+  
+  <!-- Parcoords plot -->
   <script src="js/d3.svg.multibrush.js"></script>
   <script src="js/d3.parcoords.js"></script>
   <script src="js/parallel_coord_brush.js"></script>
+
+  <!-- Sliders -->
   <script src="js/sliders.js"></script>
-  <script src="js/main.js"></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.4/bootstrap-slider.min.js'></script>
+
+  <!-- Map -->
+  <script src="js/geotiff.js/dist/geotiff.js"></script>
+  <!-- script src="js/plotty.js/dist/plotly.min.js"></script-->
+  <script src ='js/map.js'></script>
+
+ <!--Toggle button-->
+ <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+ <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 
 
 </head>
@@ -69,20 +83,21 @@ After releasing the mouse button, the selection will contain all lines that pass
 <!-- Question: pourquoi cette commande ne remplace-t-elle pas le script ci-dessous ?
 <script src="js/parallel_coord_brush.js"></script>
 -->
-<script src="js/parallel_coord_brush.js "> </script>
-<!--Toggle button-->
-<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
+
+<!--Toggle button-->
 <div class=".col-xs-12 .col-md-8">
-<input type="checkbox" checked data-toggle="toggle" data-on="Objective<br>score maps" data-off="Land cover<br>maps" data-onstyle="warning" data-offstyle="info" data-size="mini"> <!-- other colors: "primary", "success" , "danger" -->
+<input id="map_toggle" type="checkbox" data-toggle="toggle" data-on="Objective<br>score maps" data-off="Land cover <br>maps" data-onstyle="warning" data-offstyle="info" data-size="mini"> <!-- other colors: "primary", "success" , "danger" -->
 </div>
 
-<script>
-  $(function() {
-    $('#toggle-one').bootstrapToggle();
-  })
-</script>
+<canvas id="map_canvas" width="1936" height="599"></canvas>
+<canvas id="map_canvas2" width="1936" height="599"></canvas>
+
+<!--<svg id=prout width="50" height="50">
+    <circle cx="25" cy="25" r="22"
+     fill="red" stroke="gray" stroke-width="2"/> </svg>-->
+
+<svg id="legend" ></svg>
 
 <!--Sliders to select weights"-->
 <div class=".col-xs-12 .col-md-8" id=sliders_canvas>
