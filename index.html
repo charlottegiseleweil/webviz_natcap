@@ -21,9 +21,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.4/css/bootstrap-slider.min.css" rel="stylesheet">
 
   <!-- D3 -->
-
-
-  <script src="js/d3.js"></script>
+  <script src="js/d3.js"></script> <!-- When done, replace by: <script src="//d3js.org/d3.v3.min.js"></script> -->
   <script src="js/main.js"></script>
 
   <!-- Crossfiltering -->
@@ -68,58 +66,46 @@ Pour les sliders:
 
 <h1> Draft Tana Viz </h1>
 
+<div id="parcoords_sliders_block" style="display:block; background-color:red;">
 
-<div id="parcoords_canvas" class="parcoords" style="width:960px;height:200px;"> </div> <button id="btnHelp_parcoords">?</button>
+  <!--Paarcoords-->
+  <div id="parcoords_canvas" class="parcoords" style="width:960px;height:200px;"> <button id="btnHelp_parcoords">?</button>
+  </div> 
 
-<p>
-  <button id="btnReset">Reset all selections</button>
-    
-</p>
-
-<p id="pStrums" style="visibility: hidden;">Strumming is a 2D selection brushing method, also called pinches by Alfred Inselberg.
-You start a strum be clicking and dragging within one of the segments (area between two axes).
-After releasing the mouse button, the selection will contain all lines that pass through all of the active strums.
-
-<!-- Question: pourquoi cette commande ne remplace-t-elle pas le script ci-dessous ?
-<script src="js/parallel_coord_brush.js"></script>
--->
-
-
-<!--Toggle button-->
-<div class=".col-xs-12 .col-md-8">
-<input id="map_toggle" type="checkbox" data-toggle="toggle" data-on="Objective<br>score maps" data-off="Land cover <br>maps" data-onstyle="warning" data-offstyle="info" data-size="mini"> <!-- other colors: "primary", "success" , "danger" -->
+  <!--Sliders-->
+  <div class="sliders" id=sliders_canvas >
+    <p> Objective weights <button id="btnHelp_sliders">?</button> </p>
+      <div class="well" style="background-color:#D0D18A">
+        AWY weight :&nbsp&nbsp <b>0</b>
+        <input id="obj1_slider" type="text"/> &nbsp;&nbsp; <b>100%</b>
+      </div>
+      <div class="well" style="background-color:#E6D23E">
+        SDE weight :&nbsp&nbsp <b>0</b>
+        <input id="obj2_slider" type="text"/> &nbsp;&nbsp; <b>100%</b>
+      </div>
+      <div class="well" style="background-color:#EAEBA3">
+        SDL Weight :&nbsp&nbsp <b>0</b>
+        <input id="obj3_slider" type="text"/> &nbsp;&nbsp; <b>100%</b>
+      </div>
+  </div>
 </div>
 
-<canvas id="map_canvas" width="1936" height="599"></canvas>
-<canvas id="map_canvas2" width="1936" height="599"></canvas>
+
+
+<div id="map_block" style="background-color:green;"">
+  <!--Toggle button-->
+  <div class=".col-xs-12 .col-md-8">
+  <input id="map_toggle" type="checkbox" data-toggle="toggle" data-on="Objective<br>score maps" data-off="Land cover <br>maps" data-onstyle="warning" data-offstyle="info" data-size="mini"> <!-- other colors: "primary", "success" , "danger" -->
+  </div>
+
+  <canvas id="map_canvas" width="1936" height="599"></canvas>
+  <canvas id="map_canvas2" width="1936" height="599"></canvas>
 
 <!--<svg id=prout width="50" height="50">
     <circle cx="25" cy="25" r="22"
      fill="red" stroke="gray" stroke-width="2"/> </svg>-->
 
-<svg id="legend" ></svg>
-
-<!--Sliders to select weights"-->
-<div class=".col-xs-12 .col-md-8" id=sliders_canvas>
-<p> Objective weights <button id="btnHelp_sliders">?</button> </p>
-
-  <div class="well" style="background-color:#D0D18A">
-    AWY weight :&nbsp&nbsp <b>0</b>
-    <input id="obj1_slider" type="text "/> &nbsp;&nbsp; <b>100%</b>
-  </div>
-
-
-  <div class="well" style="background-color:#E6D23E">
-    SDE weight :&nbsp&nbsp <b>0</b>
-    <input id="obj2_slider" type="text"/> &nbsp;&nbsp; <b>100%</b>
-  </div>
-
-  <div class="well" style="background-color:#EAEBA3">
-    SDL Weight :&nbsp&nbsp <b>0</b>
-    <input id="obj3_slider" type="text"/> &nbsp;&nbsp; <b>100%</b>
-
-  </div>
-
+  <svg id="legend" ></svg>
 </div>
 
 
@@ -128,8 +114,9 @@ After releasing the mouse button, the selection will contain all lines that pass
 <a href="http://www.naturalcapitalproject.org"><img style="position: absolute; top: 0; right: 0; border: 3;" HR WIDTH="5%" src="data/images/natcap-logo.png" alt="The Natural Capital Project Img"></a>
 
 <hr>
-<p>Download <a href="data/fake1.csv">data file</a>
 
+<p>Download <a href="data/fake1.csv">data file</a>
+<button id="btnReset">Reset all selections</button>
 
 </body>
 

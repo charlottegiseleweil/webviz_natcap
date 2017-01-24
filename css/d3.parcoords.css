@@ -1,7 +1,6 @@
 .parcoords > canvas {
   font: 14px sans-serif;
   position: absolute;
-  float:left;
 }
 .parcoords > canvas {
   pointer-events: none;

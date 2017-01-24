@@ -25,6 +25,11 @@ Déconn' pas c'est tout
 Ne chipotons pas
 On s'en fout de deux ou trois
 François c'est le roi !
+
+
+C'est très perturbant
+La position relative
+Pour les débutants
 ---
 map from work of F Chabbey 
 

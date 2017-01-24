@@ -27,6 +27,10 @@ a:hover {
 	text-decoration: underline;
 }
 
+.sliders {
+	display:inline-block;
+}
+
 #legend {
 	height: 500px;
 }
@@ -49,4 +53,17 @@ a:hover {
 	left: 650px;
 	width: 350px;
 
+}
+
+
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.dot {
+  stroke: #000;
 }
