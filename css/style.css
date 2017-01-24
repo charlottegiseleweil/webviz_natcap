@@ -1,8 +1,8 @@
 body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background: #fefefe;
-	width: 1000px;
-	margin: 3 3 3 3;
+	width: 1420px; // 960 ( width of parcoord) + 410 (width des glisseurs) + 50 parce qu y a les marges et tout
+	margin: 3;
 }
 
 p,ul,li,td {
@@ -29,6 +29,9 @@ a:hover {
 
 .sliders {
 	display:inline-block;
+	margin: 5px;
+	border: 1px solid black;
+	padding: 5px
 }
 
 #legend {
@@ -39,7 +42,7 @@ a:hover {
 }
 
 #sliders_canvas {
-	float:right;
+	display: inline-block;
 }
 
 #btnHelp_parcoords{
@@ -55,6 +58,13 @@ a:hover {
 
 }
 
+.parcoords {
+	background-color: yellow;
+	display: inline-block;
+	padding: 5px;
+	margin: 5px;
+	border: 3px solid darkgreen;
+}
 
 
 .axis path,
@@ -66,4 +76,8 @@ a:hover {
 
 .dot {
   stroke: #000;
+}
+
+#parcoords_sliders_block {
+	border: 5px solid turquoise;
 }
