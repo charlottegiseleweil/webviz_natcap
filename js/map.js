@@ -23,6 +23,7 @@ var baseRaster;
 var ext, newExt, image, rasters, canvas, ctx;
 
 var map_upon_toggle = "../data/PET_gura.tif"; //map to display initially
+    map_upon_toggle = "../data/lulc_future_scenario_gura.tif";
 
 $('#map_toggle').change(function(e) {
       if ($(this).prop('checked')) {
@@ -42,7 +43,11 @@ function render_map() {
     .get(function(error, data){
         var parser = GeoTIFF.parse(data.response);
         image = parser.getImage();
-        rasters = image.readRasters();
+        rasters = image.readRasters(function(c){
+            console.log(c, this);
+        }, function(err){
+            console.log(err);
+        });
         canvas = document.getElementById('map_canvas');
         ctx = canvas.getContext("2d");
         // there is some arbitrary value fow 'no data', that messes all my calculations
