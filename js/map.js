@@ -22,17 +22,17 @@ var baseRaster;
 
 var ext, newExt, image, rasters, canvas, ctx;
 
-var map_upon_toggle = "./data/lulc_future_scenario_gura.tif"; //map to display initially
+var map_upon_toggle = "../data/PET_gura.tif"; //map to display initially
 
 $('#map_toggle').change(function(e) {
       if ($(this).prop('checked')) {
-        map_upon_toggle = "./data/PET_gura.tif";
+        map_upon_toggle = "../data/PET_gura.tif";
         render_map();
         } else {
-        map_upon_toggle = "./data/lulc_future_scenario_gura.tif";
+        map_upon_toggle = "../data/lulc_future_scenario_gura.tif";
         render_map();
         }
-    })
+    });
 
 render_map();
 
@@ -50,22 +50,22 @@ function render_map() {
         ext = d3.extent(baseRaster);
         newExt = d3.extent(baseRaster.filter(function(r){ return r != ext[0]; }));
         console.log( "IN render map:", newExt);
-        
 
-      
+
+
       if ($('#map_toggle').prop('checked')) {
 
             render_continuous();
             //var Continuous_scale = TODO row 1: 10 categories from newExt
             //                            row 2: colorScale
             //                            row 3: labels
-            //render_legend_continuous();        
+            //render_legend_continuous();
             } else {
             render_categorical();
             render_legend_categorical();
         }
 
-    });    
+    });
 }
 
 function render_continuous() {
