@@ -1,7 +1,7 @@
 body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background: #fefefe;
-	width: 1420px; // 960 ( width of parcoord) + 410 (width des glisseurs) + 50 parce qu y a les marges et tout
+	width: 1422px; // 120 (legend) + 1032 (map) + 220 (scatterplot) + 50 (marges etc)
 	margin: 3;
 }
 
@@ -27,28 +27,7 @@ a:hover {
 	text-decoration: underline;
 }
 
-.sliders {
-	display:inline-block;
-	margin: 5px;
-	border: 1px solid black;
-	padding: 5px
-}
 
-#legend {
-	height: 500px;
-}
-.legend {
-  font-size: 12px;
-}
-
-#sliders_canvas {
-	display: inline-block;
-}
-
-#btnHelp_parcoords{
-	position:relative;
-	float: right;
-}
 
 #pie-plot {
 	top:350px;
@@ -59,11 +38,30 @@ a:hover {
 }
 
 .parcoords {
-	background-color: yellow;
 	display: inline-block;
 	padding: 5px;
 	margin: 5px;
-	border: 3px solid darkgreen;
+	border:1px solid black;
+	margin-right: -130px;
+	margin-left: -130px;
+}
+
+.sliders {
+	display:inline-block;
+	margin: 5px;
+	padding: 5px;
+	border: 1px solid red;
+	vertical-align: top;
+
+}
+
+.slider_ow {
+	display: block;
+	padding: 10px;
+    margin-bottom: 2px;
+    margin-top: 2px;
+    background-color:#EAEBA3;
+    border-radius: 4px;
 }
 
 
@@ -79,5 +77,51 @@ a:hover {
 }
 
 #parcoords_sliders_block {
-	border: 5px solid turquoise;
+	display:block;
+	margin-bottom: 20px;
 }
+
+#map_block {
+	border: 1px solid purple;
+	display:block;
+}
+
+#parcoords_n_map_block {
+	border: 3px solid purple;
+	display:inline-block;
+}
+
+#scatterplots {
+	border: 2px solid yellow;
+	display:inline-block;
+}
+
+#map_controls{
+	display:block;
+	border: 1px solid blue;
+	vertical-align: top;
+}
+
+#map_n_legend{
+	display:block;
+	border: 1px solid red;
+	position:relative;
+}
+
+.legend {
+  display:inline-block;
+  font-size: 10px;
+  height: 337px;
+}
+
+#map_canvas{
+	display:inline-block;
+	border: 7px solid blue;
+	vertical-align: top;
+
+}
+
+.inline{
+	display:inline-block;
+}
+

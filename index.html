@@ -37,7 +37,8 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.4/bootstrap-slider.min.js'></script>
 
   <!-- Map -->
-  <script src="js/geotiff.js/geotiff.js"></script>
+
+  <script src="js/geotiff.js"></script>
   <!-- script src="js/plotty.js/dist/plotly.min.js"></script-->
   <script src ='js/map.js'></script>
   <script src ='js/scatterplot.js'></script>
@@ -65,27 +66,29 @@ Pour les sliders:
 -->
 <body onload="main()">
 
-<h1> Draft Tana Viz </h1>
+<h1> The Very Incredible visualization oh yeah </h1>
 
-<div id="parcoords_sliders_block" style="display:block; background-color:red;">
+<div id="parcoords_n_map_block">
+<div id="parcoords_sliders_block">
 
   <!--Paarcoords-->
-  <div id="parcoords_canvas" class="parcoords" style="width:960px;height:200px;"> <button id="btnHelp_parcoords">?</button>
+  <h4> Objective scores <button id="btnHelp_parcoords">?</button> </h4>
+  <div id="parcoords_canvas" class="parcoords" style="width:960px;height:200px;"> 
   </div> 
 
   <!--Sliders-->
   <div class="sliders" id=sliders_canvas >
-    <p> Objective weights <button id="btnHelp_sliders">?</button> </p>
-      <div class="well" style="background-color:#D0D18A">
-        AWY weight :&nbsp&nbsp <b>0</b>
+    <h5> Objective weights <button id="btnHelp_sliders">?</button> </h5>
+      <div class="slider_ow">
+        AWY weight :&nbsp;&nbsp; <b>0</b>
         <input id="obj1_slider" type="text"/> &nbsp;&nbsp; <b>100%</b>
       </div>
-      <div class="well" style="background-color:#E6D23E">
-        SDE weight :&nbsp&nbsp <b>0</b>
+      <div class="slider_ow"">
+        SDE weight :&nbsp;&nbsp; <b>0</b>
         <input id="obj2_slider" type="text"/> &nbsp;&nbsp; <b>100%</b>
       </div>
-      <div class="well" style="background-color:#EAEBA3">
-        SDL Weight :&nbsp&nbsp <b>0</b>
+      <div class="slider_ow">
+        SDL Weight :&nbsp;&nbsp; <b>0</b>
         <input id="obj3_slider" type="text"/> &nbsp;&nbsp; <b>100%</b>
       </div>
   </div>
@@ -93,31 +96,65 @@ Pour les sliders:
 
 
 
-<div id="map_block" style="background-color:green;"">
-  <!--Toggle button-->
-  <div class=".col-xs-12 .col-md-8">
-  <input id="map_toggle" type="checkbox" data-toggle="toggle" data-on="Objective<br>score maps" data-off="Land cover <br>maps" data-onstyle="warning" data-offstyle="info" data-size="mini"> <!-- other colors: "primary", "success" , "danger" -->
+<div id="map_block"">
+  
+  <div id="map_controls">
+    
+      <!--Toggle button-->
+      <input id="map_toggle" class="inline" type="checkbox" data-toggle="toggle" data-on="Objective<br>score maps" data-off="Land cover <br>maps" data-onstyle="warning" data-offstyle="info" data-size="mini"> <!-- other colors: "primary", "success" , "danger" -->
+      <!--Radiobuttons-->
+      <button id="btnRadio" class="inline">RADIOBUTTONS HERE</button> 
+      <h3 id="map_title" style="display:inline;"> Map title </h3>
+      <p id="map_stat" style="display:inline;"> Map statistics </p>
+      <button id="btnReset" class="inline">Reset all selections</button>
+
   </div>
 
-  <canvas id="map_canvas" width="1936" height="599"></canvas>
-  <canvas id="map_canvas2" width="1936" height="599"></canvas>
 
-<!--<svg id=prout width="50" height="50">
-    <circle cx="25" cy="25" r="22"
-     fill="red" stroke="gray" stroke-width="2"/> </svg>-->
+    <div id="map_n_legend">
 
-  <svg id="legend" ></svg>
+        <!--Legend-->
+        <svg id="legend" class="legend" width="140"></svg>
+        <!--Map-->
+        <canvas id="map_canvas" width="1030" height="335" style="border: 1px solid yellow";></canvas>
+
+        <button style="position: absolute; top: 0; right: 0;" id="Calc_map">Calculate map for selection</button>
+
+        <!--<canvas id="map_canvas2" width="1936" height="599"></canvas>-->
+    </div>
 </div>
 
+</div>
 
+<div id="scatterplots" width="220" style="vertical-align: top;">
+
+<h4> Trade-offs curves <button id="btnHelp_scatterplots">?</button></h4>
+<svg style="display:block;" width="200" height="200" viewBox="0 0 200 200"
+    xmlns="http://www.w3.org/2000/svg">
+  <rect width="180" height="180"/>
+</svg>
+
+<svg style="display:block;" width="200" height="200" viewBox="0 0 200 200"
+    xmlns="http://www.w3.org/2000/svg">
+  <rect width="180" height="180"/>
+</svg>
+
+
+<svg style="display:block;" width="200" height="200" viewBox="0 0 200 200"
+    xmlns="http://www.w3.org/2000/svg">
+  <rect width="180" height="180"/>
+</svg>
+
+</div>
 
 <!--Logo-->
 <a href="http://www.naturalcapitalproject.org"><img style="position: absolute; top: 0; right: 0; border: 3;" HR WIDTH="5%" src="data/images/natcap-logo.png" alt="The Natural Capital Project Img"></a>
 
-<hr>
 
-<p>Download <a href="data/fake1.csv">data file</a>
-<button id="btnReset">Reset all selections</button>
+<button onclick="location.href='data/fake1.csv'" class="inline" type="button" id="DwnldData">Download data file</button>
+<button onclick="location.href='data/fake1.csv'" class="inline" type="button" id="ViewData">View full dataset</button>
+<button onclick="location.href='./indexBen.html'" class="inline" type="button" id="btnUncertainty">Explore Parametric Uncertainty</button>
+
 
 </body>
 

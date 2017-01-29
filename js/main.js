@@ -38,6 +38,9 @@ var parcoords;
     d3.select('#btnHelp_sliders').on('click', function() 
       	{alert("Sliders: These sliders allow to modify the weight of each objective");
     });
+
+    d3.select("#btnHelp_scatterplots").on('click',function()
+      {alert("Trade-offs curves: explanations")});
         
   };
 

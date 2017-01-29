@@ -2,8 +2,8 @@ var colorScale;
 
 function map(){
 
-    var width = 960,
-    height = 500;
+    var legend_height = 337; //chosen same height as map
+
 
 // continuous scale
 var startColor = d3.rgb("#123456");
@@ -12,28 +12,29 @@ var endColor = d3.rgb("#900041");
 // categorical scale
 var Land_cover_scale =[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
     ["#003366",'#a6c8e3',"#00336f",'#f6c8e3','#a6cee3','#1f78b4','#b2df8a','#33a02c','#b2df86','#33002c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928'],
-    ["Grass","Forest","Road","Land","Category 4","Something","Sand","Unicorn3","Yo","Grass green","Forest","This","YOyo","Unicorn2","Uyou","Hey","Powpowpow","Unicorn","Charlie","Chab's"]];
+    ["Grass","Forest","Road","Land","Dry forest","introduced grassland","Sand","Barren","Woods","Grass green","Forest","Big forest","Awesome forest","Water","Unicorn","Agroforestry","Sand","Moutain","Superurban","Urban"]];
 
-// legend box size
-var ls_w = 20, ls_h = 20;
+  //number of legend categories
+  var num_legend_boxes = Land_cover_scale[0].length; 
+  // legend box size
+  var ls_w = legend_height/num_legend_boxes, ls_h = legend_height/num_legend_boxes;
 
 
 var baseRaster;
 
 var ext, newExt, image, rasters, canvas, ctx;
 
-var map_upon_toggle = "../data/PET_gura.tif"; //map to display initially
-    map_upon_toggle = "../data/lulc_future_scenario_gura.tif";
+var map_upon_toggle = "./data/test_lulc.tif"; //map to display initially
 
 $('#map_toggle').change(function(e) {
       if ($(this).prop('checked')) {
-        map_upon_toggle = "../data/PET_gura.tif";
+        map_upon_toggle = "./data/test_obj.tif";
         render_map();
         } else {
-        map_upon_toggle = "../data/lulc_future_scenario_gura.tif";
+        map_upon_toggle = "./data/test_lulc.tif";
         render_map();
         }
-    });
+    })
 
 render_map();
 
@@ -43,11 +44,7 @@ function render_map() {
     .get(function(error, data){
         var parser = GeoTIFF.parse(data.response);
         image = parser.getImage();
-        rasters = image.readRasters(function(c){
-            console.log(c, this);
-        }, function(err){
-            console.log(err);
-        });
+        rasters = image.readRasters();
         canvas = document.getElementById('map_canvas');
         ctx = canvas.getContext("2d");
         // there is some arbitrary value fow 'no data', that messes all my calculations
@@ -55,22 +52,22 @@ function render_map() {
         ext = d3.extent(baseRaster);
         newExt = d3.extent(baseRaster.filter(function(r){ return r != ext[0]; }));
         console.log( "IN render map:", newExt);
+        
 
-
-
+      
       if ($('#map_toggle').prop('checked')) {
 
             render_continuous();
             //var Continuous_scale = TODO row 1: 10 categories from newExt
             //                            row 2: colorScale
             //                            row 3: labels
-            //render_legend_continuous();
+            //render_legend_continuous();        
             } else {
             render_categorical();
             render_legend_categorical();
         }
 
-    });
+    });    
 }
 
 function render_continuous() {
@@ -97,6 +94,8 @@ function render_continuous() {
         o += 4;
     });
     ctx.putImageData(imageData, 0, 0);
+
+    $("#map_title").text("Continuous map")
 }
 
 function render_categorical() {
@@ -122,6 +121,8 @@ function render_categorical() {
         o += 4;
     });
     ctx.putImageData(imageData, 0, 0);
+
+     $("#map_title").text("Categorical map")
 }
 
 function render_legend_categorical(){
@@ -133,7 +134,7 @@ function render_legend_categorical(){
 
   legend.append("rect")
   .attr("x", 20)
-  .attr("y", function(d, i){ return height - (i*ls_h) - 2*ls_h;})
+  .attr("y", function(d, i){ return legend_height - (i*ls_h) - 2*ls_h;})
   .attr("width", ls_w)
   .attr("height", ls_h)
   .style("fill", function(d, i) { return Land_cover_scale[1][i]; })
@@ -141,7 +142,7 @@ function render_legend_categorical(){
 
   legend.append("text")
   .attr("x", 50)
-  .attr("y", function(d, i){ return height - (i*ls_h) - ls_h - 4;})
+  .attr("y", function(d, i){ return legend_height - (i*ls_h) - ls_h - 4;})
   .text(function(d, i){ return Land_cover_scale[2][i]; });
 }
 
@@ -155,7 +156,7 @@ function render_legend_continuous(){
 
   legend.append("rect")
   .attr("x", 20)
-  .attr("y", function(d, i){ return height - (i*ls_h) - 2*ls_h;})
+  .attr("y", function(d, i){ return legend_height - (i*ls_h) - 2*ls_h;})
   .attr("width", ls_w)
   .attr("height", ls_h)
   .style("fill", function(d, i) { return Land_cover_scale[1][i]; })
@@ -163,7 +164,7 @@ function render_legend_continuous(){
 
   legend.append("text")
   .attr("x", 50)
-  .attr("y", function(d, i){ return height - (i*ls_h) - ls_h - 4;})
+  .attr("y", function(d, i){ return legend_height - (i*ls_h) - ls_h - 4;})
   .text(function(d, i){ return Land_cover_scale[2][i]; });
 }
 
