@@ -24,14 +24,14 @@ var baseRaster;
 
 var ext, newExt, image, rasters, canvas, ctx;
 
-var map_upon_toggle = "./data/test_lulc.tif"; //map to display initially
+var map_upon_toggle = "./data/testlulc.tif"; //map to display initially
 
 $('#map_toggle').change(function(e) {
       if ($(this).prop('checked')) {
         map_upon_toggle = "./data/test_obj.tif";
         render_map();
         } else {
-        map_upon_toggle = "./data/test_lulc.tif";
+        map_upon_toggle = "./data/testlulc.tif";
         render_map();
         }
     })
@@ -122,7 +122,8 @@ function render_categorical() {
     });
     ctx.putImageData(imageData, 0, 0);
 
-     $("#map_title").text("Categorical map")
+     $("#map_title").text("Categorical map
+      ")
 }
 
 function render_legend_categorical(){
