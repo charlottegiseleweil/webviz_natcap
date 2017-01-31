@@ -26,10 +26,19 @@ Ne chipotons pas
 On s'en fout de deux ou trois
 François c'est le roi !
 
-
 C'est très perturbant
 La position relative
 Pour les débutants
+
+
+Le scaterpelote
+A San Fransico, dans un
+coffeeshop, Hop ! 
+
+Le scater pelotte ?
+C'est cochon ça ho dis donc !
+Et ça choque Charlotte !
+
 ---
 map from work of F Chabbey 
 

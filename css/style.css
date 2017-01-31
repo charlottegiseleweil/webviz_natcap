@@ -41,7 +41,6 @@ a:hover {
 	display: inline-block;
 	padding: 5px;
 	margin: 5px;
-	border:1px solid black;
 	margin-right: -130px;
 	margin-left: -130px;
 }
@@ -50,7 +49,6 @@ a:hover {
 	display:inline-block;
 	margin: 5px;
 	padding: 5px;
-	border: 1px solid red;
 	vertical-align: top;
 
 }
@@ -82,29 +80,26 @@ a:hover {
 }
 
 #map_block {
-	border: 1px solid purple;
+	//border: 1px solid black;
 	display:block;
 }
 
 #parcoords_n_map_block {
-	border: 3px solid purple;
 	display:inline-block;
 }
 
 #scatterplots {
-	border: 2px solid yellow;
 	display:inline-block;
+	margin-left: 20px;
 }
 
 #map_controls{
 	display:block;
-	border: 1px solid blue;
 	vertical-align: top;
 }
 
 #map_n_legend{
 	display:block;
-	border: 1px solid red;
 	position:relative;
 }
 
@@ -116,7 +111,6 @@ a:hover {
 
 #map_canvas{
 	display:inline-block;
-	border: 7px solid blue;
 	vertical-align: top;
 
 }

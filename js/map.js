@@ -121,7 +121,7 @@ function render_categorical() {
         o += 4;
     });
     ctx.putImageData(imageData, 0, 0);
-
+    
      $("#map_title").text("Categorical map");
 }
 
