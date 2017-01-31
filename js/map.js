@@ -24,22 +24,22 @@ var baseRaster;
 
 var ext, newExt, image, rasters, canvas, ctx;
 
-var map_upon_toggle = "./data/testlulc.tif"; //map to display initially
+var map_chosen = "./data/testlulc.tif"; //map to display initially
 
-$('#map_toggle').change(function(e) {
-      if ($(this).prop('checked')) {
-        map_upon_toggle = "./data/test_obj.tif";
-        render_map();
-        } else {
-        map_upon_toggle = "./data/testlulc.tif";
-        render_map();
-        }
-    })
+// Update map upon toggling 
+$('#map_toggle').change(function(){
+  choose_map();
+});
+
+// Update map upon radiobutton choice
+$("input[name='radiobutton']").change(function(){
+    choose_map();
+});
 
 render_map();
 
 function render_map() {
-    d3.xhr(map_upon_toggle)
+    d3.xhr(map_chosen)
     .responseType('arraybuffer')
     .get(function(error, data){
         var parser = GeoTIFF.parse(data.response);
@@ -94,8 +94,6 @@ function render_continuous() {
         o += 4;
     });
     ctx.putImageData(imageData, 0, 0);
-
-    $("#map_title").text("Continuous map")
 }
 
 function render_categorical() {
@@ -121,8 +119,7 @@ function render_categorical() {
         o += 4;
     });
     ctx.putImageData(imageData, 0, 0);
-    
-     $("#map_title").text("Categorical map");
+  
 }
 
 function render_legend_categorical(){
@@ -167,5 +164,41 @@ function render_legend_continuous(){
   .attr("y", function(d, i){ return legend_height - (i*ls_h) - ls_h - 4;})
   .text(function(d, i){ return Land_cover_scale[2][i]; });
 }
+
+
+function choose_map() {
+  if ($('#map_toggle').prop('checked')) {
+    $("#label_radio1").text("Annual Water Yield (AWY)");
+    $("#label_radio2").text("Sediment Export (SDE)");
+    $("#label_radio3").text("Sediment Loss (SDL)");
+        if ( ($('input[name=radiobutton]:checked').val()) == 1) {
+      $("#map_title").text("Objective score map for Annual Water Yield");
+    }
+    else if ( ($('input[name=radiobutton]:checked').val()) == 2) {
+        $("#map_title").text("Objective score map for Sediment Export")
+
+    }
+    else if ( ($('input[name=radiobutton]:checked').val()) == 3) {
+        $("#map_title").text("Objective score map for Sediment Loss")
+
+    }
+  }
+  else {
+    $("#label_radio1").text("Modal portfolio");
+    $("#label_radio2").text("Percent agreement map");
+    $("#label_radio3").text("Footprint of portfolios");
+      if ( ($('input[name=radiobutton]:checked').val()) == 1) {
+      console.log("un");
+      $("#map_title").text("Modal portfolio");
+    }
+    else if ( ($('input[name=radiobutton]:checked').val()) == 2) {
+        console.log("deux ");
+        $("#map_title").text("Percent agreement map")
+    }
+    else if ( ($('input[name=radiobutton]:checked').val()) == 3) {
+        $("#map_title").text("Footprint of portfolios")
+    }
+  };
+};
 
 }
