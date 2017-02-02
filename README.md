@@ -39,6 +39,10 @@ Le scater pelotte ?
 C'est cochon ça ho dis donc !
 Et ça choque Charlotte !
 
+Et oui, j'ai craque
+Et remis l'opacite
+Dans le commit, j'ai
+
 ---
 map from work of F Chabbey 
 
