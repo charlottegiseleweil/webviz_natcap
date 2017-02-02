@@ -28,7 +28,6 @@ var yAxis = d3.svg.axis()
     .scale(y)
     .orient("left")
     .ticks(0);
-console.log(d3.select(location).select('svg').select('g').node())
 
   x.domain(d3.extent(full_data, function(d) { return d[variable_x]; })).nice();
   y.domain(d3.extent(full_data, function(d) { return d[variable_y]; })).nice();
@@ -63,7 +62,7 @@ if (!d3.select(location).select('svg').node()) { //Checking if the scatterplot '
       .attr("dy", ".71em")
       .style("text-anchor", "end")
       .text(variable_y)
-color = "red";
+
       }
 //Update of the dots for corresponding fed data (data_to_plot)
   svg = d3.select(location).select('svg').select('g');     //selects the node 'g' which is the scatterplot
@@ -75,6 +74,6 @@ color = "red";
       .attr("cx", function(d) { return x(d[variable_x]); })
       .attr("cy", function(d) { return y(d[variable_y]); })
       .style("fill", color);
-      //dots.exit().remove();
+      dots.exit().remove();
 
 }
