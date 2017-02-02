@@ -10,7 +10,7 @@ var parcoords;
 
 
     //load csv data file & creates plots
-    d3.csv('data/fake1.csv', function(row) { 
+    d3.csv('data/maragua_very_min_test.csv', function(row) { 
       // This function to parse String data in Floats
       var columnNames = Object.keys(row);
       var finalRow = {};
@@ -18,6 +18,7 @@ var parcoords;
         finalRow[columnName] = parseFloat(row[columnName]);
       });
       return finalRow;
+
     }, function(data) {
       // Now make the plots
       full_data = data;
@@ -25,7 +26,7 @@ var parcoords;
       sliders_plot();
       crossfiltering();
       map();
-      scatterplot();
+      scatterplots(full_data);
     });
 
 

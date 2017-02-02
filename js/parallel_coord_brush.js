@@ -3,8 +3,8 @@ function parcoords_plot(){
 
   // quantitative color scale
   var blue_to_brown = d3.scale.linear()
-    .domain([20, 50])                 //modular: get min/max of colored axis
-    .range(["red", "steelblue"])
+    .domain([0, 1])                 
+    .range(["green", "royalblue"])
     .interpolate(d3.interpolateLab);
 
   var color = function(d) { 
@@ -18,7 +18,7 @@ function parcoords_plot(){
   //Create Parallel Coordinates chart
   parcoords
       .data(full_data)
-      .hideAxis(["sde_weight","sdl_weight", "awy_weight"])    //modular: names of hidden axis in the parcoord plot
+      .hideAxis(["sde_weight","sdl_weight", "awy_weight", "index"])    //modular: names of hidden axis in the parcoord plot
       .composite("darker")
       .render()
       .shadows()

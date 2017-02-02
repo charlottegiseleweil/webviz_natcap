@@ -102,7 +102,7 @@ Pour les sliders:
     
       <!--Toggle button-->
       &emsp; &emsp;
-      <input id="map_toggle" class="inline" type="checkbox" data-toggle="toggle" data-on="Objective<br>score maps" data-off="Land cover <br>maps" data-onstyle="warning" data-offstyle="info" data-size="mini"> <!-- other colors: "primary", "success" , "danger" -->
+      <input id="map_toggle" class="inline" type="checkbox" data-toggle="toggle" data-on="Objective<br>score maps" data-off="Land cover <br>maps" data-onstyle="warning" data-offstyle="info" data-size="mini" style="vertical-align: middle;"> <!-- other colors: "primary", "success" , "danger" -->
 
       <!--Radiobuttons-->
       <div id="Radiobuttons" class="inline">
@@ -111,7 +111,7 @@ Pour les sliders:
         <div style="display:block;"> <input type="radio" name="radiobutton" value="3" id="radio3"/> <label for="radio3" id="label_radio3">Footprint of portfolios</label> </div>
 
       </div> 
-      &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+      &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
       <h3 id="map_title" style="display:inline;"> Map title </h3>
       &emsp; &emsp; 
       <p id="map_stat" style="display:inline;"> Map statistics </p>
@@ -136,24 +136,18 @@ Pour les sliders:
 
 </div>
 
-<div id="scatterplots" width="220" style="vertical-align: top;">
+<div id="scatterplots" width="300" style="vertical-align: top;">
 
 <h4> Trade-offs curves <button id="btnHelp_scatterplots">?</button></h4>
-<svg style="display:block;" width="200" height="200" viewBox="0 0 200 200"
-    xmlns="http://www.w3.org/2000/svg">
-  <rect width="180" height="180"/>
-</svg>
+<div id="scatterplot1" style="display:block;" >
+</div>
 
-<svg style="display:block;" width="200" height="200" viewBox="0 0 200 200"
-    xmlns="http://www.w3.org/2000/svg">
-  <rect width="180" height="180"/>
-</svg>
+<div id="scatterplot2" style="display:block;" >
+</div>
 
 
-<svg style="display:block;" width="200" height="200" viewBox="0 0 200 200"
-    xmlns="http://www.w3.org/2000/svg">
-  <rect width="180" height="180"/>
-</svg>
+<div id="scatterplot3" style="display:block;" >
+</div>
 
 </div>
 

@@ -43,14 +43,17 @@ function sliders_plot(){
     function slideDimension(intervalPercent, dimensionName) {
         interval = intervalPercent.map((z)=>z/100);
         var be = parcoords.brushExtents();
-        var theData = dimensions[dimensionName].filter(interval).top(Infinity);
+        var filtered_data = dimensions[dimensionName].filter(interval).top(Infinity);
 
         // un appel a render ne suffit pas.. il faut recalculer les brush pour que tout marche
         // comme on veut
         parcoords
-            .data(theData)
+            .data(filtered_data)
             .render();
         parcoords.brushExtents(be);
+
+        //Update scatteplots
+        scatterplots(filtered_data);
     }
 }
 

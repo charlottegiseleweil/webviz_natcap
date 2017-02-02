@@ -1,8 +1,8 @@
 body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background: #fefefe;
-	width: 1422px; // 120 (legend) + 1032 (map) + 220 (scatterplot) + 50 (marges etc)
-	margin: 3;
+	width: 1470px; 
+	margin: auto !important;
 }
 
 p,ul,li,td {
@@ -27,6 +27,9 @@ a:hover {
 	text-decoration: underline;
 }
 
+#scatterplot1 .tick text {
+	color:red;
+}
 
 
 #pie-plot {
@@ -97,6 +100,7 @@ a:hover {
 #map_controls{
 	display:block;
 	vertical-align: top;
+	margin-bottom: 10px;
 }
 
 #map_n_legend{

@@ -1,9 +1,15 @@
-function scatterplot(){
+function scatterplots(data){
+      scatterplot('awy_score','sde_score','#scatterplot1', data);
+      scatterplot('sde_score','sdl_score','#scatterplot2', data);
+      scatterplot('sdl_score','awy_score','#scatterplot3', data);
+};
 
+function scatterplot(variable_x,variable_y,location,data_to_plot){
 
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom;
+var margin = {top: 10, right: 10, bottom: 10, left: 20},
+    width = 250 - margin.left - margin.right,
+    height = 250 - margin.top - margin.bottom, 
+    color = "blue";
 
 var x = d3.scale.linear()
     .range([0, width]);
@@ -11,32 +17,30 @@ var x = d3.scale.linear()
 var y = d3.scale.linear()
     .range([height, 0]);
 
-var color = d3.scale.category10();
+//var color = d3.scale.category10(); //Color of the dots !
 
 var xAxis = d3.svg.axis()
     .scale(x)
-    .orient("bottom");
+    .orient("bottom")
+    .ticks(0); //Spécifier le nombre de ticks qu'on veut !
 
 var yAxis = d3.svg.axis()
     .scale(y)
-    .orient("left");
+    .orient("left")
+    .ticks(0);
+console.log(d3.select(location).select('svg').select('g').node())
 
-var svg = d3.select("body").append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+  x.domain(d3.extent(full_data, function(d) { return d[variable_x]; })).nice();
+  y.domain(d3.extent(full_data, function(d) { return d[variable_y]; })).nice();
 
-d3.csv("data/fake1.csv", function(error, data) {
-  if (error) throw error;
+//Creates scatterplot (do this part only the first time)
+if (!d3.select(location).select('svg').node()) { //Checking if the scatterplot 'svg' doesn't exist
 
-  data.forEach(function(d) {
-    d.awy_score = +d.awy_score;
-    d.sde_score = +d.sde_score;
-  });
-
-  x.domain(d3.extent(data, function(d) { return d.awy_score; })).nice();
-  y.domain(d3.extent(data, function(d) { return d.sde_score; })).nice();
+	var svg = d3.select(location).append("svg")
+	    .attr("width", width + margin.left + margin.right)
+	    .attr("height", height + margin.top + margin.bottom)
+	  .append("g")
+	    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   svg.append("g")
       .attr("class", "x axis")
@@ -45,9 +49,9 @@ d3.csv("data/fake1.csv", function(error, data) {
     .append("text")
       .attr("class", "label")
       .attr("x", width)
-      .attr("y", -6)
+      .attr("y", 9)
       .style("text-anchor", "end")
-      .text("LABELLE X (cm)");
+      .text(variable_x);
 
   svg.append("g")
       .attr("class", "y axis")
@@ -55,39 +59,22 @@ d3.csv("data/fake1.csv", function(error, data) {
     .append("text")
       .attr("class", "label")
       .attr("transform", "rotate(-90)")
-      .attr("y", 6)
+      .attr("y", -9)
       .attr("dy", ".71em")
       .style("text-anchor", "end")
-      .text("LABELLE Y (cm)")
-
-  svg.selectAll(".dot")
-      .data(data)
-    .enter().append("circle")
-      .attr("class", "dot")
-      .attr("r", 3.5)
-      .attr("cx", function(d) { return x(d.sepalWidth); })
-      .attr("cy", function(d) { return y(d.sepalLength); })
-      .style("fill", function(d) { return color(d.species); });
-
-  var legend = svg.selectAll(".legend")
-      .data(color.domain())
-    .enter().append("g")
-      .attr("class", "legend")
-      .attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });
-
-  legend.append("rect")
-      .attr("x", width - 18)
-      .attr("width", 18)
-      .attr("height", 18)
+      .text(variable_y)
+color = "red";
+      }
+//Update of the dots for corresponding fed data (data_to_plot)
+  svg = d3.select(location).select('svg').select('g');     //selects the node 'g' which is the scatterplot
+  var dots = svg.selectAll(".dot")
+      .data(data_to_plot);
+      dots.enter().append("circle");
+      dots.attr("class", "dot")
+      .attr("r", 1.5)
+      .attr("cx", function(d) { return x(d[variable_x]); })
+      .attr("cy", function(d) { return y(d[variable_y]); })
       .style("fill", color);
-
-  legend.append("text")
-      .attr("x", width - 24)
-      .attr("y", 9)
-      .attr("dy", ".35em")
-      .style("text-anchor", "end")
-      .text(function(d) { return d; });
-
-});
+      //dots.exit().remove();
 
 }
