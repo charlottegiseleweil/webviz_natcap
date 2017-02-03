@@ -45,8 +45,7 @@ function sliders_plot(){
         var be = parcoords.brushExtents();
         var filtered_data = dimensions[dimensionName].filter(interval).top(Infinity);
 
-        // un appel a render ne suffit pas.. il faut recalculer les brush pour que tout marche
-        // comme on veut
+        // Update Pacoords + recalculate brushes
         parcoords
             .data(filtered_data)
             .render();

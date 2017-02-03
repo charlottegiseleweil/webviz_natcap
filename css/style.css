@@ -1,7 +1,7 @@
 body {
 	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 	background: #fefefe;
-	width: 1470px; 
+	width: 1500px; 
 	margin: auto !important;
 }
 
@@ -86,6 +86,7 @@ a:hover {
 #map_block {
 	//border: 1px solid black;
 	display:block;
+	margin-bottom: 70px;
 }
 
 #parcoords_n_map_block {
