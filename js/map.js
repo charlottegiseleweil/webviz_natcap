@@ -59,9 +59,7 @@ function render_map() {
         baseRaster = rasters[0];
         ext = d3.extent(baseRaster);
         newExt = d3.extent(baseRaster.filter(function(r){ return r != ext[0]; }));
-        console.log( "IN render map:", newExt);
-        
-
+      
       
       if ($('#map_toggle').prop('checked')) {
 

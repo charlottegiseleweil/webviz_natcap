@@ -27,6 +27,8 @@ function sliders_plot(){
              "value": [0, 100]
    });
 
+
+//LINK SLIDERS TO PARCOORDS AND SCATTERPLOTS
     obj1_slider.on("slide", function(interval_percent) {
        // Pour afficher le range séléctioné (need to do a #obj1_slider_txt object in html):
        // d3.select("#obj1_slider_txt").text("min: " + e[0] + ", max: " + e[1]);
@@ -51,7 +53,7 @@ function sliders_plot(){
             .render();
         parcoords.brushExtents(be);
 
-        //Update scatteplots
+        //Update scatterplots
         scatterplots(filtered_data);
     }
 }

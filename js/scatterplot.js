@@ -74,4 +74,4 @@ if (!d3.select(location).select('svg').node()) { //Checking if the scatterplot '
           .attr("cy", function(d) { return y(d[variable_y]); })
           .style("fill", color);
       dots.exit().transition().duration(750).style('opacity', 0).remove();
-}
+};

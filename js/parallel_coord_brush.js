@@ -34,18 +34,6 @@ function parcoords_plot(){
       .append('option')
       .text(function(d) { return d; });
 
-// Pour sélectionner 5 different brush modes:
-/*  sltBrushMode.on('change', function() {
-    parcoords.brushMode(this.value);
-    
-    default:
-      d3.select("#pStrums").style("visibility", "hidden");
-      d3.select("#lblPredicate").style("visibility", "visible");
-      d3.select("#sltPredicate").style("visibility", "visible");
-      d3.select("#btnReset").style("visibility", "visible");
-      break;
-    }
-  });*/
 
   sltBrushMode.property('value', '1D-axes');
 
@@ -54,5 +42,26 @@ function parcoords_plot(){
   d3.select('#sltPredicate').on('change', function() {
     parcoords.brushPredicate(this.value);
   });
+
+
+
+// LINK SCATTERPLOTS TO PARCOORDS UPON BRUSHING
+
+    parcoords.on("brush", function() {
+
+        //Update scatteplots for each brushed dimension
+    var be1 = parcoords.brushExtents().awy_score;
+    var be2 = parcoords.brushExtents().sde_score;
+    var be3 = parcoords.brushExtents().sdl_score;
+
+    filtered_data = dimensions['awy_score'].filter(be1).top(Infinity);
+    filtered_data = dimensions['sde_score'].filter(be2).top(Infinity);
+    filtered_data = dimensions['sdl_score'].filter(be3).top(Infinity);
+                //There has to be a more proper way to do this with a joli for loop!
+
+
+    scatterplots(filtered_data);
+    });
+
 
   }
