@@ -67,13 +67,11 @@ if (!d3.select(location).select('svg').node()) { //Checking if the scatterplot '
 //Update of the dots for corresponding fed data (data_to_plot)
   svg = d3.select(location).select('svg').select('g');     //selects the node 'g' which is the scatterplot
   var dots = svg.selectAll(".dot")
-      .data(data_to_plot);
-      dots.enter().append("circle");
-      dots.attr("class", "dot")
-      .attr("r", 1.5)
-      .attr("cx", function(d) { return x(d[variable_x]); })
-      .attr("cy", function(d) { return y(d[variable_y]); })
-      .style("fill", color);
-      dots.exit().remove();
-
+      .data(data_to_plot, function(d) { return d.index});
+      dots.enter().append("circle").attr("class", "dot");
+      dots.attr("r", 1.5)
+          .attr("cx", function(d) { return x(d[variable_x]); })
+          .attr("cy", function(d) { return y(d[variable_y]); })
+          .style("fill", color);
+      dots.exit().transition().duration(750).style('opacity', 0).remove();
 }
