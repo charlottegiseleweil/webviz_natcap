@@ -77,12 +77,11 @@ if (!d3.select(location).select('svg').node()) { //Checking if the scatterplot '
     // when we call .data again, the circle is still there d3 will ask us to update a circle that is going
     // to be removed from the DOM.. so the trick is to stop all transitions on circles that are going
     // to be updated, so they will not be removed.
-  dots.transition();
 
   dots.enter().append("circle").attr("class", "dot");
   dots.attr("r", 1.5)
       .attr("cx", function(d) { return x(d[variable_x]); })
       .attr("cy", function(d) { return y(d[variable_y]); })
       .style("fill", color);
-  dots.exit().transition().duration(750).style('opacity', 0).remove();
+  dots.exit().transition().remove();
 };
