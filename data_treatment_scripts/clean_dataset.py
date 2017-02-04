@@ -31,7 +31,7 @@ df_very_min_columns = col_weights + col_rel_obj
 df_very_min = df_min[df_very_min_columns]
 df_very_min.drop('obj_wtd_agg_delta_rel', axis=1, inplace=True)
 df_very_min.index.name = "index"
-#df_very_min.drop(df.index[100:800], axis=0, inplace=True)
+df_very_min.drop(df.index[10:809], axis=0, inplace=True)
 print(df_very_min.columns)
 
 new_cols={'obj_1_wt':'awy_weight','obj_2_wt':'sde_weight','obj_3_wt':'sdl_weight','AWY_1_agg_delta_rel':'awy_score','SDE_2_agg_delta_rel':'sde_score','SDL_3_agg_delta_rel':'sdl_score'}

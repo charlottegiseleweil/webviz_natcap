@@ -1,12 +1,15 @@
 function sliders_plot(){
 
+// OBJECTIVE WEIGHTS SLIDERS
    var obj1_slider = new Slider(
          "#obj1_slider", {
              "id": "obj1_slider",
              "min": 0,
              "max": 100,
              "range": true,
-             "value": [0, 100]
+             "value": [0, 100],
+             "step":25 //generic? change this to fit the weights values
+
    });
 
   var obj2_slider = new Slider(
@@ -15,7 +18,8 @@ function sliders_plot(){
              "min": 0,
              "max": 100,
              "range": true,
-             "value": [0, 100]
+             "value": [0, 100],
+             "step":25 //generic? change this to fit the weights values
    });
      
    var obj3_slider = new Slider(
@@ -24,7 +28,52 @@ function sliders_plot(){
              "min": 0,
              "max": 100,
              "range": true,
-             "value": [0, 100]
+             "value": [0, 100],
+             "step":25 //generic? change this to fit the weights values
+   });
+
+
+ // PARAMETRIC UNCERTAINTY SLIDERS
+
+   var pu1_slider = new Slider(
+         "#pu1_slider", {
+             "id": "obj1_slider",
+             "min": 0.5,
+             "max": 5,
+             "range": true,
+             "value": [0.5, 5],
+             "step":0.5 //generic? change this to fit the weights values
+
+   });
+
+  var pu2_slider = new Slider(
+         "#pu2_slider", {
+             "id": "obj2_slider",
+             "min": 1,
+             "max": 10,
+             "range": true,
+             "value": [1, 10],
+             "step":1 //generic? change this to fit the weights values
+   });
+     
+   var pu3_slider = new Slider(
+         "#pu3_slider", {
+             "id": "obj3_slider",
+             "min": 0,
+             "max": 1,
+             "range": false,
+             "value": [0, 1],
+             "step":1 //generic? change this to fit the weights values
+   });
+      var pu1_slider = new Slider(
+         "#pu4_slider", {
+             "id": "obj1_slider",
+             "min": 1,
+             "max": 4,
+             "range": true,
+             "value": [1, 4],
+             "step":1 //generic? change this to fit the weights values
+
    });
 
 

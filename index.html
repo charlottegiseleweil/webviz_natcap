@@ -78,20 +78,45 @@ Pour les sliders:
 
   <!--Sliders-->
   <div class="sliders" id=sliders_canvas >
-    <h5> Objective weights <button id="btnHelp_sliders">?</button> </h5>
-      <div class="slider_ow">
-        AWY weight :&nbsp;&nbsp; <b>0</b> &nbsp;
-        <input id="obj1_slider" type="text"/> &nbsp;&nbsp; <b>100%</b>
-      </div>
-      <div class="slider_ow">
-        SDE weight :&nbsp;&nbsp; <b>0</b> &nbsp;
-        <input id="obj2_slider" type="text"/> &nbsp;&nbsp; <b>100%</b>
-      </div>
-      <div class="slider_ow">
-        SDL Weight :&nbsp;&nbsp; <b>0</b> &nbsp;
-        <input id="obj3_slider" type="text"/> &nbsp;&nbsp; <b>100%</b>
-      </div>
+
+    <div id="sliders_ow_canvas">
+      <h5> Objective weights <button id="btnHelp_sliders">?</button> </h5>
+        <div class="slider_ow">
+          AWY &nbsp;&nbsp; <b>0</b> &nbsp;
+          <input id="obj1_slider" type="text"/> &nbsp;&nbsp; <b>100%</b>
+        </div>
+        <div class="slider_ow">
+          SDE &nbsp;&nbsp; <b>0</b> &nbsp;
+          <input id="obj2_slider" type="text"/> &nbsp;&nbsp; <b>100%</b>
+        </div>
+        <div class="slider_ow">
+          SDL &nbsp;&nbsp; <b>0</b> &nbsp;
+          <input id="obj3_slider" type="text"/> &nbsp;&nbsp; <b>100%</b>
+        </div>
+    </div>
+
+    <div id="sliders_pu_canvas">
+      <h5> Parametric uncertainty <button id="btnHelp_sliders">?</button> </h5>
+        <div class="slider_pu">
+          sdr1:&nbsp;&nbsp; <b>0.5</b> &nbsp;
+          <input id="pu1_slider" type="text"/> &nbsp;&nbsp; <b>5</b>
+        </div>
+        <div class="slider_pu">
+          awy1:&nbsp;&nbsp; <b>1</b> &nbsp;
+          <input id="pu2_slider" type="text"/> &nbsp;&nbsp; <b>10</b>
+        </div>
+        <div class="slider_pu">
+          Spatial:&nbsp;&nbsp; <b>A</b> &nbsp;
+          <input id="pu3_slider" type="text"/> &nbsp;&nbsp; <b>B</b>
+        </div>
+        <div class="slider_pu">
+          Budget&nbsp;&nbsp; <b>1M</b> &nbsp;
+          <input id="pu4_slider" type="text"/> &nbsp;&nbsp; <b>4M</b>
+        </div>
+    </div>
+
   </div>
+
 </div>
 
 

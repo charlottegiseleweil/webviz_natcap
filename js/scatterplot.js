@@ -6,6 +6,8 @@ function scatterplots(data){
 
 function scatterplot(variable_x,variable_y,location,data_to_plot){
 
+
+console.log(data_to_plot)
 var margin = {top: 10, right: 10, bottom: 10, left: 20},
     width = 250 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom, 
