@@ -34,8 +34,16 @@ var parcoords;
     	{alert("Parallel Coordinates Plot : Each axis corresponds to an objective, each line represents a solution. The axis can be flipped upon double clicking on their name. The axis can be re-ordered by dragging them. ");
     });
       
-    d3.select('#btnHelp_sliders').on('click', function() 
+    d3.select('#btnHelp_sliders_ow').on('click', function() 
       	{alert("Sliders: These sliders allow to modify the weight of each objective");
+    });
+
+    d3.select('#btnHelp_sliders_pu').on('click', function() 
+        {alert("Sliders: These sliders allow to modify the values of the parameters subject to uncertainty. \
+                seasonality refers to the seasonality constant, which affects the AWY model (...)\
+                SDR K value affects the SDR model (...)\
+                Spatial input ?????\
+                Budget (...)");
     });
 
     d3.select("#btnHelp_scatterplots").on('click',function()
