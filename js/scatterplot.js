@@ -71,6 +71,7 @@ if (!d3.select(location).select('svg').node()) { //Checking if the scatterplot '
   var dots = svg.selectAll(".dot")
       .data(data_to_plot, function(d) { return d.index});
 
+
     // There could be an issue with this flow
     // n  dots - 0 dots - 1 dot. The thing is that when we remove all the dots, we schedule a transition
     // so the dot will 'still be there', and removed from the DOM later.. this leads to a situation
@@ -83,5 +84,5 @@ if (!d3.select(location).select('svg').node()) { //Checking if the scatterplot '
       .attr("cx", function(d) { return x(d[variable_x]); })
       .attr("cy", function(d) { return y(d[variable_y]); })
       .style("fill", color);
-  dots.exit().transition().remove();
+  dots.exit().remove();
 };
