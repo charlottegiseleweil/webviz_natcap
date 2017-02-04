@@ -7,7 +7,7 @@ function scatterplots(data){
 function scatterplot(variable_x,variable_y,location,data_to_plot){
 
 
-console.log(data_to_plot)
+console.log('PELOTE', data_to_plot, location);
 var margin = {top: 10, right: 10, bottom: 10, left: 20},
     width = 250 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom, 
@@ -70,10 +70,19 @@ if (!d3.select(location).select('svg').node()) { //Checking if the scatterplot '
   svg = d3.select(location).select('svg').select('g');     //selects the node 'g' which is the scatterplot
   var dots = svg.selectAll(".dot")
       .data(data_to_plot, function(d) { return d.index});
-      dots.enter().append("circle").attr("class", "dot");
-      dots.attr("r", 1.5)
-          .attr("cx", function(d) { return x(d[variable_x]); })
-          .attr("cy", function(d) { return y(d[variable_y]); })
-          .style("fill", color);
-      dots.exit().transition().duration(750).style('opacity', 0).remove();
+
+    // There could be an issue with this flow
+    // n  dots - 0 dots - 1 dot. The thing is that when we remove all the dots, we schedule a transition
+    // so the dot will 'still be there', and removed from the DOM later.. this leads to a situation
+    // when we call .data again, the circle is still there d3 will ask us to update a circle that is going
+    // to be removed from the DOM.. so the trick is to stop all transitions on circles that are going
+    // to be updated, so they will not be removed.
+  dots.transition();
+
+  dots.enter().append("circle").attr("class", "dot");
+  dots.attr("r", 1.5)
+      .attr("cx", function(d) { return x(d[variable_x]); })
+      .attr("cy", function(d) { return y(d[variable_y]); })
+      .style("fill", color);
+  dots.exit().transition().duration(750).style('opacity', 0).remove();
 };
