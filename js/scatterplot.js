@@ -77,7 +77,11 @@ if (!d3.select(location).select('svg').node()) { //Checking if the scatterplot '
     // to be removed from the DOM.. so the trick is to stop all transitions on circles that are going
     // to be updated, so they will not be removed.
 
-  dots.enter().append("circle").attr("class", "dot");
+  dots.enter()
+  .append("circle")
+  .attr("class", function(d) {
+    return 'dot' + " id" + d.index; 
+  })
   dots.attr("r", 1.5)
       .attr("cx", function(d) { return x(d[variable_x]); })
       .attr("cy", function(d) { return y(d[variable_y]); })
@@ -85,6 +89,10 @@ if (!d3.select(location).select('svg').node()) { //Checking if the scatterplot '
   dots.exit().remove();
 };
 
-function scatterplot_highlight(variable_x,variable_y,location,data_to_plot) {
-  
+function scatterplot_highlight(d) {
+ $(".id" + d.index).addClass("dot_highlight");
+};
+
+function scatterplot_unhighlight(d) {
+ $(".id" + d.index).removeClass("dot_highlight");
 };

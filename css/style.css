@@ -116,6 +116,11 @@ a:hover {
   stroke: #000;
 }
 
+.dot_highlight{
+	stroke: red;
+	stroke-width: 8px;
+}
+
 #parcoords_sliders_block {
 	display:block;
 	margin-bottom: 20px;
@@ -176,7 +181,7 @@ a:hover {
 #table_canvas{
 	max-height: 150px;
     overflow: scroll;
-    
+
 }
 .invisiblee{
 	display: none;

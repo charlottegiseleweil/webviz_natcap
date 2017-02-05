@@ -8,10 +8,15 @@ var grid= d3.divgrid();
     .selectAll(".row")
     .on({
       "mouseover": function(d) { 
+        
           parcoords.highlight([d]);
-           
+          scatterplot_highlight(d);
       },
-      "mouseout": parcoords.unhighlight
+      "mouseout": function(d) {
+        parcoords.unhighlight;
+        scatterplot_unhighlight(d);
+    }
+
     });
 
 
