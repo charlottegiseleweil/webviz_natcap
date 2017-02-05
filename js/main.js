@@ -55,7 +55,6 @@ var columns;
     d3.select("#ViewData").on('click',function()
       {
         table(full_data);
-        
       });
         
   };

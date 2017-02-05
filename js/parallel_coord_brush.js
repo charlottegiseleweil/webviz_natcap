@@ -45,7 +45,7 @@ function parcoords_plot(){
 
 
 
-// LINK SCATTERPLOTS TO PARCOORDS UPON BRUSHING
+  // LINK SCATTERPLOTS TO PARCOORDS UPON BRUSHING
 
     parcoords.on("brush", function() {
 
@@ -53,6 +53,11 @@ function parcoords_plot(){
     var be1 = parcoords.brushExtents().awy_score;
     var be2 = parcoords.brushExtents().sde_score;
     var be3 = parcoords.brushExtents().sdl_score;
+
+    // find a better way
+    if (be1) be1[1]+= 0.0000000001;
+    if (be2) be2[1]+= 0.0000000001;
+    if (be3) be3[1]+= 0.0000000001;
 
     filtered_data = dimensions['awy_score'].filter(be1).top(Infinity);
     filtered_data = dimensions['sde_score'].filter(be2).top(Infinity);
