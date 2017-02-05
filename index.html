@@ -21,15 +21,15 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.4/css/bootstrap-slider.min.css" rel="stylesheet">
 
   <!-- D3 -->
-  <script src="js/d3.js"></script> <!-- When done, replace by: <script src="//d3js.org/d3.v3.min.js"></script> -->
+  <script src="js/lib/d3.js"></script> <!-- When done, replace by: <script src="//d3js.org/d3.v3.min.js"></script> -->
   <script src="js/main.js"></script>
 
   <!-- Crossfiltering -->
   <script src="js/crossfiltering.js"></script>
   
   <!-- Parcoords plot -->
-  <script src="js/d3.svg.multibrush.js"></script>
-  <script src="js/d3.parcoords.js"></script>
+  <script src="js/lib/d3.svg.multibrush.js"></script>
+  <script src="js/lib/d3.parcoords.js"></script>
   <script src="js/parallel_coord_brush.js"></script>
 
   <!-- Sliders -->
@@ -37,8 +37,7 @@
   <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.5.4/bootstrap-slider.min.js'></script>
 
   <!-- Map -->
-
-  <script src="js/geotiff.js"></script>
+  <script src="js/lib/geotiff.js"></script>
   <!-- script src="js/plotty.js/dist/plotly.min.js"></script-->
   <script src ='js/map.js'></script>
   <script src ='js/scatterplot.js'></script>
@@ -47,6 +46,9 @@
  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
 
+ <!--Data table-->
+ <script src="js/lib/divgrid.js"></script>
+ <script src ='js/table.js'></script>
 
 
 </head>
@@ -119,7 +121,8 @@ Pour les sliders:
 
 </div>
 
-
+<div id="table_canvas" style="display:block;" >
+</div>
 
 <div id="map_block"">
   
@@ -163,7 +166,7 @@ Pour les sliders:
  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
 <button onclick="location.href='data/fake1.csv'" class="inline" type="button" id="DwnldData">Download data file</button>
  &emsp; &emsp; &emsp; &emsp; 
-<button onclick="location.href='data/fake1.csv'" class="inline" type="button" id="ViewData">View full dataset</button>
+<button class="inline" type="button" id="ViewData">View dataset</button>
  &emsp; &emsp; &emsp; &emsp;  
 <button onclick="location.href='./indexBen.html'" class="inline" type="button" id="btnUncertainty">Explore Parametric Uncertainty</button>
 
@@ -184,6 +187,7 @@ Pour les sliders:
 </div>
 
 </div>
+
 
 <!--Logo-->
 <a href="http://www.naturalcapitalproject.org"><img style="position: absolute; top: 0; right: 0; border: 3;" HR WIDTH="5%" src="data/images/natcap-logo.png" alt="The Natural Capital Project Img"></a>

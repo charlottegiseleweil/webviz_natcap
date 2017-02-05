@@ -1,14 +1,17 @@
+var DATA = 'data/maragua_very_min_test.csv'
+
 var full_data;
 var dimensions = {};
 var cf;
 var brushed_data = full_data;
 var parcoords;
+var columns;
 
   function main(){
 
 
     //load csv data file & creates plots
-    d3.csv('data/maragua_very_min_test.csv', function(row) { 
+    d3.csv(DATA, function(row) { 
       // This function to parse String data in Floats
       var columnNames = Object.keys(row);
       var finalRow = {};
@@ -49,15 +52,24 @@ var parcoords;
     d3.select("#btnHelp_scatterplots").on('click',function()
       {alert("Trade-offs curves: explanations")});
         
+    d3.select("#ViewData").on('click',function()
+      {
+        table(full_data);
+        
+      });
+        
   };
 
+
   
+  /* Useful ?
+
   function renderAll_brushed(){
     parcoords.data(brushed_data);
     parcoords.render();
   }
 
- /* UPON BRUSH ON parcoords (FOR EACH 3 DIM):
+  UPON BRUSH ON parcoords (FOR EACH 3 DIM):
 
 dimensions["awy_score"].filter(D.brushExtents().awy_score);
 brushed_data = dimensions.awy_score.filter(D.brushExtents().awy_score).top(Infinity); 
