@@ -167,6 +167,12 @@ a:hover {
 	display:block;
 }
 
+.label_radio {
+	margin-bottom: 0px;
+    font-weight: 500;
+    font-size: 14px;
+}
+
 
 #grid { height: 198px; }
 .row, .header { clear: left; font-size: 12px; line-height: 18px; height: 18px; }

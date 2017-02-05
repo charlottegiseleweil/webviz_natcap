@@ -124,6 +124,16 @@ Pour les sliders:
 <div id="table_canvas" style="display:block;" >
 </div>
 
+    <!-- Buttons -->
+     &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+     &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+     &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
+    <button onclick="location.href='data/fake1.csv'" class="inline" type="button" id="DwnldData">Download data file</button>
+     &emsp; &emsp; &emsp; &emsp; 
+    <button style="right: 0;" type="button" id="ViewData">View dataset</button>
+
+
+
 <div id="map_block"">
   
   <div id="map_controls">
@@ -134,9 +144,9 @@ Pour les sliders:
 
       <!--Radiobuttons-->
       <div id="Radiobuttons" class="inline">
-        <div style="display:block;"> <input type="radio" name="radiobutton" value="1" id="radio1"/> <label for="radio1" id="label_radio1">Modal portfolio</label> </div>
-        <div style="display:block;"> <input type="radio" name="radiobutton" value="2" id="radio2"/> <label for="radio2" id="label_radio2">Percent agreement map</label> </div>
-        <div style="display:block;"> <input type="radio" name="radiobutton" value="3" id="radio3"/> <label for="radio3" id="label_radio3">Footprint of portfolios</label> </div>
+        <div style="display:block;"> <input type="radio" name="radiobutton" value="1" id="radio1"/> <label for="radio1" id="label_radio1" class="label_radio">Modal portfolio</label> </div>
+        <div style="display:block;"> <input type="radio" name="radiobutton" value="2" id="radio2"/> <label for="radio2" id="label_radio2" class="label_radio">Percent agreement map</label> </div>
+        <div style="display:block;"> <input type="radio" name="radiobutton" value="3" id="radio3"/> <label for="radio3" id="label_radio3" class="label_radio">Footprint of portfolios</label> </div>
 
       </div> 
       &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
@@ -145,9 +155,7 @@ Pour les sliders:
       <p id="map_stat" style="display:inline;"> Map statistics </p>
       &emsp; &emsp;
       <button id="btnReset" class="inline">Reset all selections</button>
-
   </div>
-
 
     <div id="map_n_legend">
 
@@ -161,15 +169,6 @@ Pour les sliders:
         <!--<canvas id="map_canvas2" width="1936" height="599"></canvas>-->
     </div>
 </div>
-
-<!-- Bottom buttons -->
- &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
-<button onclick="location.href='data/fake1.csv'" class="inline" type="button" id="DwnldData">Download data file</button>
- &emsp; &emsp; &emsp; &emsp; 
-<button class="inline" type="button" id="ViewData">View dataset</button>
- &emsp; &emsp; &emsp; &emsp;  
-<button onclick="location.href='./indexBen.html'" class="inline" type="button" id="btnUncertainty">Explore Parametric Uncertainty</button>
-
 
 </div>
 
