@@ -34,7 +34,7 @@ df_very_min.index.name = "index"
 df_very_min.drop(df.index[10:809], axis=0, inplace=True)
 print(df_very_min.columns)
 
-new_cols={'obj_1_wt':'awy_weight','obj_2_wt':'sde_weight','obj_3_wt':'sdl_weight','AWY_1_agg_delta_rel':'awy_score','SDE_2_agg_delta_rel':'sde_score','SDL_3_agg_delta_rel':'sdl_score'}
+new_cols={'obj_1_wt':'awy_weight','obj_2_wt':'sde_weight','obj_3_wt':'sdl_weight','AWY_1_agg_delta_rel':'awy_score','SDE_2_agg_delta_rel':'sde_score','SDL_3_agg_delta_rel':'sdl_score', 'sdr_1'='input_1','awy_1', 'spatial_inputs', 'budget_level']}
 df_very_min.rename(columns=new_cols, inplace=True)
 df_very_min.to_csv('../data/maragua_very_min_test.csv')
 

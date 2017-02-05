@@ -100,7 +100,7 @@ Pour les sliders:
     <div id="sliders_pu_canvas">
       <h5> Parametric uncertainty <button id="btnHelp_sliders_pu">?</button> </h5>
         <div class="slider_pu">
-          seasonality cst:&nbsp;&nbsp; <b>0.5</b> &nbsp;
+          season. cst:&nbsp;&nbsp; <b>0.5</b> &nbsp;
           <input id="pu1_slider" type="text"/> &nbsp;&nbsp; <b>5</b>
         </div>
         <div class="slider_pu">
@@ -108,15 +108,25 @@ Pour les sliders:
           <input id="pu2_slider" type="text"/> &nbsp;&nbsp; <b>10</b>
         </div>
         <div class="slider_pu">
-          Spatial:&nbsp;&nbsp; <b>A</b> &nbsp;
+          Spatial:&nbsp;&nbsp;  <b>A</b> &nbsp;
           <input id="pu3_slider" type="text"/> &nbsp;&nbsp; <b>B</b>
         </div>
         <div class="slider_pu">
           Budget&nbsp;&nbsp; <b>1M</b> &nbsp;
           <input id="pu4_slider" type="text"/> &nbsp;&nbsp; <b>4M</b>
         </div>
+
     </div>
 
+
+   <!-- Buttons -->
+      <div id="buttonzContainer">
+      <button id="btnReset" class="buttonz">Reset all selections</button>
+      <button type="button" class="buttonz" id="ViewData" >View dataset</button>
+      <button onclick="location.href='data/fake1.csv'" class="buttonz" type="button" id="DwnldData" >Download data file</button>
+      </div>
+
+      
   </div>
 
 </div>
@@ -133,7 +143,7 @@ Pour les sliders:
       <!--Toggle button-->
       &emsp; &emsp;
       <input id="map_toggle" class="inline" type="checkbox" data-toggle="toggle" data-on="Objective<br>score maps" data-off="Land cover <br>maps" data-onstyle="warning" data-offstyle="info" data-size="mini" style="vertical-align: middle;"> <!-- other colors: "primary", "success" , "danger" -->
-
+      &emsp; &emsp;
       <!--Radiobuttons-->
       <div id="Radiobuttons" class="inline">
         <div style="display:block;"> <input type="radio" name="radiobutton" value="1" id="radio1"/> <label for="radio1" id="label_radio1" class="label_radio">Modal portfolio</label> </div>
@@ -145,13 +155,7 @@ Pour les sliders:
       <h3 id="map_title" style="display:inline;"> Map title </h3>
       &emsp; &emsp; 
       <p id="map_stat" style="display:inline;"> Map statistics </p>
-      
-      <!-- Buttons -->
-      <div id="buttonz">
-      <button id="btnReset" style="display:block;">Reset all selections</button>
-      <button type="button" style="display:block;" id="ViewData" >View dataset</button>
-      <button onclick="location.href='data/fake1.csv'" style="display:block;" type="button" id="DwnldData" >Download data file</button>
-      </div>
+
 
   </div>
 

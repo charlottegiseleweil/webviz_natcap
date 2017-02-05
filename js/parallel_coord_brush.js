@@ -37,8 +37,6 @@ function parcoords_plot(){
 
   sltBrushMode.property('value', '1D-axes');
 
-  d3.select('#btnReset').on('click', function() {parcoords.brushReset();})
-
   d3.select('#sltPredicate').on('change', function() {
     parcoords.brushPredicate(this.value);
   });
@@ -49,12 +47,12 @@ function parcoords_plot(){
 
     parcoords.on("brush", function() {
 
-        //Update scatteplots for each brushed dimension
+    //Update scatteplots for each brushed dimension
     var be1 = parcoords.brushExtents().awy_score;
     var be2 = parcoords.brushExtents().sde_score;
     var be3 = parcoords.brushExtents().sdl_score;
 
-    // find a better way
+    // Fix the extrema because interval is [min;max[
     if (be1) be1[1]+= 0.0000000001;
     if (be2) be2[1]+= 0.0000000001;
     if (be3) be3[1]+= 0.0000000001;

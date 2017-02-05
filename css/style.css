@@ -188,9 +188,14 @@ a:hover {
 	max-height:0px;
 }
 
-#buttonz{
-	float:right;
-	display:inline-block;
+#buttonzContainer{
+	display:block;
+	margin-top:10px;
+}
+.buttonz{
+	margin-bottom:4px;
+	margin-right: 27px;
+
 }
 
 #grid { height: 198px; }

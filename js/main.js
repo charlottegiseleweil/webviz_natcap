@@ -46,6 +46,8 @@ var col_weights = [];
 
    
 
+    //Buttons
+
 
     //Help buttons
     d3.select('#btnHelp_parcoords').on('click', function() 
@@ -66,10 +68,10 @@ var col_weights = [];
 
     d3.select("#btnHelp_scatterplots").on('click',function()
       {alert("Trade-offs curves: explanations")});
-        
+    
+    //Other buttons    
     d3.select("#ViewData").on('click',function()
       {
-
         if ($("#ViewData").text() === "View dataset"){
           table(full_data);
           $("#table_canvas").removeClass('invisiblee');
@@ -78,8 +80,28 @@ var col_weights = [];
           $("#table_canvas").addClass('invisiblee');
           $("#ViewData").html("View dataset");
         }
+      });
+
+      d3.select('#btnReset').on('click', function() {
+        parcoords.brushReset();
+        
+        parcoords
+            .data(full_data)
+            .render();
+
+        scatterplots(full_data);
+        
+        obj1_slider.setValue([0, 100]);
+        obj2_slider.setValue([0, 100]); 
+        obj3_slider.setValue([0, 100]); 
+        pu1_slider.setValue([0.5, 5]); 
+        pu2_slider.setValue([1, 10]); 
+        pu3_slider.setValue([0, 1]);
+        pu4_slider.setValue([1, 4]);
+        // todo sortir all var sliders and todo
 
       });
+
         
   };
 

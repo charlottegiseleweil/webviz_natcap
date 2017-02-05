@@ -1,7 +1,9 @@
+var obj1_slider, obj2_slider, obj3_slider, pu1_slider, pu2_slider, pu3_slider, pu4_slider ;
+
 function sliders_plot(){
 
 // OBJECTIVE WEIGHTS SLIDERS
-   var obj1_slider = new Slider(
+    obj1_slider = new Slider(
          "#obj1_slider", {
              "id": "obj1_slider",
              "min": 0,
@@ -12,7 +14,7 @@ function sliders_plot(){
 
    });
 
-  var obj2_slider = new Slider(
+  obj2_slider = new Slider(
          "#obj2_slider", {
              "id": "obj2_slider",
              "min": 0,
@@ -22,7 +24,7 @@ function sliders_plot(){
              "step":25 //generic? change this to fit the weights values
    });
      
-   var obj3_slider = new Slider(
+   obj3_slider = new Slider(
          "#obj3_slider", {
              "id": "obj3_slider",
              "min": 0,
@@ -35,7 +37,7 @@ function sliders_plot(){
 
  // PARAMETRIC UNCERTAINTY SLIDERS
 
-   var pu1_slider = new Slider(
+   pu1_slider = new Slider(
          "#pu1_slider", {
              "id": "obj1_slider",
              "min": 0.5,
@@ -46,7 +48,7 @@ function sliders_plot(){
 
    });
 
-  var pu2_slider = new Slider(
+  pu2_slider = new Slider(
          "#pu2_slider", {
              "id": "obj2_slider",
              "min": 1,
@@ -56,7 +58,7 @@ function sliders_plot(){
              "step":1 //generic? change this to fit the weights values
    });
      
-   var pu3_slider = new Slider(
+   pu3_slider = new Slider(
          "#pu3_slider", {
              "id": "obj3_slider",
              "min": 0,
@@ -65,7 +67,8 @@ function sliders_plot(){
              "value": [0, 1],
              "step":1 //generic? change this to fit the weights values
    });
-      var pu1_slider = new Slider(
+
+    pu4_slider = new Slider(
          "#pu4_slider", {
              "id": "obj1_slider",
              "min": 1,
