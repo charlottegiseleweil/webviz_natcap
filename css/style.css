@@ -188,6 +188,10 @@ a:hover {
 	max-height:0px;
 }
 
+#buttonz{
+	float:right;
+	display:inline-block;
+}
 
 #grid { height: 198px; }
 .row, .header { clear: left; font-size: 12px; line-height: 18px; height: 18px; }

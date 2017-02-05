@@ -124,14 +124,6 @@ Pour les sliders:
 <div id="table_canvas" class='invisiblee'>
 </div>
 
-    <!-- Buttons -->
-     &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
-     &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
-     &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;  &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp; &emsp;
-    <button onclick="location.href='data/fake1.csv'" class="inline" type="button" id="DwnldData">Download data file</button>
-     &emsp; &emsp; &emsp; &emsp; 
-    <button style="right: 0;" type="button" id="ViewData">View dataset</button>
-
 
 
 <div id="map_block"">
@@ -153,10 +145,13 @@ Pour les sliders:
       <h3 id="map_title" style="display:inline;"> Map title </h3>
       &emsp; &emsp; 
       <p id="map_stat" style="display:inline;"> Map statistics </p>
-      &emsp; &emsp;
-      <button id="btnReset" class="inline">Reset all selections</button>
-      <button style="right: 0;" type="button" id="ViewData">View dataset</button>
-      <button onclick="location.href='data/fake1.csv'" class="inline" type="button" id="DwnldData">Download data file</button>
+      
+      <!-- Buttons -->
+      <div id="buttonz">
+      <button id="btnReset" style="display:block;">Reset all selections</button>
+      <button type="button" style="display:block;" id="ViewData" >View dataset</button>
+      <button onclick="location.href='data/fake1.csv'" style="display:block;" type="button" id="DwnldData" >Download data file</button>
+      </div>
 
   </div>
 
