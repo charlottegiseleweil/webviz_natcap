@@ -7,11 +7,15 @@ var grid= d3.divgrid();
     .call(grid)
     .selectAll(".row")
     .on({
-      "mouseover": function(d) { parcoords.highlight([d]) },
+      "mouseover": function(d) { 
+          parcoords.highlight([d]);
+           
+      },
       "mouseout": parcoords.unhighlight
     });
 
-  // update data table on brush event
+
+  // update data table upon parcoords brush event
   parcoords.on("brush", function(d) {
     d3.select("#table_canvas")
       .datum(d.slice(0,10))

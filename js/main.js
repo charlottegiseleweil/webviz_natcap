@@ -6,14 +6,19 @@ var cf;
 var brushed_data = full_data;
 var parcoords;
 var columns;
+var columnNames;
+
+var col_weights = [];
+
 
   function main(){
 
 
     //load csv data file & creates plots
     d3.csv(DATA, function(row) { 
+      columnNames = Object.keys(row);
+
       // This function to parse String data in Floats
-      var columnNames = Object.keys(row);
       var finalRow = {};
       columnNames.forEach(function(columnName){
         finalRow[columnName] = parseFloat(row[columnName]);
@@ -21,6 +26,14 @@ var columns;
       return finalRow;
 
     }, function(data) {
+
+      //Sort out the columns
+      for (var i in columnNames){
+        if (/weight/.exec(columnNames[i])) {
+          col_weights.push(columnNames[i])
+        };
+      }
+
       // Now make the plots
       full_data = data;
       parcoords_plot();
@@ -30,6 +43,8 @@ var columns;
       scatterplots(full_data);
     });
 
+
+   
 
 
     //Help buttons
@@ -54,7 +69,16 @@ var columns;
         
     d3.select("#ViewData").on('click',function()
       {
-        table(full_data);
+
+        if ($("#ViewData").text() === "View dataset"){
+          table(full_data);
+          $("#table_canvas").removeClass('invisiblee');
+          $("#ViewData").html("Hide Dataset");
+        } else {
+          $("#table_canvas").addClass('invisiblee');
+          $("#ViewData").html("View dataset");
+        }
+
       });
         
   };

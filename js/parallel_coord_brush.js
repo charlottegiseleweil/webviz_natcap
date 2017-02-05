@@ -18,7 +18,7 @@ function parcoords_plot(){
   //Create Parallel Coordinates chart
   parcoords
       .data(full_data)
-      .hideAxis(["sde_weight","sdl_weight", "awy_weight", "index"])    //modular: names of hidden axis in the parcoord plot
+      .hideAxis(col_weights.concat(["index"]))    //modular: names of hidden axis in the parcoord plot
       .composite("darker")
       .render()
       .shadows()

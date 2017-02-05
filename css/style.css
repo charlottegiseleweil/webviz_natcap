@@ -173,6 +173,16 @@ a:hover {
     font-size: 14px;
 }
 
+#table_canvas{
+	max-height: 150px;
+    overflow: scroll;
+    
+}
+.invisiblee{
+	display: none;
+	max-height:0px;
+}
+
 
 #grid { height: 198px; }
 .row, .header { clear: left; font-size: 12px; line-height: 18px; height: 18px; }

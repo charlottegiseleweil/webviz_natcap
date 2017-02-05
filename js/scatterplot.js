@@ -84,3 +84,7 @@ if (!d3.select(location).select('svg').node()) { //Checking if the scatterplot '
       .style("fill", color);
   dots.exit().remove();
 };
+
+function scatterplot_highlight(variable_x,variable_y,location,data_to_plot) {
+  
+};
