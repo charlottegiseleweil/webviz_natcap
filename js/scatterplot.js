@@ -6,7 +6,6 @@ function scatterplots(data){
 
 function scatterplot(variable_x,variable_y,location,data_to_plot){
 
->>>>>>> 5f8c4422431b900b63a7a5466c4fc8a2fa922615
 var margin = {top: 10, right: 10, bottom: 10, left: 20},
     width = 250 - margin.left - margin.right,
     height = 250 - margin.top - margin.bottom, 
