@@ -1,4 +1,4 @@
-var DATA = 'data/maragua_very_min_test.csv'
+var DATA = 'data/maragua_dataset1.csv'
 
 var full_data;
 var dimensions = {};
@@ -24,6 +24,7 @@ var col_weights = [];
         finalRow[columnName] = parseFloat(row[columnName]);
       });
       return finalRow;
+      
 
     }, function(data) {
 

@@ -3,12 +3,12 @@ function parcoords_plot(){
 
   // quantitative color scale
   var blue_to_brown = d3.scale.linear()
-    .domain([0, 1])                 
+    .domain([-8000000,4000000])                 
     .range(["green", "royalblue"])
     .interpolate(d3.interpolateLab);
 
   var color = function(d) { 
-    return blue_to_brown(d['sde_score']);
+    return blue_to_brown(d['awy_score']);     //make the color scale modular
   };
 
   parcoords = d3.parcoords()("#parcoords_canvas")
@@ -62,8 +62,8 @@ function parcoords_plot(){
     filtered_data = dimensions['sdl_score'].filter(be3).top(Infinity);
                 //There has to be a more proper way to do this with a joli for loop!
 
-
     scatterplots(filtered_data);
+
     });
 
 

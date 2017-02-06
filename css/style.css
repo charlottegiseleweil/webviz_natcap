@@ -45,7 +45,7 @@ a:hover {
 	padding: 5px;
 	margin: 5px;
 	margin-right: -130px;
-	margin-left: -130px;
+	margin-left: -120px;
 }
 
 #sliders_ow_canvas{
@@ -123,7 +123,7 @@ a:hover {
 
 #parcoords_sliders_block {
 	display:block;
-	margin-bottom: 20px;
+	margin-bottom: 0px;
 }
 
 #map_block {
