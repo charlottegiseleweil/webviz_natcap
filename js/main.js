@@ -24,7 +24,7 @@ var col_weights = [];
         finalRow[columnName] = parseFloat(row[columnName]);
       });
       return finalRow;
-      
+
 
     }, function(data) {
 
@@ -52,7 +52,14 @@ var col_weights = [];
 
     //Help buttons
     d3.select('#btnHelp_parcoords').on('click', function() 
-    	{alert("Parallel Coordinates Plot : Each axis corresponds to an objective, each line represents a solution. The axis can be flipped upon double clicking on their name. The axis can be re-ordered by dragging them. ");
+    	{alert("Parallel Coordinates Plot : Each axis corresponds to an objective, each line represents a solution.\
+        The axis can be flipped upon double clicking on their name. The axis can be re-ordered by dragging them.\
+        \
+        AWY: Annual water yield [in 10^5 cubic meters water/year]\
+        \
+        SDE: Sediment export to stream [in 10^5 tons of sediments eroded annually]\
+        \
+        SDL: Soil loss to stream [in 10^5 tons of sediments eroded annually]");
     });
       
     d3.select('#btnHelp_sliders_ow').on('click', function() 

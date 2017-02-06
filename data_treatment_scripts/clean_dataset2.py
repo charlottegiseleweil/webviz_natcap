@@ -38,7 +38,11 @@ df_dataset1.index.name = "index"
 df_reordered = df_dataset1[['awy_weight','sde_weight', 'sdl_weight','awy_score', 'sde_score', 'sdl_score']]
 #df_very_min.drop(df.index[10:809], axis=0, inplace=True)
 print(df_reordered.columns)
-print(df_reordered)
+#print(df_reordered)
+
+#Divide by 10e6 all obj scores
+for i in ['sde_score','awy_score','sdl_score']:
+	df_reordered[i] = df_reordered[i]/10e5
 
 #new_cols={'obj_1_wt':'awy_weight','obj_2_wt':'sde_weight','obj_3_wt':'sdl_weight','AWY_1_agg_delta_rel':'awy_score','SDE_2_agg_delta_rel':'sde_score','SDL_3_agg_delta_rel':'sdl_score', 'sdr_1'='input_1','awy_1', 'spatial_inputs', 'budget_level']}
 #df_very_min.rename(columns=new_cols, inplace=True)

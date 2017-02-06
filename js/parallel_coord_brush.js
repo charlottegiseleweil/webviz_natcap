@@ -3,7 +3,7 @@ function parcoords_plot(){
 
   // quantitative color scale
   var blue_to_brown = d3.scale.linear()
-    .domain([-8000000,4000000])                 
+    .domain([-8,4])                 
     .range(["green", "royalblue"])
     .interpolate(d3.interpolateLab);
 

@@ -32,7 +32,7 @@ var baseRaster;
 
 var ext, newExt, image, rasters, canvas, ctx;
 
-var map_chosen = "./data/testlulc.tif"; //map to display initially
+var map_chosen = "./data/initial_maps/maragua_base_lulc.tif"; //map to display initially
 
 // Update map upon toggling 
 $('#map_toggle').change(function(){
@@ -201,7 +201,7 @@ function choose_map() {
       if ( ($('input[name=radiobutton]:checked').val()) == 1) {
       console.log("un");
       $("#map_title").text("Modal portfolio");
-      map_chosen = "./data/initial_maps/maragua_base_lulc.tif"; // I realize this is not the right map !
+      map_chosen = "./data/initial_maps/maragua_modalportfolio.tif";
     }
     else if ( ($('input[name=radiobutton]:checked').val()) == 2) {
         console.log("deux ");
