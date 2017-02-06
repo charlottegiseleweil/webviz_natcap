@@ -37,11 +37,13 @@ var map_chosen = "./data/testlulc.tif"; //map to display initially
 // Update map upon toggling 
 $('#map_toggle').change(function(){
   choose_map();
+  render_map();
 });
 
 // Update map upon radiobutton choice
 $("input[name='radiobutton']").change(function(){
     choose_map();
+    render_map();
 });
 
 render_map();
@@ -179,13 +181,16 @@ function choose_map() {
     $("#label_radio3").text("Sediment Loss (SDL)");
         if ( ($('input[name=radiobutton]:checked').val()) == 1) {
       $("#map_title").text("Objective score map for Annual Water Yield");
+      map_chosen = "./data/initial_maps/maragua_obj_awy.tif";
     }
     else if ( ($('input[name=radiobutton]:checked').val()) == 2) {
-        $("#map_title").text("Objective score map for Sediment Export")
+        $("#map_title").text("Objective score map for Sediment Export");
+        map_chosen = "./data/initial_maps/maragua_obj_sde.tif";
 
     }
     else if ( ($('input[name=radiobutton]:checked').val()) == 3) {
-        $("#map_title").text("Objective score map for Sediment Loss")
+        $("#map_title").text("Objective score map for Sediment Loss");
+        map_chosen = "./data/initial_maps/maragua_obj_sdl.tif";
 
     }
   }
@@ -196,13 +201,16 @@ function choose_map() {
       if ( ($('input[name=radiobutton]:checked').val()) == 1) {
       console.log("un");
       $("#map_title").text("Modal portfolio");
+      map_chosen = "./data/initial_maps/maragua_base_lulc.tif"; // I realize this is not the right map !
     }
     else if ( ($('input[name=radiobutton]:checked').val()) == 2) {
         console.log("deux ");
-        $("#map_title").text("Percent agreement map")
+        $("#map_title").text("Percent agreement map");
+        map_chosen = "./data/initial_maps/maragua_frequency.tif";
     }
     else if ( ($('input[name=radiobutton]:checked').val()) == 3) {
-        $("#map_title").text("Footprint of portfolios")
+        $("#map_title").text("Footprint of portfolios");
+        map_chosen = "./data/initial_maps/maragua_footprint.tif";
     }
   };
 };
