@@ -17,8 +17,6 @@ var x = d3.scale.linear()
 var y = d3.scale.linear()
     .range([height, 0]);
 
-//var color = d3.scale.category10(); //Color of the dots !
-
 var xAxis = d3.svg.axis()
     .scale(x)
     .orient("bottom")
@@ -64,6 +62,20 @@ if (!d3.select(location).select('svg').node()) { //Checking if the scatterplot '
       .text(variable_y)
 
       }
+
+
+//----------------------------------------------------------------------------------------
+// DRAFT ! Color coding corresponding to parametric uncertainty combo
+
+// Goal : si deux solutions ont les mêmes valeurs de chaque pu paramètres (i.e y'a que leurs wieghts qui changent) :display same color
+var num_pu_combos = 3*3*2*4;
+// En fait: 72 combo, donc on va juste faire colorscale sur 1 ou 2 parametres, je vais explorer le data et regarder lesquels font le + sens
+// CHALLENGING : Comment repérer quel dot corresponds à quelle sol (trier pu_param sur col esm_case).
+
+//var color = d3.scale.category10(); 
+
+//----------------------------------------------------------------------------------------
+
 //Update of the dots for corresponding fed data (data_to_plot)
   svg = d3.select(location).select('svg').select('g');     //selects the node 'g' which is the scatterplot
   var dots = svg.selectAll(".dot")

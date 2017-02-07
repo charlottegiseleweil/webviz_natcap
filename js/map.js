@@ -37,13 +37,13 @@ var map_chosen = "./data/initial_maps/maragua_base_lulc.tif"; //map to display i
 
 // Update map upon toggling 
 $('#map_toggle').change(function(){
-  choose_map();
+  choose_map("allDataset");
   render_map();
 });
 
 // Update map upon radiobutton choice
 $("input[name='radiobutton']").change(function(){
-    choose_map();
+    choose_map("allDataset");
     render_map();
 });
 
@@ -175,30 +175,55 @@ function render_legend_continuous(){
 }
 
 
-function choose_map() {
+function choose_map(subset) {
+  //subset can take 3 values: allDataset, filtered, singleSol.
+  //allDataset = when no brush: considering full dataset (maps displayed are the overall maps)
+  //filtered = displays map correponding to the specific brushed sleection: need to make calculations !
+  // singleSol : displays the map corresponding to solution clicked in table (pull up map from dataset table.)
+  //DRAFT !! To do !
+
+  // Objective score maps
   if ($('#map_toggle').prop('checked')) {
     $("#label_radio1").text("Annual Water Yield (AWY)");
     $("#label_radio2").text("Sediment Export (SDE)");
     $("#label_radio3").text("Sediment Loss (SDL)");
+
+
         if ( ($('input[name=radiobutton]:checked').val()) == 1) {
-      $("#map_title").text("Objective score map for Annual Water Yield");
-      $("#map_stat").text("Total AWY score = " + (tot_awy_score*100) + "*10^3 m3/yr"); //todo with data: overall score (= or avg for subset)
-      map_chosen = "./data/initial_maps/maragua_obj_awy.tif";
+          $("#map_title").text("Objective score map for Annual Water Yield");
+          $("#map_stat").text("Total AWY score = " + (tot_awy_score*100) + "*10^3 m3/yr"); //todo with data: overall score (= or avg for subset)
+          //This is the part correponding to parameter change subset.
+          //for now just implemented in test for AWY obj map.
+          if (subset=="allDataset") {
+            map_chosen = "./data/initial_maps/maragua_obj_awy.tif";
+          }
+          else if (subset=="filtered"){
+              console.log("Je vais display la filtered AWY map dans ce cas là!");
+          }
+          else if (subset=="singleSol"){
+              console.log("Je vais display la single AWY map dans ce cas là!");
+          }
+          else {
+            console.log("Error: choose_map() is expecting parameter subset = allDataset, filtered or singleSol");
+          }
+          // Till here **********
     }
     else if ( ($('input[name=radiobutton]:checked').val()) == 2) {
         $("#map_title").text("Objective score map for Sediment Export");
-        $("#map_stat").text("Total AWY score = " + (tot_sde_score*100) + " 10^3 tons eroded/yr"); //todo with data: overall score (= or avg for subset)
+        $("#map_stat").text("Total SDE score = " + (tot_sde_score*100) + " 10^3 tons eroded/yr"); //todo with data: overall score (= or avg for subset)
 
         map_chosen = "./data/initial_maps/maragua_obj_sde.tif";
 
     }
     else if ( ($('input[name=radiobutton]:checked').val()) == 3) {
         $("#map_title").text("Objective score map for Sediment Loss");
-        $("#map_stat").text("Total AWY score = " + (tot_sde_score*100) + " 10^3 tons eroded/yr"); //todo with data: overall score (= or avg for subset)
+        $("#map_stat").text("Total SDL score = " + (tot_sdl_score*100) + " 10^3 tons eroded/yr"); //todo with data: overall score (= or avg for subset)
         map_chosen = "./data/initial_maps/maragua_obj_sdl.tif";
 
     }
   }
+
+// Land cover (categorical) maps
   else {
     $("#label_radio1").text("Modal portfolio");
     $("#label_radio2").text("Percent agreement map");
@@ -224,13 +249,15 @@ function choose_map() {
   };
 };
 
+
 //----------------------------------------------------------------------------------------
 // DRAFT ! CALCULATIONS OF MAP SUMMARY STATISTICS !
-// Calculate for selection
+// Having trouble figuring out where to put
 var tot_awy_score, tot_sde_score, tot_sdl_score, num_runs_selected;
 
 //Overall
 update_map_stats(full_data);
+
 
 function update_map_stats(data_fed){
 num_runs_selected = data_fed.length;
@@ -264,6 +291,19 @@ function calc_tot_obj_score(data_fed,column){
       var avg = total / data_fed.length;
   return avg;
 };
+//----------------------------------------------------------------------------------------
+
+//----------------------------------------------------------------------------------------
+//DRAFT Function to show the single solution maps! 
+
+/*function show_single_map(d){
+ choose_map(singleSol, d);
+
+ //Upon select single sol (to be put in the right script)
+//tot_awy_score = full_data[index]['awy_score']; (idem pr les 2 autres)
+
+};
+*/
 //----------------------------------------------------------------------------------------
 
 }

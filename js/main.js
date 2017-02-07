@@ -44,9 +44,9 @@ var col_score= [];
 
       // Now make the plots
       full_data = data;
+      crossfiltering();
       parcoords_plot();
       sliders_plot();
-      crossfiltering();
       map();
       scatterplots(full_data);
     });

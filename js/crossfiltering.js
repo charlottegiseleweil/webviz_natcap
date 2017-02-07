@@ -1,7 +1,5 @@
 
 
-
-
 function crossfiltering(){
 
     /* Crossfilter constructor*/
@@ -13,7 +11,6 @@ function crossfiltering(){
             return d[column_name];
         });
     });
-
 
 
 };

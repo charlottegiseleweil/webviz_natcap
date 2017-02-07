@@ -13,6 +13,14 @@ var grid= d3.divgrid();
           parcoords.highlight([d]);
           scatterplot_highlight(d);
       },
+      "click": function(d) { 
+        
+          parcoords.highlight([d]);
+          scatterplot_highlight(d);
+          //console.log(d);
+          //here: todo - show corresponding map + map statistics (+ pie plots for weights and land cover)
+          //smg like : show_single_map(d);
+      },
       "mouseout": function(d) {
         parcoords.unhighlight;
         scatterplot_unhighlight(d);
