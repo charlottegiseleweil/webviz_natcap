@@ -1,9 +1,10 @@
 function table(data){
 
 // create data table, row hover highlighting
+// If you want only a subset of the data: .datum(data.slice(0,10))
 var grid= d3.divgrid();
   d3.select("#table_canvas")
-    .datum(data.slice(0,10))
+    .datum(data)
     .call(grid)
     .selectAll(".row")
     .on({
