@@ -9,6 +9,7 @@ var columns;
 var columnNames;
 
 var col_weights = [];
+var col_score= [];
 
 
   function main(){
@@ -32,6 +33,12 @@ var col_weights = [];
       for (var i in columnNames){
         if (/weight/.exec(columnNames[i])) {
           col_weights.push(columnNames[i])
+        };
+      }
+
+      for (var i in columnNames){
+        if (/score/.exec(columnNames[i])) {
+          col_score.push(columnNames[i])
         };
       }
 

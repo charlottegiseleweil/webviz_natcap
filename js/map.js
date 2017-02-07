@@ -1,4 +1,5 @@
 var colorScale;
+var calc_tot_obj_score;
 
 function map(){
 
@@ -80,7 +81,7 @@ function render_map() {
 
 function render_continuous() {
     colorScale = d3.scale.linear().domain(newExt).range([startColor.toString(), endColor.toString()]);
-    console.log("colorScale:" , colorScale, newExt);
+    //console.log("colorScale:" , colorScale, newExt);
     var imageData = ctx.createImageData(image.getWidth(), image.getHeight());
     var color_data = imageData.data;
 
@@ -181,15 +182,19 @@ function choose_map() {
     $("#label_radio3").text("Sediment Loss (SDL)");
         if ( ($('input[name=radiobutton]:checked').val()) == 1) {
       $("#map_title").text("Objective score map for Annual Water Yield");
+      $("#map_stat").text("Total AWY score = " + (tot_awy_score*100) + "*10^3 m3/yr"); //todo with data: overall score (= or avg for subset)
       map_chosen = "./data/initial_maps/maragua_obj_awy.tif";
     }
     else if ( ($('input[name=radiobutton]:checked').val()) == 2) {
         $("#map_title").text("Objective score map for Sediment Export");
+        $("#map_stat").text("Total AWY score = " + (tot_sde_score*100) + " 10^3 tons eroded/yr"); //todo with data: overall score (= or avg for subset)
+
         map_chosen = "./data/initial_maps/maragua_obj_sde.tif";
 
     }
     else if ( ($('input[name=radiobutton]:checked').val()) == 3) {
         $("#map_title").text("Objective score map for Sediment Loss");
+        $("#map_stat").text("Total AWY score = " + (tot_sde_score*100) + " 10^3 tons eroded/yr"); //todo with data: overall score (= or avg for subset)
         map_chosen = "./data/initial_maps/maragua_obj_sdl.tif";
 
     }
@@ -201,18 +206,64 @@ function choose_map() {
       if ( ($('input[name=radiobutton]:checked').val()) == 1) {
       console.log("un");
       $("#map_title").text("Modal portfolio");
+      $("#map_stat").text("over " + num_runs_selected + " runs"); //todo ...
+
       map_chosen = "./data/initial_maps/maragua_modalportfolio.tif";
     }
     else if ( ($('input[name=radiobutton]:checked').val()) == 2) {
         console.log("deux ");
         $("#map_title").text("Percent agreement map");
+        $("#map_stat").text("over " + num_runs_selected + " runs"); //todo ...
         map_chosen = "./data/initial_maps/maragua_frequency.tif";
     }
     else if ( ($('input[name=radiobutton]:checked').val()) == 3) {
         $("#map_title").text("Footprint of portfolios");
+        $("#map_stat").text("over " + num_runs_selected + " runs"); //todo ...
         map_chosen = "./data/initial_maps/maragua_footprint.tif";
     }
   };
 };
+
+//----------------------------------------------------------------------------------------
+// DRAFT ! CALCULATIONS OF MAP SUMMARY STATISTICS !
+// Calculate for selection
+var tot_awy_score, tot_sde_score, tot_sdl_score, num_runs_selected;
+
+//Overall
+update_map_stats(full_data);
+
+function update_map_stats(data_fed){
+num_runs_selected = data_fed.length;
+tot_awy_score = calc_tot_obj_score(data_fed, 'awy_score');
+tot_sde_score = calc_tot_obj_score(data_fed, 'sde_score');
+tot_sdl_score = calc_tot_obj_score(data_fed, 'sdl_score');
+}
+
+      
+            /* EXPERIMENT */
+            for (var i in col_score){
+              var o = "tot_".concat(col_score[i]);
+              o = calc_tot_obj_score(full_data, col_score[i]);
+            }
+            // TODO ! 
+            //Here basically trying to make a for loop doing the 3 lines above 
+            // i.e trying to assign automatically to var tot_awy_score, tot_sde_score, tot_sdl_score.
+
+//Upon brush (to be put in the right script)
+//idem w/ filtered_data :
+//update_map_stats(filtered_data);
+
+//Upon select single sol (to be put in the right script)
+//tot_awy_score = full_data[index]['awy_score']; (idem pr les 2 autres)
+
+function calc_tot_obj_score(data_fed,column){
+      var total = 0;
+      for(var i = 0; i < data_fed.length; i++) {
+        total += data_fed[i][column];
+      }
+      var avg = total / data_fed.length;
+  return avg;
+};
+//----------------------------------------------------------------------------------------
 
 }

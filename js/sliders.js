@@ -107,6 +107,9 @@ function sliders_plot(){
 
         //Update scatterplots
         scatterplots(filtered_data);
+
+        //Update map
+        
     }
 }
 
