@@ -71,11 +71,11 @@ function sliders_plot(){
     pu4_slider = new Slider(
          "#pu4_slider", {
              "id": "pu4_slider",
-             "min": 1,
-             "max": 4,
+             "min": 5e8,
+             "max": 2e9 ,
              "range": true,
-             "value": [1, 4],
-             "step":1 //generic? change this to fit the weights values
+             "value": [5e8, 2e9],
+             "step":5e8 //generic? change this to fit the weights values
 
    });
 

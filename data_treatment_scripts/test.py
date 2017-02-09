@@ -1,10 +1,7 @@
-import pandas as pd
+e = 6.25e+08
+r = 1.25e+09
+t = 1.875e+09
 
-df = pd.read_csv('../data/Maragua_6_2_2017.csv')
-
-len(df)
-
-print(len(df))
-
-for i in range (0,len(df)):
-	print i
+print(e)
+print(r)
+print(t)

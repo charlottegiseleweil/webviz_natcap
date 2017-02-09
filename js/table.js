@@ -2,6 +2,7 @@ function table(data){
 
 // create data table, row hover highlighting
 // If you want only a subset of the data: .datum(data.slice(0,10))
+
 var grid= d3.divgrid();
   d3.select("#table_canvas")
     .datum(data)
@@ -19,7 +20,9 @@ var grid= d3.divgrid();
           scatterplot_highlight(d);
           //console.log(d);
           //here: todo - show corresponding map + map statistics (+ pie plots for weights and land cover)
-          //smg like : show_single_map(d);
+          //TODO !! : 
+          //choose_map('singleSol',d);
+          console.log("./data/".concat(full_data[d]['AWY_1_rast_delta_abs']))
       },
       "mouseout": function(d) {
         parcoords.unhighlight;

@@ -1,6 +1,8 @@
 var colorScale;
 var calc_tot_obj_score;
 
+var map_chosen = "./data/initial_maps/maragua_base_lulc.tif"; //map to display initially
+
 function map(){
 
     var legend_height = 337; //chosen same height as map
@@ -32,8 +34,6 @@ var Land_cover_scale_test =[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
 var baseRaster;
 
 var ext, newExt, image, rasters, canvas, ctx;
-
-var map_chosen = "./data/initial_maps/maragua_base_lulc.tif"; //map to display initially
 
 // Update map upon toggling 
 $('#map_toggle').change(function(){
@@ -178,7 +178,7 @@ function render_legend_continuous(){
 }
 
 
-function choose_map(subset) {
+function choose_map(subset,d) {
   //subset can take 3 values: allDataset, filtered, singleSol.
   //allDataset = when no brush: considering full dataset (maps displayed are the overall maps)
   //filtered = displays map correponding to the specific brushed sleection: need to make calculations !
@@ -205,6 +205,8 @@ function choose_map(subset) {
           }
           else if (subset=="singleSol"){
               console.log("Je vais display la single AWY map dans ce cas là!");
+              console.log(d);
+              //map_chosen = "./data/".concat(full_data[d]['awy_column'])
           }
           else {
             console.log("Error: choose_map() is expecting parameter subset = allDataset, filtered or singleSol");

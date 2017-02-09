@@ -11,44 +11,51 @@ var columnNames;
 var col_weights = [];
 var col_score= [];
 var col_inputs= [];
+var col_maps= [];
+var col_floats= [];
 
 
   function main(){
 
-
     //load csv data file & creates plots
     d3.csv(DATA, function(row) { 
       columnNames = Object.keys(row);
-
-      // This function to parse String data in Floats
-      var finalRow = {};
-      columnNames.forEach(function(columnName){
-        finalRow[columnName] = parseFloat(row[columnName]);
-      });
-      return finalRow;
-
-
-    }, function(data) {
 
       //Sort out the columns
       for (var i in columnNames){
         if (/weight/.exec(columnNames[i])) {
           col_weights.push(columnNames[i])
         };
-      }
-      for (var i in columnNames){
         if (/score/.exec(columnNames[i])) {
           col_score.push(columnNames[i])
         };
-      }
-      for (var i in columnNames){
         if (/input/.exec(columnNames[i])) {
           col_inputs.push(columnNames[i])
         };
+        if (/rast/.exec(columnNames[i])) {
+          col_maps.push(columnNames[i])
+        };
       }
+      col_floats = columnNames.filter(x => col_maps.indexOf(x) < 0 );
+
+      // This function to parse String data in Floats (only for non-maps columns)
+      var final = {};
+      col_floats.forEach(function(columnName){
+        final[columnName] = parseFloat(row[columnName]);
+      });
+      col_maps.forEach(function(columnName){
+        final[columnName] = row[columnName];
+      });
+
+      return final;
+
+
+    }, function(data) {
 
       // Now make the plots
       full_data = data;
+
+      console.log(full_data);
       crossfiltering();
       parcoords_plot();
       sliders_plot();

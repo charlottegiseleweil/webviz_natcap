@@ -1,5 +1,3 @@
-
-
 function crossfiltering(){
 
     /* Crossfilter constructor*/

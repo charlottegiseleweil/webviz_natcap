@@ -181,7 +181,9 @@ a:hover {
 
 #table_canvas{
 	max-height: 150px;
+	max-width:1180px;
     overflow: scroll;
+    margin-left: 0px;
 
 }
 .invisiblee{
