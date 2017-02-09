@@ -39,7 +39,7 @@ function sliders_plot(){
 
    pu1_slider = new Slider(
          "#pu1_slider", {
-             "id": "obj1_slider",
+             "id": "pu1_slider",
              "min": 0.5,
              "max": 5,
              "range": true,
@@ -50,7 +50,7 @@ function sliders_plot(){
 
   pu2_slider = new Slider(
          "#pu2_slider", {
-             "id": "obj2_slider",
+             "id": "pu2_slider",
              "min": 1,
              "max": 10,
              "range": true,
@@ -60,7 +60,7 @@ function sliders_plot(){
      
    pu3_slider = new Slider(
          "#pu3_slider", {
-             "id": "obj3_slider",
+             "id": "pu3_slider",
              "min": 0,
              "max": 1,
              "range": false,
@@ -70,7 +70,7 @@ function sliders_plot(){
 
     pu4_slider = new Slider(
          "#pu4_slider", {
-             "id": "obj1_slider",
+             "id": "pu4_slider",
              "min": 1,
              "max": 4,
              "range": true,
@@ -84,18 +84,34 @@ function sliders_plot(){
     obj1_slider.on("slide", function(interval_percent) {
        // Pour afficher le range séléctioné (need to do a #obj1_slider_txt object in html):
        // d3.select("#obj1_slider_txt").text("min: " + e[0] + ", max: " + e[1]);
-        slideDimension(interval_percent, 'awy_weight');
-
+        interval = interval_percent.map((z)=>z/100);
+        slideDimension(interval, 'awy_weight');
     });
     obj2_slider.on("slide", function(interval_percent) {
-        slideDimension(interval_percent, 'sde_weight');
+        interval = interval_percent.map((z)=>z/100);
+        slideDimension(interval, 'sde_weight');
     });
     obj3_slider.on("slide", function(interval_percent) {
-        slideDimension(interval_percent, 'sdl_weight');
+        interval = interval_percent.map((z)=>z/100);
+        slideDimension(interval, 'sdl_weight');
     });
 
-    function slideDimension(intervalPercent, dimensionName) {
-        interval = intervalPercent.map((z)=>z/100);
+        pu1_slider.on("slide", function(interval) {
+        slideDimension(interval, 'input_1');
+    });
+        pu2_slider.on("slide", function(interval) {
+        slideDimension(interval, 'input_2');
+    });
+        pu3_slider.on("slide", function(interval) {
+        slideDimension(interval, 'input_spat');
+    });
+        pu4_slider.on("slide", function(interval) {
+        slideDimension(interval, 'input_budget');
+    });
+
+
+    function slideDimension(interval, dimensionName) {
+        console.log(interval);
         var be = parcoords.brushExtents();
         var filtered_data = dimensions[dimensionName].filter(interval).top(Infinity);
 
@@ -109,7 +125,7 @@ function sliders_plot(){
         scatterplots(filtered_data);
 
         //Update map
-        update_map_stats(filtered_data);
+        //update_map_stats(filtered_data);
     }
 }
 

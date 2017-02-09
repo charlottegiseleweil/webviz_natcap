@@ -43,6 +43,10 @@ df.rename(columns=new_cols, inplace=True)
 #Reorder columns
 df_reordered = df[['awy_weight','sde_weight', 'sdl_weight','awy_score', 'sde_score', 'sdl_score','esm_case','input_budget', 'input_2','input_1','input_spat', 'AWY_1_rast_delta_abs', 'SDE_2_rast_delta_abs','SDL_3_rast_delta_abs']]
 
+#Divide by 10^6 all obj scores
+for i in ['sde_score','awy_score','sdl_score']:
+	df[i] = df[i]/1e6
+
 #check
 print(df.columns)
 
