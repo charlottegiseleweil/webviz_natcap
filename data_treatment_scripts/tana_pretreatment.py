@@ -11,7 +11,7 @@ def match_columns(pat, names):
 
 
 #Load data
-df = pd.read_csv('../data/Maragua_6_2_2017.csv')
+df = pd.read_csv('../data/raw_data/mastertable_2017-02-09.csv')
 
 #Group columns
 col_weights = match_columns(".+_wt$", df.columns)
@@ -51,4 +51,4 @@ for i in ['sde_score','awy_score','sdl_score']:
 print(df.columns)
 
 #Write cleaned file
-df.to_csv('../data/Maragua.csv')
+df.to_csv('../data/MaraguaFeb9.csv')

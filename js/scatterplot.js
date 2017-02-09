@@ -72,8 +72,6 @@ var num_pu_combos = 3*3*2*4;
 // En fait: 72 combo, donc on va juste faire colorscale sur 1 ou 2 parametres, je vais explorer le data et regarder lesquels font le + sens
 // CHALLENGING : Comment repérer quel dot corresponds à quelle sol (trier pu_param sur col esm_case).
 
-//var color = d3.scale.category10(); 
-
 //----------------------------------------------------------------------------------------
 
 //Update of the dots for corresponding fed data (data_to_plot)
@@ -94,11 +92,33 @@ var num_pu_combos = 3*3*2*4;
   .attr("class", function(d) {
     return 'dot' + " id" + d.index; 
   })
-  dots.attr("r", 1.5)
+  dots.attr("r", 2)
       .attr("cx", function(d) { return x(d[variable_x]); })
       .attr("cy", function(d) { return y(d[variable_y]); })
-      .style("fill", color);
+      .style("fill", colorScat);
   dots.exit().remove();
+};
+
+budget_levels = [625000000,1250000000,1875000000];
+colorscale_o = ['#fed98e','#fe9929','#d95f0e'];
+colorscale_b = ['#bdc9e1','#74a9cf','#0570b0'];
+
+function colorScat(d){
+
+  var colorscale = d['input_spat'] === 0 ? colorscale_o : colorscale_b
+  var i = budget_levels.indexOf(d['input_budget'])
+  return colorscale[i];
+/*
+console.log(d['input_spat']);
+console.log(d['input_budget']);
+  if (d['input_spat'] === 0){
+    var i = budget_levels.indexOf(d['input_budget']);
+    return colorscale_o[i];
+  }
+  else if (d['input_spat'] === 1){
+    var i = budget_levels.indexOf(d['input_budget']);
+    return colorscale_b[i];
+  }*/
 };
 
 function scatterplot_highlight(d) {

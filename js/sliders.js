@@ -125,7 +125,8 @@ function sliders_plot(){
         scatterplots(filtered_data);
 
         //Update map
-        //update_map_stats(filtered_data);
+        update_map_stats(filtered_data);
+        
     }
 }
 

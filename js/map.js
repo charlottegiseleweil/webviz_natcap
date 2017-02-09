@@ -1,7 +1,8 @@
 var colorScale;
 var calc_tot_obj_score;
-
+var tot_awy_score, tot_sde_score, tot_sdl_score, num_runs_selected;
 var map_chosen = "./data/initial_maps/maragua_base_lulc.tif"; //map to display initially
+var map_controls_selection;
 
 function map(){
 
@@ -48,6 +49,7 @@ $("input[name='radiobutton']").change(function(){
 });
 
 render_map();
+update_map_stats(full_data);
 
 function render_map() {
     d3.xhr(map_chosen)
@@ -178,6 +180,42 @@ function render_legend_continuous(){
 }
 
 
+//----------------------------------------------------------------------------------------
+
+//Upon brush (to be put in the right script)
+//idem w/ filtered_data :
+//update_map_stats(filtered_data);
+
+//Upon select single sol (to be put in the right script)
+//tot_awy_score = full_data[index]['awy_score']; (idem pr les 2 autres)
+
+//----------------------------------------------------------------------------------------
+
+
+}
+
+//----------------------------------------------------------------------------------------
+
+
+
+function update_map_stats(data_fed){
+num_runs_selected = data_fed.length;
+
+tot_awy_score = calc_tot_obj_score(data_fed, 'awy_score');
+tot_sde_score = calc_tot_obj_score(data_fed, 'sde_score');
+tot_sdl_score = calc_tot_obj_score(data_fed, 'sdl_score');
+choose_map();
+};
+
+function calc_tot_obj_score(data_fed,column){
+      var total = 0;
+      for(var i = 0; i < data_fed.length; i++) {
+        total += data_fed[i][column];
+      }
+      var avg = total / data_fed.length;
+  return avg;
+};
+
 function choose_map(subset,d) {
   //subset can take 3 values: allDataset, filtered, singleSol.
   //allDataset = when no brush: considering full dataset (maps displayed are the overall maps)
@@ -185,6 +223,11 @@ function choose_map(subset,d) {
   // singleSol : displays the map corresponding to solution clicked in table (pull up map from dataset table.)
   //DRAFT !! To do !
 
+//Tableau method
+map_controls_selection = 3*($('#map_toggle').prop('checked')) + parseFloat($('input[name=radiobutton]:checked').val()) - 1;
+//0: AWY, 1: SDE, 2: SDL, 3: port, 4: %, 5: footprint
+
+//----------
   // Objective score maps
   if ($('#map_toggle').prop('checked')) {
     $("#label_radio1").text("Annual Water Yield (AWY)");
@@ -192,7 +235,7 @@ function choose_map(subset,d) {
     $("#label_radio3").text("Sediment Loss (SDL)");
 
 
-        if ( ($('input[name=radiobutton]:checked').val()) == 1) {
+    if ( ($('input[name=radiobutton]:checked').val()) == 1) {
           $("#map_title").text("Objective score map for Annual Water Yield");
           $("#map_stat").text("Total AWY score = " + (tot_awy_score*100) + "*10^3 m3/yr"); //todo with data: overall score (= or avg for subset)
           //This is the part correponding to parameter change subset.
@@ -210,7 +253,7 @@ function choose_map(subset,d) {
               map_chosen = "./data/".concat(d['AWY_1_rast_delta_abs']);
           }
           else {
-            console.log("Error: choose_map() is expecting parameter subset = allDataset, filtered or singleSol");
+            console.log("ok cool.");
           }
           // Till here **********
     }
@@ -251,62 +294,3 @@ function choose_map(subset,d) {
     }
   };
 };
-
-
-//----------------------------------------------------------------------------------------
-// DRAFT ! CALCULATIONS OF MAP SUMMARY STATISTICS !
-// Having trouble figuring out where to put
-var tot_awy_score, tot_sde_score, tot_sdl_score, num_runs_selected;
-
-//Overall
-update_map_stats(full_data);
-
-
-function update_map_stats(data_fed){
-num_runs_selected = data_fed.length;
-tot_awy_score = calc_tot_obj_score(data_fed, 'awy_score');
-tot_sde_score = calc_tot_obj_score(data_fed, 'sde_score');
-tot_sdl_score = calc_tot_obj_score(data_fed, 'sdl_score');
-}
-
-      
-            /* EXPERIMENT */
-            for (var i in col_score){
-              var o = "tot_".concat(col_score[i]);
-              o = calc_tot_obj_score(full_data, col_score[i]);
-            }
-            // TODO ! 
-            //Here basically trying to make a for loop doing the 3 lines above 
-            // i.e trying to assign automatically to var tot_awy_score, tot_sde_score, tot_sdl_score.
-
-//Upon brush (to be put in the right script)
-//idem w/ filtered_data :
-//update_map_stats(filtered_data);
-
-//Upon select single sol (to be put in the right script)
-//tot_awy_score = full_data[index]['awy_score']; (idem pr les 2 autres)
-
-function calc_tot_obj_score(data_fed,column){
-      var total = 0;
-      for(var i = 0; i < data_fed.length; i++) {
-        total += data_fed[i][column];
-      }
-      var avg = total / data_fed.length;
-  return avg;
-};
-//----------------------------------------------------------------------------------------
-
-//----------------------------------------------------------------------------------------
-//DRAFT Function to show the single solution maps! 
-
-/*function show_single_map(d){
- choose_map(singleSol, d);
-
- //Upon select single sol (to be put in the right script)
-//tot_awy_score = full_data[index]['awy_score']; (idem pr les 2 autres)
-
-};
-*/
-//----------------------------------------------------------------------------------------
-
-}
