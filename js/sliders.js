@@ -111,9 +111,9 @@ function sliders_plot(){
 
 
     function slideDimension(interval, dimensionName) {
-        console.log(interval);
+        inclusive_interval = [interval[0]-0.0001,interval[1]+0.0001];
         var be = parcoords.brushExtents();
-        var filtered_data = dimensions[dimensionName].filter(interval).top(Infinity);
+        var filtered_data = dimensions[dimensionName].filter(inclusive_interval).top(Infinity);
 
         // Update Pacoords + recalculate brushes
         parcoords
