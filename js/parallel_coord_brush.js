@@ -16,9 +16,10 @@ function parcoords_plot(){
       .alpha(0.4);
 
   //Create Parallel Coordinates chart
+  var axis_to_hide = diff = columnNames.filter(x => col_score.indexOf(x) < 0 ); // indexOf returns -1 if NOT in list 
   parcoords
       .data(full_data)
-      .hideAxis(col_weights.concat(["index"]))    //modular: names of hidden axis in the parcoord plot
+      .hideAxis(columnNames.filter(x => col_score.indexOf(x) < 0 ))    //indexOf returns -1 if NOT in list 
       .composite("darker")
       .render()
       .shadows()

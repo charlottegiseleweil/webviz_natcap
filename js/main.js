@@ -10,6 +10,7 @@ var columnNames;
 
 var col_weights = [];
 var col_score= [];
+var col_inputs= [];
 
 
   function main(){
@@ -35,10 +36,14 @@ var col_score= [];
           col_weights.push(columnNames[i])
         };
       }
-
       for (var i in columnNames){
         if (/score/.exec(columnNames[i])) {
           col_score.push(columnNames[i])
+        };
+      }
+      for (var i in columnNames){
+        if (/input/.exec(columnNames[i])) {
+          col_inputs.push(columnNames[i])
         };
       }
 

@@ -62,7 +62,7 @@ function render_map() {
         baseRaster = rasters[0];
         ext = d3.extent(baseRaster);
         newExt = d3.extent(baseRaster.filter(function(r){ return r != ext[0]; }));
-      
+
       
       if ($('#map_toggle').prop('checked')) {
 
@@ -156,9 +156,12 @@ function render_legend_categorical(){
 function render_legend_continuous(){
     var legend = d3.select("#legend")
         .selectAll("g.legend")
-        .data(newExt) // domain of continuous map ???
+        .data(newExt) //extends of the rasters
         .enter().append("g")
         .attr("class", "legend");
+
+        // colorscale = d3.scale.linear(baseRaster).domain(newExt).range(["blue","red"]);
+
 
   legend.append("rect")
   .attr("x", 20)
@@ -229,14 +232,11 @@ function choose_map(subset) {
     $("#label_radio2").text("Percent agreement map");
     $("#label_radio3").text("Footprint of portfolios");
       if ( ($('input[name=radiobutton]:checked').val()) == 1) {
-      console.log("un");
       $("#map_title").text("Modal portfolio");
       $("#map_stat").text("over " + num_runs_selected + " runs"); //todo ...
-
       map_chosen = "./data/initial_maps/maragua_modalportfolio.tif";
     }
     else if ( ($('input[name=radiobutton]:checked').val()) == 2) {
-        console.log("deux ");
         $("#map_title").text("Percent agreement map");
         $("#map_stat").text("over " + num_runs_selected + " runs"); //todo ...
         map_chosen = "./data/initial_maps/maragua_frequency.tif";
