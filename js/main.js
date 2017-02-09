@@ -54,8 +54,6 @@ var col_floats= [];
 
       // Now make the plots
       full_data = data;
-
-      console.log(full_data);
       crossfiltering();
       parcoords_plot();
       sliders_plot();

@@ -206,7 +206,8 @@ function choose_map(subset,d) {
           else if (subset=="singleSol"){
               console.log("Je vais display la single AWY map dans ce cas là!");
               console.log(d);
-              //map_chosen = "./data/".concat(full_data[d]['awy_column'])
+              //Let's see if this works !!!!
+              map_chosen = "./data/".concat(d['AWY_1_rast_delta_abs']);
           }
           else {
             console.log("Error: choose_map() is expecting parameter subset = allDataset, filtered or singleSol");

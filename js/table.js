@@ -18,11 +18,11 @@ var grid= d3.divgrid();
         
           parcoords.highlight([d]);
           scatterplot_highlight(d);
-          //console.log(d);
+
           //here: todo - show corresponding map + map statistics (+ pie plots for weights and land cover)
-          //TODO !! : 
-          //choose_map('singleSol',d);
-          console.log("./data/".concat(full_data[d]['AWY_1_rast_delta_abs']))
+          //Problem is we don't find choose_map fct
+          choose_map('singleSol',d);
+          
       },
       "mouseout": function(d) {
         parcoords.unhighlight;
