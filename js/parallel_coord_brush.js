@@ -42,12 +42,11 @@ function parcoords_plot(){
   });
 
 
-
   // LINK things TO PARCOORDS UPON BRUSHING
 
     parcoords.on("brush", function() {
 
-    //Update scatteplots for each brushed dimension
+    //Update scatterplots for each brushed dimension
     var be1 = parcoords.brushExtents().awy_score;
     var be2 = parcoords.brushExtents().sde_score;
     var be3 = parcoords.brushExtents().sdl_score;
@@ -63,7 +62,6 @@ function parcoords_plot(){
                  //There has to be a more proper way to do this with a joli for loop!
 
     scatterplots(filtered_data);
-
 
     //Update map
     update_map_stats(filtered_data);
