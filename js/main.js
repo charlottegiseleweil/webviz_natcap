@@ -1,4 +1,4 @@
-var DATA = 'data/Maragua.csv'
+var DATA = 'data/MaraguaFeb9.csv'
 
 var full_data;
 var dimensions = {};

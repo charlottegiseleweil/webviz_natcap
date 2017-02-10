@@ -10,8 +10,8 @@ function map(){
     var baseRaster, ext, newExt, image, rasters, canvas, ctx;
 
     // continuous scale
-    var startColor = d3.rgb("000033");
-    var endColor = d3.rgb("#FF22AA");
+    var startColor = d3.rgb("#a50026");
+    var endColor = d3.rgb("#006837");
 
     // categorical scale
     var Land_cover_scale_trial =[[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
@@ -46,8 +46,12 @@ function map(){
       render_map();
     });
 
-    // Update map upon radiobutton choice
+    // Update map upon radiobutton choices
     $("input[name='radiobutton']").change(function(){
+        choose_map("allDataset");
+        render_map();
+    });
+    $('#landcover_checkbox').change(function(){
         choose_map("allDataset");
         render_map();
     });
@@ -239,9 +243,9 @@ function choose_map(subset,d) {
   var map_stats_txt = ["over " + num_runs_selected + " runs",
                       "over " + num_runs_selected + " runs",
                       "over " + num_runs_selected + " runs",
-                      "Total AWY score = " + (tot_awy_score*100) + "*10^3 m3/yr",
-                      "Total SDE score = " + (tot_sde_score*100) + " 10^3 tons eroded/yr", 
-                      "Total SDL score = " + (tot_sdl_score*100) + " 10^3 tons eroded/yr"];
+                      "Total AWY score = " + (tot_awy_score*1000).toFixed(2) + "*10^3 m3/yr",
+                      "Total SDE score = " + (tot_sde_score*1000).toFixed(2) + " 10^3 tons eroded/yr", 
+                      "Total SDL score = " + (tot_sdl_score*1000).toFixed(2) + " 10^3 tons eroded/yr"];
 
   var initial_maps = ["./data/initial_maps/maragua_modalportfolio.tif",
                       "./data/initial_maps/maragua_frequency.tif",
@@ -257,6 +261,14 @@ function choose_map(subset,d) {
   //0: Porfolio, 1: %, 2: footprint
   //3: AWY, 4: SDE, 5: SDL
 
+
+if ($('#landcover_checkbox').prop('checked')){
+    map_chosen = "./data/initial_maps/maragua_base_lulc.tif";
+    $("#map_title").text("Land cover");
+    $("#map_stat").text("(overlaying yet to be implemented)");
+
+}else{ //Remove this once overlay implemented
+
   $("#map_title").text(map_titles[s]);
   $("#map_stat").text(map_stats_txt[s]);
 
@@ -271,7 +283,7 @@ function choose_map(subset,d) {
     }
     else {
       //map chosen remain unchanged
-    }
+}
 
 
   // Objective score maps
@@ -286,5 +298,7 @@ function choose_map(subset,d) {
     $("#label_radio2").text("Percent agreement map");
     $("#label_radio3").text("Footprint of portfolios");
        }
+
+}
 
 };

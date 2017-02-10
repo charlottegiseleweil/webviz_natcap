@@ -43,7 +43,7 @@ function parcoords_plot(){
 
 
 
-  // LINK SCATTERPLOTS TO PARCOORDS UPON BRUSHING
+  // LINK things TO PARCOORDS UPON BRUSHING
 
     parcoords.on("brush", function() {
 
@@ -67,6 +67,10 @@ function parcoords_plot(){
 
     //Update map
     update_map_stats(filtered_data);
+
+    //Update table
+    table(filtered_data);
+
 
     });
 
