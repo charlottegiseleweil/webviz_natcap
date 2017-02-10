@@ -7,12 +7,13 @@ var grid= d3.divgrid();
   d3.select("#table_canvas")
     .datum(data)
     .call(grid)
-    .selectAll(".row")
+    .selectAll(".table_row")
     .on({
       "mouseover": function(d) { 
         
-          parcoords.highlight([d]);
           scatterplot_highlight(d);
+          parcoords.highlight([d]);
+          
       },
       "click": function(d) { 
         
@@ -20,12 +21,11 @@ var grid= d3.divgrid();
           scatterplot_highlight(d);
 
           //here: todo - show corresponding map + map statistics (+ pie plots for weights and land cover)
-          //Problem is we don't find choose_map fct
           choose_map('singleSol',d);
           
       },
       "mouseout": function(d) {
-        parcoords.unhighlight;
+        parcoords.unhighlight([d]);
         scatterplot_unhighlight(d);
     }
 
@@ -37,7 +37,7 @@ var grid= d3.divgrid();
     d3.select("#table_canvas")
       .datum(d.slice(0,10))
       .call(grid)
-      .selectAll(".row")
+      .selectAll(".table_row")
       .on({
         "mouseover": function(d) { parcoords.highlight([d]) },
         "mouseout": parcoords.unhighlight

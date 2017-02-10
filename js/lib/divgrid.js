@@ -5,8 +5,9 @@ d3.divgrid = function(config) {
   var dg = function(selection) {
 
     //columns names
-    if (columns.length == 0) columns = d3.keys(selection.data()[0][0]); 
-
+    //Generic >>        if (columns.length == 0) columns = d3.keys(selection.data()[0][0]); 
+    columns  = col_floats;
+    
     // header
     selection.selectAll(".header")
         .data([true])
@@ -27,15 +28,15 @@ d3.divgrid = function(config) {
     header.exit().remove();
 
     // rows
-    var rows = selection.selectAll(".row")
+    var rows = selection.selectAll(".table_row")
         .data(function(d) { return d; })
 
     rows.enter().append("div")
-        .attr("class", "row")
+        .attr("class", "table_row")
 
     rows.exit().remove();
 
-    var cells = selection.selectAll(".row").selectAll(".cell")
+    var cells = selection.selectAll(".table_row").selectAll(".cell")
         .data(function(d) { return columns.map(function(col){return d[col];}) })
 
     // cells

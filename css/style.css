@@ -183,7 +183,7 @@ a:hover {
 	max-height: 150px;
 	max-width:1180px;
     overflow: scroll;
-    margin-left: 0px;
+    margin-left: 20px;
 
 }
 .invisiblee{
@@ -201,9 +201,12 @@ a:hover {
 
 }
 
-#grid { height: 198px; }
-.row, .header { clear: left; font-size: 12px; line-height: 18px; height: 18px; }
-.row:nth-child(odd) { background: rgba(0,0,0,0.05); }
+/*   Table    */
+
+#grid { height: 198px; 
+		margin-left: 20px;}
+.table_row, .header { clear: left; font-size: 12px; line-height: 18px; height: 18px; }
+.table_row:nth-child(odd) { background: rgba(0,0,0,0.05); }
 .header { font-weight: bold; }
-.cell { float: left; overflow: hidden; white-space: nowrap; width: 100px; height: 18px; }
-.col-0 { width: 180px; }
+.cell { float: left; overflow: hidden; white-space: nowrap; width: 80px; height: 18px; }
+.col-0 { width: 90px; }

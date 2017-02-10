@@ -60,13 +60,13 @@ function parcoords_plot(){
     filtered_data = dimensions['awy_score'].filter(be1).top(Infinity);
     filtered_data = dimensions['sde_score'].filter(be2).top(Infinity);
     filtered_data = dimensions['sdl_score'].filter(be3).top(Infinity);
-                //There has to be a more proper way to do this with a joli for loop!
+                 //There has to be a more proper way to do this with a joli for loop!
 
     scatterplots(filtered_data);
 
 
     //Update map
-        update_map_stats(filtered_data);
+    update_map_stats(filtered_data);
 
     });
 
