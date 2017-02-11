@@ -4,6 +4,7 @@ var tot_awy_score, tot_sde_score, tot_sdl_score, num_runs_selected;
 var map_chosen = "./data/initial_maps/maragua_base_lulc.tif"; //map to display initially
 var map_controls_selection;
 var continuous_scale_categories = [];
+var imageBitmap;
 
 var landcovermap = "./data/initial_maps/maragua_base_lulc.tif";
 
@@ -71,6 +72,11 @@ function map(){
     render_map('map_canvas', map_chosen);
     update_map_stats(full_data);
 
+    var canvas = d3.select('#map_canvas').call(d3.behavior.zoom().scaleExtent([0.4, 8]).on("zoom", zoom));
+    var canvas2 = d3.select('#map_canvas2').call(d3.behavior.zoom().scaleExtent([0.4, 8]).on("zoom", zoom));
+    //todo: pas redéfinir context, pr zoomer
+
+
     function render_map(canvas_ID, which_map) {
         d3.xhr(which_map)
         .responseType('arraybuffer')
@@ -87,11 +93,10 @@ function map(){
 
           
             if ($('#map_toggle').prop('checked')) {
-
                   render_continuous(ctx);
                   render_legend_continuous(ctx);        
                   } else {
-                  render_categorical(ctx);
+                  render_categorical(ctx,canvas_ID);
                   render_legend_categorical(ctx);
               }
 
@@ -120,7 +125,13 @@ function map(){
             color_data[o+3] = 255;
             o += 4;
         });
-        ctx.putImageData(imageData, 0, 0);
+        
+
+        createImageBitmap(imageData).then(function(response) { 
+              imageBitmap = response;
+              ctx.drawImage(response, 0, 0);  
+           });
+
         // Continuous scale
             continuous_scale_categories = [];
             for (var i = newExt[0]; i <= newExt[1]; i+=((newExt[1]-newExt[0])/19)){
@@ -128,7 +139,7 @@ function map(){
              };
     }
 
-    function render_categorical(ctx) {
+    function render_categorical(ctx,canvas_ID) {
         colorScale = d3.scale.ordinal().domain(Land_cover_scale[0]).range(Land_cover_scale[1]);
         var imageData = ctx.createImageData(image.getWidth(), image.getHeight());
         var color_data = imageData.data;
@@ -150,7 +161,15 @@ function map(){
             color_data[o+3] = 255;
             o += 4;
         });
-        ctx.putImageData(imageData, 0, 0);  
+          createImageBitmap(imageData).then(function(response) { 
+              if (canvas_ID==='map_canvas2'){
+                imageBitmap2 = response;
+              }else{
+                imageBitmap = response;
+              }
+              ctx.drawImage(response, 0, 0);  
+           });
+     
     }
 
     function render_legend_categorical(ctx){
@@ -212,7 +231,22 @@ function map(){
       .text(function(d, i){ return continuous_scale_categories[i].toFixed(2); });
     }
 
+    function zoom() {
+      var context = d3.select('#map_canvas').node().getContext("2d");
+      var context2 = d3.select('#map_canvas2').node().getContext("2d");
+      drawMapZoomed(context,imageBitmap);
+      drawMapZoomed(context2,imageBitmap2);
+      
+    }
 
+    function drawMapZoomed(context, img){
+      context.save();
+      context.clearRect(0, 0, 1030, 335);
+      context.translate(d3.event.translate[0], d3.event.translate[1]);
+      context.scale(d3.event.scale, d3.event.scale);
+      context.drawImage(img, 0, 0);  
+      context.restore();
+    }
 
 };
 
@@ -274,7 +308,7 @@ function choose_map(subset,d) {
   //3: AWY, 4: SDE, 5: SDL
 
 
-
+   
   $("#map_title").text(map_titles[s]);
   $("#map_stat").text(map_stats_txt[s]);
 
