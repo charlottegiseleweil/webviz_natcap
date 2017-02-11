@@ -211,3 +211,10 @@ a:hover {
 .header { font-weight: bold; }
 .cell { float: left; overflow: hidden; white-space: nowrap; width: 80px; height: 18px; }
 .col-0 { width: 90px; }
+
+.map_superposee {
+    position: absolute;
+    top: 0px;
+    left: 144px;
+    opacity: 0.4;
+}

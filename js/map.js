@@ -5,6 +5,8 @@ var map_chosen = "./data/initial_maps/maragua_base_lulc.tif"; //map to display i
 var map_controls_selection;
 var continuous_scale_categories = [];
 
+var landcovermap = "./data/initial_maps/maragua_base_lulc.tif";
+
 function map(){
 
     var baseRaster, ext, newExt, image, rasters, canvas, ctx;
@@ -43,31 +45,41 @@ function map(){
         }
 
       choose_map("allDataset");
-      render_map();
+      render_map('map_canvas', map_chosen);
     });
 
     // Update map upon radiobutton choices
     $("input[name='radiobutton']").change(function(){
         choose_map("allDataset");
-        render_map();
-    });
-    $('#landcover_checkbox').change(function(){
-        choose_map("allDataset");
-        render_map();
+        render_map('map_canvas', map_chosen);
     });
 
-    render_map();
+    //Overlay on landcover
+    render_map('map_canvas2', landcovermap);
+    $("#map_canvas2").addClass('invisiblee');
+
+    $('#landcover_checkbox').change(function() {
+      if(this.checked) {
+        $("#map_canvas2").removeClass('invisiblee');
+      }
+      else{
+        $("#map_canvas2").addClass('invisiblee');
+      }
+    });
+
+
+    render_map('map_canvas', map_chosen);
     update_map_stats(full_data);
 
-    function render_map() {
-        d3.xhr(map_chosen)
+    function render_map(canvas_ID, which_map) {
+        d3.xhr(which_map)
         .responseType('arraybuffer')
         .get(function(error, data){
             var parser = GeoTIFF.parse(data.response);
             image = parser.getImage();
             rasters = image.readRasters();
-            canvas = document.getElementById('map_canvas');
-            ctx = canvas.getContext("2d");
+            canvas = document.getElementById(canvas_ID);
+            ctx = document.getElementById(canvas_ID).getContext("2d");
             // there is some arbitrary value fow 'no data', that messes all my calculations
             baseRaster = rasters[0];
             ext = d3.extent(baseRaster);
@@ -76,17 +88,17 @@ function map(){
           
             if ($('#map_toggle').prop('checked')) {
 
-                  render_continuous();
-                  render_legend_continuous();        
+                  render_continuous(ctx);
+                  render_legend_continuous(ctx);        
                   } else {
-                  render_categorical();
-                  render_legend_categorical();
+                  render_categorical(ctx);
+                  render_legend_categorical(ctx);
               }
 
         });    
     }
 
-    function render_continuous() {
+    function render_continuous(ctx) {
         colorScale = d3.scale.linear().domain(newExt).range([startColor.toString(), endColor.toString()]);
         var imageData = ctx.createImageData(image.getWidth(), image.getHeight());
         var color_data = imageData.data;
@@ -116,7 +128,7 @@ function map(){
              };
     }
 
-    function render_categorical() {
+    function render_categorical(ctx) {
         colorScale = d3.scale.ordinal().domain(Land_cover_scale[0]).range(Land_cover_scale[1]);
         var imageData = ctx.createImageData(image.getWidth(), image.getHeight());
         var color_data = imageData.data;
@@ -141,7 +153,7 @@ function map(){
         ctx.putImageData(imageData, 0, 0);  
     }
 
-    function render_legend_categorical(){
+    function render_legend_categorical(ctx){
       //remove previous legend
       d3.select("#legend")
             .selectAll("g.legend")
@@ -167,7 +179,7 @@ function map(){
       .text(function(d, i){ return Land_cover_scale[2][i]; });
     }
 
-    function render_legend_continuous(){
+    function render_legend_continuous(ctx){
       //remove previous legend
       d3.select("#legend")
             .selectAll("g.legend")
@@ -209,12 +221,12 @@ function map(){
 
 
 function update_map_stats(data_fed){
-num_runs_selected = data_fed.length;
+  num_runs_selected = data_fed.length;
 
-tot_awy_score = calc_tot_obj_score(data_fed, 'awy_score');
-tot_sde_score = calc_tot_obj_score(data_fed, 'sde_score');
-tot_sdl_score = calc_tot_obj_score(data_fed, 'sdl_score');
-choose_map();
+  tot_awy_score = calc_tot_obj_score(data_fed, 'awy_score');
+  tot_sde_score = calc_tot_obj_score(data_fed, 'sde_score');
+  tot_sdl_score = calc_tot_obj_score(data_fed, 'sdl_score');
+  choose_map();
 };
 
 function calc_tot_obj_score(data_fed,column){
@@ -262,12 +274,6 @@ function choose_map(subset,d) {
   //3: AWY, 4: SDE, 5: SDL
 
 
-if ($('#landcover_checkbox').prop('checked')){
-    map_chosen = "./data/initial_maps/maragua_base_lulc.tif";
-    $("#map_title").text("Land cover");
-    $("#map_stat").text("(overlaying yet to be implemented)");
-
-}else{ //Remove this once overlay implemented
 
   $("#map_title").text(map_titles[s]);
   $("#map_stat").text(map_stats_txt[s]);
@@ -283,7 +289,7 @@ if ($('#landcover_checkbox').prop('checked')){
     }
     else {
       //map chosen remain unchanged
-}
+    }
 
 
   // Objective score maps
@@ -298,7 +304,4 @@ if ($('#landcover_checkbox').prop('checked')){
     $("#label_radio2").text("Percent agreement map");
     $("#label_radio3").text("Footprint of portfolios");
        }
-
-}
-
 };
