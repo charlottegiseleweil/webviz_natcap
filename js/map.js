@@ -72,9 +72,6 @@ function map(){
     render_map('map_canvas', map_chosen);
     update_map_stats(full_data);
 
-    var canvas = d3.select('#map_canvas').call(d3.behavior.zoom().scaleExtent([0.4, 8]).on("zoom", zoom));
-    var canvas2 = d3.select('#map_canvas2').call(d3.behavior.zoom().scaleExtent([0.4, 8]).on("zoom", zoom));
-    //todo: pas redéfinir context, pr zoomer
 
 
     function render_map(canvas_ID, which_map) {
@@ -231,12 +228,15 @@ function map(){
       .text(function(d, i){ return continuous_scale_categories[i].toFixed(2); });
     }
 
+    // ------------ Zooming functionalities --------------
+    var canvas = d3.select('#map_canvas').call(d3.behavior.zoom().scaleExtent([0.4, 8]).on("zoom", zoom));
+    var canvas2 = d3.select('#map_canvas2').call(d3.behavior.zoom().scaleExtent([0.4, 8]).on("zoom", zoom));
+    
     function zoom() {
       var context = d3.select('#map_canvas').node().getContext("2d");
       var context2 = d3.select('#map_canvas2').node().getContext("2d");
       drawMapZoomed(context,imageBitmap);
-      drawMapZoomed(context2,imageBitmap2);
-      
+      drawMapZoomed(context2,imageBitmap2);  
     }
 
     function drawMapZoomed(context, img){
@@ -247,6 +247,12 @@ function map(){
       context.drawImage(img, 0, 0);  
       context.restore();
     }
+
+    d3.select('#btnResetZoom').on('click', function() {
+        render_map('map_canvas', map_chosen);
+        render_map('map_canvas2', landcovermap);
+    });
+    // ------------ End of zooming functionalities --------------
 
 };
 
