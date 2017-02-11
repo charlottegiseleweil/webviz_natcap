@@ -37,7 +37,7 @@ df.replace("Maragua obj scores from 2017-02-04 solns", "Maragua_maps", regex=Tru
 df.index.name = "index"
 
 #Rename columns
-new_cols={'obj_1_wt':'awy_weight','obj_2_wt':'sde_weight','obj_3_wt':'sdl_weight','AWY_1_agg_delta_abs':'awy_score','SDE_2_agg_delta_abs':'sde_score','SDL_3_agg_delta_abs':'sdl_score', 'sdr_1':'input_1','awy_1':'input_2', 'cat_scen':'input_spat', 'budget':'input_budget'}
+new_cols={'obj_1_wt':'sde_weight','obj_2_wt':'sdl_weight','obj_3_wt':'awy_weight','AWY_1_agg_delta_abs':'awy_score','SDE_2_agg_delta_abs':'sde_score','SDL_3_agg_delta_abs':'sdl_score', 'sdr_1':'input_1','awy_1':'input_2', 'cat_scen':'input_spat', 'budget':'input_budget'}
 df.rename(columns=new_cols, inplace=True)
 
 #Divide by 10^6 all obj scores
