@@ -59,6 +59,7 @@ var col_floats= [];
       sliders_plot();
       map();
       scatterplots(full_data);
+      scatterplotLegend();
     });
 
 

@@ -99,27 +99,89 @@ var num_pu_combos = 3*3*2*4;
   dots.exit().remove();
 };
 
-budget_levels = [625000000,1250000000,1875000000];
-colorscale_o = ['#fed98e','#fe9929','#d95f0e'];
-colorscale_b = ['#bdc9e1','#74a9cf','#0570b0'];
+var budget_levels = [625000000,1250000000,1875000000];
+var colorscale_scatterplots = ['#fed98e','#fe9929','#d95f0e' , '#bdc9e1','#74a9cf','#0570b0'];
+
 
 function colorScat(d){
 
-  var colorscale = d['input_spat'] === 0 ? colorscale_o : colorscale_b
+  var colorscale = d['input_spat'] === 0 ? colorscale_scatterplots.slice(0,3) : colorscale_scatterplots.slice(3);
   var i = budget_levels.indexOf(d['input_budget'])
   return colorscale[i];
-/*
-console.log(d['input_spat']);
-console.log(d['input_budget']);
-  if (d['input_spat'] === 0){
-    var i = budget_levels.indexOf(d['input_budget']);
-    return colorscale_o[i];
-  }
-  else if (d['input_spat'] === 1){
-    var i = budget_levels.indexOf(d['input_budget']);
-    return colorscale_b[i];
-  }*/
+  /*
+  console.log(d['input_spat']);
+  console.log(d['input_budget']);
+    if (d['input_spat'] === 0){
+      var i = budget_levels.indexOf(d['input_budget']);
+      return colorscale_o[i];
+    }
+    else if (d['input_spat'] === 1){
+      var i = budget_levels.indexOf(d['input_budget']);
+      return colorscale_b[i];
+    }*/
 };
+
+//Legend
+function scatterplotLegend(){
+    
+    var legend = d3.select("#scatterplot_legend")
+                    .append("svg")
+                    .attr("width", 60)
+                    .attr("height", 60)
+                    .attr("fill","black");
+
+
+    legend.selectAll("rect").data(colorscale_scatterplots).enter()
+      .append("rect")
+      .attr("x", function(d,i){return (32 + Math.floor(i/3)*15)})  //20 if orange (0-2), 30 if blue (3-5)
+      .attr("y", function(d,i){return (50-(i%3)*10)})            
+      .attr("width", 10)
+      .attr("height", 10)
+      .style("fill", function(d,i){ return colorscale_scatterplots[i] })
+      .style("stroke",'black');
+
+    legend.append("text")
+          .attr("x",32)
+          .attr("y",20)
+          .text("A")
+          .attr("fill","#d95f0e")
+
+    legend.append("text")
+          .attr("x",47)
+          .attr("y",20)
+          .attr("fill","#0570b0")
+          .text("B")
+
+    legend.append("text")
+          .attr("x",0)
+          .attr("y",20)
+          .attr("fill","black")
+          .style("font-size","9px")
+          .style("text-orientation", "sideways-right")
+          .text("Budget")
+
+    legend.append("text")
+          .attr("x",6)
+          .attr("y",59)
+          .attr("fill","black")
+          .style("font-size","9px")
+          .style("text-orientation", "sideways-right")
+          .text("min")
+  
+    legend.append("text")
+          .attr("x",5)
+          .attr("y",40)
+          .attr("fill","black")
+          .style("font-size","9px")
+          .style("text-orientation", "sideways-right")
+          .text("max")
+
+
+
+
+
+
+}
 
 function scatterplot_highlight(d) {
  $(".id" + d.index).addClass("dot_highlight");
