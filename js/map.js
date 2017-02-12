@@ -337,11 +337,19 @@ function choose_map(subset,d) {
     $("#label_radio1").text("Annual Water Yield (AWY)");
     $("#label_radio2").text("Sediment Export (SDE)");
     $("#label_radio3").text("Sediment Loss (SDL)");
+    $("#landcover_checkbox").addClass("invisiblee");
+    $("#overlay_txt").addClass("invisiblee");
+    $("#map_canvas2").addClass('invisiblee');
+
         }
   // Land cover (categorical) maps
   else { 
     $("#label_radio1").text("Modal portfolio");
     $("#label_radio2").text("Percent agreement map");
     $("#label_radio3").text("Footprint of portfolios");
+    $("#landcover_checkbox").removeClass("invisiblee");
+    $("#overlay_txt").removeClass("invisiblee");
+
+
        }
 };
