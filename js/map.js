@@ -229,8 +229,6 @@ function map(){
     }
 
     // ------------ Zooming functionalities --------------
-    var canvas = d3.select('#map_canvas').call(d3.behavior.zoom().scaleExtent([0.4, 8]).on("zoom", zoom));
-    var canvas2 = d3.select('#map_canvas2').call(d3.behavior.zoom().scaleExtent([0.4, 8]).on("zoom", zoom));
     
     function zoom() {
       var context = d3.select('#map_canvas').node().getContext("2d");
@@ -248,10 +246,20 @@ function map(){
       context.restore();
     }
 
-    d3.select('#btnResetZoom').on('click', function() {
-        render_map('map_canvas', map_chosen);
-        render_map('map_canvas2', landcovermap);
-    });
+
+    d3.select("#btnZoom").on('click',function()
+      {
+        if ($("#btnZoom").text() === "Enable zooming"){
+            var canvas = d3.select('#map_canvas').call(d3.behavior.zoom().scaleExtent([0.4, 8]).on("zoom", zoom));
+            var canvas2 = d3.select('#map_canvas2').call(d3.behavior.zoom().scaleExtent([0.4, 8]).on("zoom", zoom));
+
+          $("#btnZoom").html("Reset zoom");
+        } else {
+            render_map('map_canvas', map_chosen);
+            render_map('map_canvas2', landcovermap);
+          $("#btnZoom").html("Reset zoom");
+        }
+      });
     // ------------ End of zooming functionalities --------------
 
 };
