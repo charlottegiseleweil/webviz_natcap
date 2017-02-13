@@ -115,11 +115,12 @@ a:hover {
 
 .dot {
   stroke: #000;
+  stroke-width: 0.4px;
 }
 
 .dot_highlight{
-	stroke: red;
-	stroke-width: 8px;
+	stroke: #b30000;
+	stroke-width: 9px;
 }
 
 #parcoords_sliders_block {
