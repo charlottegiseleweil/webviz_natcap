@@ -345,6 +345,7 @@ function choose_map(subset,d) {
     $("#label_radio1").text("Annual Water Yield (AWY)");
     $("#label_radio2").text("Sediment Export (SDE)");
     $("#label_radio3").text("Sediment Loss (SDL)");
+    $("#ObjToggle").removeClass("invisiblee");
     $("#landcover_checkbox").addClass("invisiblee");
     $("#overlay_txt").addClass("invisiblee");
     $("#map_canvas2").addClass('invisiblee');
@@ -356,6 +357,7 @@ function choose_map(subset,d) {
     $("#label_radio2").text("Percent agreement map");
     $("#label_radio3").text("Footprint of portfolios");
     $("#landcover_checkbox").removeClass("invisiblee");
+    $("#ObjToggle").addClass("invisiblee");
     $("#overlay_txt").removeClass("invisiblee");
 
 
