@@ -67,10 +67,9 @@ var col_floats= [];
 
     //Buttons
 
-
     //Help buttons
     d3.select('#btnHelp_parcoords').on('click', function() 
-    	{alert("Parallel Coordinates Plot : Each axis corresponds to an objective, each line represents a solution.\
+      {alert("Parallel Coordinates Plot : Each axis corresponds to an objective, each line represents a solution.\
         The axis can be flipped upon double clicking on their name. The axis can be re-ordered by dragging them.\
         \
         AWY: Annual water yield [in 10^5 cubic meters water/year]\
@@ -81,20 +80,47 @@ var col_floats= [];
     });
       
     d3.select('#btnHelp_sliders_ow').on('click', function() 
-      	{alert("Sliders: These sliders allow to modify the weight of each objective");
+        {swal({
+        title: "Objective weights sliders",
+        html: 'These sliders allow to modify the weight given to each ES objective, i.e their relative importance'
+         });
     });
 
+
+
     d3.select('#btnHelp_sliders_pu').on('click', function() 
-        {alert("Sliders: These sliders allow to modify the values of the parameters subject to uncertainty. \
-                seasonality refers to the seasonality constant, which affects the AWY model (...)\
-                SDR K value affects the SDR model (...)\
+        {swal({
+        title: "Parametric Uncertainty sliders",
+        html: 'These sliders allow to modify the values of the input parameters subject to uncertainty. \
+                Seasonality constant : Z is an empirical constant, sometimes referred to as “seasonality factor”, which captures the local precipitation pattern and additional hydrogeological characteristics. (http://data.naturalcapitalproject.org/nightly-build/invest-users-guide/html/reservoirhydropowerproduction.html#summary) \
+                K is the soil erodibility value. It measures the susceptibility of soil particles to detach and transport by rainfall and runoff.  It is used to calculate the amount of annual soil loss in the sediment retention model (http://data.naturalcapitalproject.org/nightly-build/invest-users-guide/html/sdr.html#summary) Unit in ton⋅ha⋅hr/(MJ⋅ha⋅mm)\
                 Spatial input ?????\
-                Budget (...)");
+                Budget (...)")'
+         });
     });
 
     d3.select("#btnHelp_scatterplots").on('click',function()
-      {alert("Trade-offs curves: explanations")});
-    
+      {swal({
+        title: "Trade-offs curves",
+        html: 'Explanations'
+      });
+    });
+
+    d3.select("#btnHelp_map").on('click',function()
+      {swal({
+        title: "Map",
+        html: 'Explanations about the different maps and features related'
+      });
+    });
+
+        d3.select("#btnHelp_gnrl").on('click',function()
+      {swal({
+        title: "Visualization of the results of the optimization for the Maragua watershed",
+        html: 'Explanations about the overall viz'
+      });
+    });
+
+
     //Other buttons    
     d3.select("#ViewData").on('click',function()
       {
