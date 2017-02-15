@@ -1,12 +1,11 @@
 var colorScale;
 var calc_tot_obj_score;
 var tot_awy_score, tot_sde_score, tot_sdl_score, num_runs_selected;
-var map_chosen = "./data/initial_maps/maragua_base_lulc.tif"; //map to display initially
+var landcovermap = "./data/initial_maps/maragua_base_lulc.tif";
+var map_chosen = landcovermap; //map to display initially
 var map_controls_selection;
 var continuous_scale_categories = [];
 var imageBitmap;
-
-var landcovermap = "./data/initial_maps/maragua_base_lulc.tif";
 
 function map(){
 
@@ -293,12 +292,19 @@ function choose_map(subset,d) {
   // singleSol : displays the map corresponding to solution clicked in table (pull up map from dataset table.)
   //DRAFT !! To do !
 
-  var map_titles = ["Modal portfolio",
+  var map_titles_many_solns = ["Modal portfolio",
                     "Percent agreement map",
                     "Footprint of portfolios",
                     "Objective score map for Annual Water Yield",
                     "Objective score map for Sediment Export",
                     "Objective score map for Sediment Loss"];
+
+  var map_titles_single_sol = ["Portfolio of run #",
+                    "(doesn't make sense)",
+                    "(doesn't make sense)",
+                    "Objective score map for Annual Water Yield, run #",
+                    "Objective score map for Sediment Export, run #",
+                    "Objective score map for Sediment Loss, run #"];
 
   var map_stats_txt = ["over " + num_runs_selected + " runs",
                       "over " + num_runs_selected + " runs",
@@ -314,7 +320,12 @@ function choose_map(subset,d) {
                       "./data/initial_maps/maragua_obj_sde.tif",
                       "./data/initial_maps/maragua_obj_sdl.tif"];
 
-  var single_maps = ['AWY_1_rast_delta_abs'];
+  var single_maps = ["port_rast",
+                     "./data/initial_maps/maragua_modalportfolio.tif",
+                     "./data/initial_maps/maragua_modalportfolio.tif",
+                     'AWY_1_rast_delta_abs',
+                     'SDE_2_rast_delta_abs',
+                     'SDL_3_rast_delta_abs',];
 
   //Map selection : s
   var s = 3*($('#map_toggle').prop('checked')) + parseFloat($('input[name=radiobutton]:checked').val()) - 1;
@@ -323,17 +334,27 @@ function choose_map(subset,d) {
 
 
    
-  $("#map_title").text(map_titles[s]);
-  $("#map_stat").text(map_stats_txt[s]);
+  
+
 
   if (subset=="allDataset") {
       map_chosen = initial_maps[s];
+      $("#map_stat").text(map_stats_txt[s]);
+      $("#map_title").text(map_titles_many_solns[s]);
     }
     else if (subset=="filtered"){
       console.log("Je vais display la filtered map dans ce cas là! RASTER ON THE FLY COMPUTATION IS A NEXT STEP");
     }
+
     else if (subset=="singleSol"){
-      map_chosen = "./data/".concat(d[single_maps[s]]);
+      if (d[single_maps[s]] == undefined){
+        console.log("undefined map chosen !!!"); //make an alert that you cannot choose footrpint nor percent agreement w/ single sol?
+      }else{
+        map_chosen = "./data/".concat(d[single_maps[s]]);
+      } 
+      $("#map_title").text(map_titles_single_sol[s] + d.index);
+      $("#map_stat").text("Do we want to display smg here ?");
+      console.log("map chosen:" + map_chosen);
     }
     else {
       //map chosen remain unchanged

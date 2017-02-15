@@ -1,4 +1,4 @@
-var DATA = 'data/MaraguaFeb9.csv'
+var DATA = 'data/MaraguaFeb15.csv'
 
 var full_data;
 var dimensions = {};
@@ -142,6 +142,8 @@ var col_floats= [];
             .render();
 
         scatterplots(full_data);
+
+        table(full_data);
         
         obj1_slider.setValue([0, 100]);
         obj2_slider.setValue([0, 100]); 
