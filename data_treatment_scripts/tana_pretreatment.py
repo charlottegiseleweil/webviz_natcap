@@ -23,7 +23,10 @@ df.drop(col_useless, axis=1, inplace=True)
 
 #Trim decimals in objective scores
 #df['SDE_2_agg_delta_abs']=round(df['SDE_2_agg_delta_abs'])
+
 df['SDE_2_agg_delta_abs']=df['SDE_2_agg_delta_abs'].apply(round)
+df['AWY_1_agg_delta_abs']=df['AWY_1_agg_delta_abs'].apply(round)
+df['SDL_3_agg_delta_abs']=df['SDL_3_agg_delta_abs'].apply(round)
 
 #Transform categorical parameter to continuous (for 'spatial parameter A/B' A:0, B:1)
 df.loc[df['cat_scen'] =='A', 'cat_scen'] = 0
