@@ -49,6 +49,7 @@
  <!--Fancy alerts-->
  <script src="js/lib/sweetalert2.min.js"></script>
  <link rel="stylesheet" type="text/css" href="css/sweetalert2.min.css">
+ <script src ='js/BtnHelp.js'></script>
 
 
  <!--Data table-->
@@ -163,7 +164,7 @@ Pour les sliders:
       <input id="landcover_checkbox" type="checkbox"><label class="label_radio" id="overlay_txt">&nbsp;Overlay on land cover</label>
 
       <!--Obje score absolute/marginal toggle-->
-      <div id="ObjToggle" style="margin-left: 10px;">
+      <div id="ObjToggle" >
       Absolute values maps
       <input id="obj_toggle" data-on=" " data-off=" " class="inline" type="checkbox" data-toggle="toggle"  data-onstyle="success" data-offstyle="success" data-size="mini" style="vertical-align: middle;">
       Marginal values maps
@@ -199,7 +200,11 @@ Pour les sliders:
 
 <div id="scatterplots" width="300" style="vertical-align: top;">
 
-<h4> Trade-offs curves <button class="h5" id="btnHelp_scatterplots">?</button></h4>
+<h4> Trade-offs curves <button class="h5" id="btnHelp_scatterplots">?</button>
+<!--Frontiers checkbox-->
+<input id="scatterplot_frontiers_checkbox" type="checkbox">
+</h4> 
+
 <div id="scatterplot_legend" style="position:absolute; right:0px; width:60px; height:60px">
 </div>
 

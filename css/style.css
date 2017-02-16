@@ -112,6 +112,11 @@ a:hover {
   shape-rendering: crispEdges;
 }
 
+path {
+	fill:none;
+	stroke:black;
+} 
+
 
 .dot {
   stroke: #000;

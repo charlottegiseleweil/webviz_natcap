@@ -11,12 +11,12 @@ def match_columns(pat, names):
 
 
 #Load data
-df = pd.read_csv('../data/raw_data/master_MaraguaFeb15.csv')
+df = pd.read_csv('../data/raw_data/master02-16.csv')
 
 #Group columns
 col_weights = match_columns(".+_wt$", df.columns)
 col_scores = match_columns(".+_agg_.*", df.columns)
-col_useless = ['wt_case','cost_wt', 'cost','sdr_biophysical_table_path','awy_biophysical_table_uri']
+col_useless = ['wt_case','cost_wt', 'cost','sdr_biophysical_table_path','awy_biophysical_table_uri','esm_case']
 
 #Remove useless columns
 df.drop(col_useless, axis=1, inplace=True)
@@ -49,10 +49,10 @@ for i in ['sde_score','awy_score','sdl_score']:
 	df[i] = df[i]/1e6
 
 #Reorder columns
-df_reordered = df[['awy_weight','sde_weight', 'sdl_weight','awy_score','sde_score', 'sdl_score','esm_case','input_budget', 'input_2','input_1','input_spat', 'port_rast','AWY_1_rast_delta_abs', 'SDE_2_rast_delta_abs','SDL_3_rast_delta_abs']]
+df_reordered = df[['awy_weight','sde_weight', 'sdl_weight','awy_score','sde_score', 'sdl_score','frontier_id','input_budget', 'input_2','input_1','input_spat', 'port_rast','AWY_1_rast_delta_abs', 'SDE_2_rast_delta_abs','SDL_3_rast_delta_abs']]
 
 #check
 print(df_reordered.columns)
 
 #Write cleaned file
-df_reordered.to_csv('../data/MaraguaFeb15.csv')
+df_reordered.to_csv('../data/MaraguaFeb16.csv')

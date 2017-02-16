@@ -310,8 +310,18 @@ function choose_map(subset,d) {
                       "over " + num_runs_selected + " runs",
                       "over " + num_runs_selected + " runs",
                       "Total AWY score = " + (tot_awy_score*1000).toFixed(2) + "*10^3 m3/yr",
-                      "Total SDE score = " + (tot_sde_score*1000).toFixed(2) + " 10^3 tons eroded/yr", 
-                      "Total SDL score = " + (tot_sdl_score*1000).toFixed(2) + " 10^3 tons eroded/yr"];
+                      "Total SDE score = " + (tot_sde_score*1000).toFixed(2) + "*10^3 tons to streams/yr", 
+                      "Total SDL score = " + (tot_sdl_score*1000).toFixed(2) + "*10^3 tons eroded/yr"];
+
+  // For marginal values                     
+  /*var map_stats_txt = ["over " + num_runs_selected + " runs",
+                      "over " + num_runs_selected + " runs",
+                      "over " + num_runs_selected + " runs",
+                      "Total increase AWY score = " + (tot_awy_score*1000).toFixed(2) + "*10^3 m3/yr",
+                      "Total SDE score = " + (tot_sde_score*1000).toFixed(2) + " 10^3 tons to streams avoided/yr", 
+                      "Total SDL score = " + (tot_sdl_score*1000).toFixed(2) + " 10^3 tons avoided erosion /yr"];
+
+*/
 
   var initial_maps = ["./data/initial_maps/maragua_modalportfolio.tif",
                       "./data/initial_maps/maragua_frequency.tif",
