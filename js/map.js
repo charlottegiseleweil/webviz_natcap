@@ -74,9 +74,12 @@ function map(){
 
 
     function render_map(canvas_ID, which_map) {
+
+        addLoadingIndicator('#map_n_legend');
+
         d3.xhr(which_map)
-        .responseType('arraybuffer')
-        .get(function(error, data){
+          .responseType('arraybuffer')
+          .get(function(error, data){
             var parser = GeoTIFF.parse(data.response);
             image = parser.getImage();
             rasters = image.readRasters();
@@ -95,6 +98,8 @@ function map(){
                   render_categorical(ctx,canvas_ID);
                   render_legend_categorical(ctx);
               }
+
+          removeLoadingIndicator('#map_n_legend');
 
         });    
     }

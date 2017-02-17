@@ -225,3 +225,13 @@ path {
     left: 144px;
     opacity: 0.4;
 }
+
+.loading_class {
+	position:absolute;
+	width:100px;
+	font-style: italic;
+	height:50px;
+    top: 30%;
+    left: 50%;
+
+}
