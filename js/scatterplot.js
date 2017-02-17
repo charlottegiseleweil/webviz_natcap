@@ -76,32 +76,8 @@ var num_pu_combos = 3*3*2*4;
 
 //Update of the dots for corresponding fed data (data_to_plot)
   svg = d3.select(location).select('svg').select('g');     //selects the node 'g' which is the scatterplot
-  var dots = svg.selectAll(".dot")
-      .data(data_to_plot, function(d) { return d.index});
-
-
-    // There could be an issue with this flow
-    // n  dots - 0 dots - 1 dot. The thing is that when we remove all the dots, we schedule a transition
-    // so the dot will 'still be there', and removed from the DOM later.. this leads to a situation
-    // when we call .data again, the circle is still there d3 will ask us to update a circle that is going
-    // to be removed from the DOM.. so the trick is to stop all transitions on circles that are going
-    // to be updated, so they will not be removed.
-
-  dots.enter()
-  .append("circle")
-  .attr("class", function(d) {
-    return 'dot' + " id" + d.index; 
-  })
-
-  dots.attr("r", 2)
-      .attr("cx", function(d) { return x(d[variable_x]); })
-      .attr("cy", function(d) { return y(d[variable_y]); })
-      .style("fill", colorScat);
-  dots.exit().remove();
-
 
   //Connect the dots ----------
-
   $('#scatterplot_frontiers_checkbox').change(function() {
       if(this.checked) {
         $(".frontier").removeClass('invisiblee');
@@ -133,6 +109,33 @@ var num_pu_combos = 3*3*2*4;
         .attr('d', generator);
     });
   //Connect the dots ----------
+
+  
+  var dots = svg.selectAll(".dot")
+      .data(data_to_plot, function(d) { return d.index});
+
+
+    // There could be an issue with this flow
+    // n  dots - 0 dots - 1 dot. The thing is that when we remove all the dots, we schedule a transition
+    // so the dot will 'still be there', and removed from the DOM later.. this leads to a situation
+    // when we call .data again, the circle is still there d3 will ask us to update a circle that is going
+    // to be removed from the DOM.. so the trick is to stop all transitions on circles that are going
+    // to be updated, so they will not be removed.
+
+  dots.enter()
+  .append("circle")
+  .attr("class", function(d) {
+    return 'dot' + " id" + d.index; 
+  })
+
+  dots.attr("r", 2)
+      .attr("cx", function(d) { return x(d[variable_x]); })
+      .attr("cy", function(d) { return y(d[variable_y]); })
+      .style("fill", colorScat);
+  dots.exit().remove();
+
+
+
 
 
 };

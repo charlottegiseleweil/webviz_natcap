@@ -114,7 +114,8 @@ a:hover {
 
 path {
 	fill:none;
-	stroke:black;
+	stroke:#aaa;
+	stroke-width:1;
 } 
 
 
