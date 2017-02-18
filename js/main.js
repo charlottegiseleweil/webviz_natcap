@@ -1,4 +1,4 @@
-var DATA = 'data/MaraguaFeb16.csv'
+var DATA = 'data/MaraguaFeb16.csv';
 
 var full_data;
 var dimensions = {};
@@ -63,12 +63,7 @@ var col_floats= [];
       BtnHelp();
     });
 
-
-   
-
     //Buttons
-
-
     //Other buttons    
     d3.select("#ViewData").on('click',function()
       {
