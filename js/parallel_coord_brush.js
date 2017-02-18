@@ -65,8 +65,7 @@ function parcoords_plot(){
 
     //Update map
     update_map_stats(filtered_data);
-
-    //Update table
+        //Update table
     table(filtered_data);
 
 
