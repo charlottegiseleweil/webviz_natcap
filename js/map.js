@@ -392,11 +392,18 @@ function choose_map(subset,d) {
     }
     // Land cover (categorical) maps
     else {
+        console.log('cover');
         $("#label_radio1").text("Modal portfolio");
         $("#label_radio2").text("Percent agreement map");
         $("#label_radio3").text("Footprint of portfolios");
         $("#landcover_checkbox").removeClass("invisiblee");
         $("#ObjToggle").addClass("invisiblee");
         $("#overlay_txt").removeClass("invisiblee");
+        // check if we need to bring back land cover
+        if ($('#landcover_checkbox').prop('checked')) {
+            $("#map_canvas2").removeClass('invisiblee');
+        } else{
+            $("#map_canvas2").addClass('invisiblee');
+        }
     }
-};
+}
