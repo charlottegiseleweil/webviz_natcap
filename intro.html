@@ -31,6 +31,13 @@ Le truc important a pas oublier !!
 <script>
 
 
+    var colorsRange = [
+        ['#FF8888', '#FF8888'],
+        ['#77FF77', '#77FF77'],
+        ['#7777FF', '#7777ff']];
+
+    var bitmaps  = [];
+
     // j'ai change les tchiffres a cause du binz de la projection
     /*
      Generic  Canvas Layer for leaflet 0.7 and 1.0-rc,
@@ -236,8 +243,7 @@ Le truc important a pas oublier !!
 
         // this will be called automatically
         this.onDrawLayer = function (canvasOverlay, params){
-
-            console.log('ca sert a kekchose je sais plus le retour 3 ?????');
+            //console.log('ca sert a kekchose je sais plus le retour 3 ?????');
             var ctx = canvasOverlay.canvas.getContext('2d');
             // je donne un mauvais example aux generations futures :)
             ctx.clearRect(0, 0, 5000, 5000);
@@ -253,34 +259,42 @@ Le truc important a pas oublier !!
              ctx.fillStyle = '#AAF255';
              ctx.fill();*/
             // this was a circle on new york ??
-
-
             var newExt, image, colorScale;
             // we make this crap here but it SHOULD BE PULLED OUTSIDE
-
             if (!imgBitmap) {
-                d3.request("./shed1.tif")
-                    .responseType('arraybuffer')
-                    .get(function (error, data) {
-                        var parser = GeoTIFF.parse(data.response);
-                        image = parser.getImage();
-                        rasters = image.readRasters();
-                        // there is some arbitrary value fow 'no data', that messes all my calculations
-                        ext = d3.extent(rasters[0]);
-                        newExt = d3.extent(rasters[0].filter(function (r) {
-                            return r != ext[0];
-                        }));
-                        baseRaster = rasters[0];
-                        render();
+
+                var shed1Request = d3.request("./data/intro_all_watersheds/lulc_4_M.tif").responseType('arraybuffer');
+                var shed2Request = d3.request("./data/intro_all_watersheds/lulc_4_S.tif").responseType('arraybuffer');
+                var shed3Request = d3.request("./data/intro_all_watersheds/lulc_4_TC.tif").responseType('arraybuffer');
+
+                d3.queue()
+                    .defer(shed1Request.get)
+                    .defer(shed2Request.get)
+                    .defer(shed3Request.get)
+                    .awaitAll(function  (error, data) {
+                        console.log('loaded');
+                        data.forEach(function(data, index) {
+                            var parser = GeoTIFF.parse(data.response);
+                            image = parser.getImage();
+                            rasters = image.readRasters();
+                            // there is some arbitrary value fow 'no data', that messes all my calculations
+                            ext = d3.extent(rasters[0]);
+                            newExt = d3.extent(rasters[0].filter(function (r) {
+                                return r != ext[0];
+                            }));
+                            baseRaster = rasters[0];
+                            render(baseRaster, ext, newExt, image, boundsArray[index], index);
+                        });
+
                     });
 
-                function render() {
-                    console.log(newExt);
-                    colorScale = d3.scaleLinear().domain(newExt).range(['#FF0011', '#000033']);
+                // Try to reduce the number of args
+                function render(baseRaster, ext, newExt, image, bound, index) {
+
                     imageData = ctx.createImageData(image.getWidth(), image.getHeight());
                     var data = imageData.data;
                     var o = 0;
-
+                    var color = d3.color(colorsRange[index][0]);
                     // WE DO NOT USE GLOBAL ALPHA THERE
                     baseRaster.forEach(function (r) {
                         if (r === ext[0]) {
@@ -291,7 +305,6 @@ Le truc important a pas oublier !!
                             o += 4;
                             return;
                         }
-                        var color = d3.color(colorScale(r));
                         data[o] = color.r;
                         data[o + 1] = color.g;
                         data[o + 2] = color.b;
@@ -300,36 +313,36 @@ Le truc important a pas oublier !!
                     });
 
 
-                    var containerSw = map.latLngToContainerPoint(southWest);
-                    var containerNe = map.latLngToContainerPoint(northEast);
-                    console.log('scaling.... ', containerSw, containerNe);
+                    var containerSw = map.latLngToContainerPoint(bound.southWest);
+                    var containerNe = map.latLngToContainerPoint(bound.northEast);
                     createImageBitmap(imageData).then(function (response) {
                         imgBitmap = response;
                         // commented part is not used anymore
                         //ctx.save();
                         //ctx.scale(sx, sy);
+                        bitmaps[index] = response;
                         ctx.drawImage(imgBitmap, containerSw.x, containerSw.y, containerNe.x - containerSw.x, containerNe.y - containerSw.y);
                         //ctx.restore();
                     });
                 }
             } else {
-                var containerSw = map.latLngToContainerPoint(southWest);
-                var containerNe = map.latLngToContainerPoint(northEast);
-                ctx.drawImage(imgBitmap, containerSw.x, containerSw.y,
-                    containerNe.x - containerSw.x, containerNe.y - containerSw.y);
+
+                bitmaps.forEach(function(bitmap, index) {
+                    var bound = boundsArray[index];
+                    var containerSw = map.latLngToContainerPoint(bound.southWest);
+                    var containerNe = map.latLngToContainerPoint(bound.northEast);
+                    ctx.drawImage(bitmap, containerSw.x, containerSw.y,
+                        containerNe.x - containerSw.x, containerNe.y - containerSw.y);
+                });
             }
-
         }
-
     };
 
     myCustomCanvasDraw.prototype = new L.CanvasLayer(); // -- setup prototype
-
     var myLayer = new myCustomCanvasDraw();
     myLayer.addTo(map);
     map.on("viewreset", reset);
     reset();
-
     // Reposition the SVG to cover the features. Mais do not care parce qu'on
     // a pas de svg et tout de facon c'etait tout moisi
     function reset() { }
@@ -340,9 +353,25 @@ Le truc important a pas oublier !!
     // WEST 36.74436,-0.56370
     // SUD 36.85814,-0.60707
     // EST 37.00559,-0.52753
-    var southWest = L.latLng(-0.60707 , 36.74436);
-    northEast = L.latLng(-0.52535, 37.00559 ),
-        bounds = L.latLngBounds(southWest, northEast);
+    var boundsArray = [
+        {
+            southWest: L.latLng(-0.63466 , 36.70657),
+            northEast: L.latLng(-0.82007, 37.26312 )
+        }, {
+            southWest: L.latLng(-0.63174 , 36.50179),
+            northEast: L.latLng(-0.16380, 37.31485 )
+        }, {
+            southWest: L.latLng(-1.04606 , 37.07796),
+            northEast: L.latLng(-0.62339, 36.57871)
+        }
+    ];
+
+
+        var bounds = L.latLngBounds(boundsArray[1].southWest, boundsArray[2].southWest);
     map.fitBounds(bounds);
+    //s : 37.31485 -0.16380 36.60179 -0.63174
+    //tc : 36.57871 -0.62339 37.07796 -1.04606
+    //m: 36.70657 -0.63466 37.26312 -0.82007
+
 </script>
 
