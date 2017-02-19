@@ -53,7 +53,7 @@ var col_floats= [];
     }, function(data) {
 
       // Now make the plots
-      full_data = data;
+      filtered_data = full_data = data;
       crossfiltering();
       parcoords_plot();
       sliders_plot();
@@ -73,7 +73,7 @@ var col_floats= [];
     d3.select("#ViewData").on('click',function()
       {
         if ($("#ViewData").text() === "View dataset"){
-          table(full_data);
+          table(filtered_data);
           $("#table_canvas").removeClass('invisiblee');
           $("#ViewData").html("Hide Dataset");
         } else {
