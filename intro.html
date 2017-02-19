@@ -31,12 +31,9 @@ Le truc important a pas oublier !!
 <script>
 
 
-    var colorsRange = [
-        ['#FF8888', '#FF8888'],
-        ['#77FF77', '#77FF77'],
-        ['#7777FF', '#7777ff']];
-
+    var colorsRange = ['#FF8888', '#77FF77', '#7777ff'];
     var bitmaps  = [];
+    var processing = false;
 
     // j'ai change les tchiffres a cause du binz de la projection
     /*
@@ -230,19 +227,18 @@ Le truc important a pas oublier !!
     var myCustomCanvasDraw = function(){
         this.onLayerDidMount = function (){
             // -- prepare custom drawing
-            console.log('ca sert a kekchose je sais plus ?????');
         };
         this.onLayerWillUnmount  = function(){
             // -- custom cleanup
         };
         this.setData = function (data){
             // -- custom data set
-            console.log('ca sert a kekchose je sais plus2 ?????');
             this.needRedraw(); // -- call to drawLayer
         };
 
         // this will be called automatically
         this.onDrawLayer = function (canvasOverlay, params){
+
             //console.log('ca sert a kekchose je sais plus le retour 3 ?????');
             var ctx = canvasOverlay.canvas.getContext('2d');
             // je donne un mauvais example aux generations futures :)
@@ -261,8 +257,8 @@ Le truc important a pas oublier !!
             // this was a circle on new york ??
             var newExt, image, colorScale;
             // we make this crap here but it SHOULD BE PULLED OUTSIDE
-            if (!imgBitmap) {
-
+            if (bitmaps.length === 0 && !processing) {
+                processing = true;
                 var shed1Request = d3.request("./data/intro_all_watersheds/lulc_4_M.tif").responseType('arraybuffer');
                 var shed2Request = d3.request("./data/intro_all_watersheds/lulc_4_S.tif").responseType('arraybuffer');
                 var shed3Request = d3.request("./data/intro_all_watersheds/lulc_4_TC.tif").responseType('arraybuffer');
@@ -272,7 +268,6 @@ Le truc important a pas oublier !!
                     .defer(shed2Request.get)
                     .defer(shed3Request.get)
                     .awaitAll(function  (error, data) {
-                        console.log('loaded');
                         data.forEach(function(data, index) {
                             var parser = GeoTIFF.parse(data.response);
                             image = parser.getImage();
@@ -294,7 +289,7 @@ Le truc important a pas oublier !!
                     imageData = ctx.createImageData(image.getWidth(), image.getHeight());
                     var data = imageData.data;
                     var o = 0;
-                    var color = d3.color(colorsRange[index][0]);
+                    var color = d3.color(colorsRange[index]);
                     // WE DO NOT USE GLOBAL ALPHA THERE
                     baseRaster.forEach(function (r) {
                         if (r === ext[0]) {
