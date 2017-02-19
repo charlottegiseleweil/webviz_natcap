@@ -12,7 +12,7 @@ function addLoadingIndicator(css_selector){
 function removeLoadingIndicator(css_selector){
 
 	$("." + class_LoadingIndicator).remove();
-	
+
 }
 
 
