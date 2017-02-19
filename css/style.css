@@ -5,6 +5,19 @@ body {
 	margin: auto !important;
 }
 
+footer{
+	width:100%;
+	background-color:lightgrey;
+}
+
+.footer_text{
+	font-size: 12px;
+	color : white;
+	margin-bottom: 5px;
+	margin-top: 5px;
+	vertical-align: center
+}
+
 p,ul,li,td {
 	color:black;
 }
@@ -25,6 +38,10 @@ a:link {
 
 a:hover {
 	text-decoration: underline;
+}
+
+a:visited {
+	color:grey;
 }
 
 #scatterplot1 .tick text {
@@ -228,10 +245,11 @@ path {
 
 .loading_class {
 	position:absolute;
-	width:100px;
+	width:140px;
 	font-style: italic;
+	font-size:18px;
+	color:green;
 	height:50px;
     top: 30%;
     left: 50%;
-
 }

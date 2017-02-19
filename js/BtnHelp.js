@@ -4,15 +4,22 @@ function BtnHelp(){
 
     //Help buttons
     d3.select('#btnHelp_parcoords').on('click', function() 
-      {alert("Parallel Coordinates Plot : Each axis corresponds to an objective, each line represents a solution.\
-        The axis can be flipped upon double clicking on their name. The axis can be re-ordered by dragging them.\
-        \
-        AWY: Annual water yield [in 10^5 cubic meters water/year]\
-        \
-        SDE: Sediment export to stream [in 10^5 tons of sediments eroded annually]\
-        \
-        SDL: Soil loss to stream [in 10^5 tons of sediments eroded annually]");
+      {swal({
+        title: "Parallel coordinate plot",
+        html: "Each vertical axis corresponds to an ES objective, each line represents a scenario" +
+                "The values plotted correspond to the overall aggregated objective score, for the scenario considered (i.e the sum of all pixels’ scores for this objective, across the raster)."\
+                + "<br/>" + "<br/>" + 
+                "<ul> <li> AWY: Annual water yield in 10<sup>6</sup> m<sup>3</sup>/year </li> \
+                <li> SDE: Sediment export to stream in 10<sup>6</sup> tons of sediments eroded annually</li>\
+                <li> SDL: Soil loss to stream in 10<sup>6</sup> tons lost to stream annually</li> </ul>" + 
+                "<i> Features </i>" +
+                "<ul> <li> Select a subset of solution : by brushing on any axis </li> \
+                <li> Flip axis direction: upon double clicking on their name </li>\
+                <li> Re-order axis: by dragging them</li> </ul>" 
+         });
     });
+
+
       
     d3.select('#btnHelp_sliders_ow').on('click', function() 
         {swal({
