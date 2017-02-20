@@ -78,16 +78,9 @@ function scatterplot(variable_x,variable_y,location,data_to_plot){
     svg = d3.select(location).select('svg').select('g');     //selects the node 'g' which is the scatterplot
 
     //Connect the dots ----------
-    $('#scatterplot_frontiers_checkbox').change(function() {
-        if(this.checked) {
-            $(".frontier").removeClass('invisiblee');
-        }
-        else{
-            $(".frontier").addClass('invisiblee');
-        }
-    });
 
 
+    //TODO(chab) actually i think we can get of that, and do the sorting in the data-join
     var data_by_frontier_id = [];
     data_to_plot.forEach(function(d){
         if (!data_by_frontier_id[d.frontier_id - 1]){
@@ -101,13 +94,21 @@ function scatterplot(variable_x,variable_y,location,data_to_plot){
         .y(function(d) {return y(d[variable_y])})
         .interpolate("linear");
 
-    data_by_frontier_id.forEach(function(d,i) {
 
-        var generator = line(data_by_frontier_id[i].sort(function(a,b) { return (a[variable_x] - b[variable_x]) }));
-        svg.append('path')
-            .classed('frontier', true)
-            .attr('d', generator);
+    var cleanedData = [];
+    data_by_frontier_id.forEach(function(d,i) {
+        data_by_frontier_id[i].sort(function(a,b) { return (a[variable_x] - b[variable_x]) });
+        cleanedData.push(data_by_frontier_id[i]);
     });
+
+    var linesGroup = svg.selectAll('.frontier')
+        .data(cleanedData, function(d,i) { if (d.length) return d[0].frontier_id});
+    linesGroup.enter()
+        .append('path')
+        .classed('frontier', true);
+    linesGroup.attr("d", line);
+    linesGroup.exit().remove();
+
     //Connect the dots ----------
 
 
