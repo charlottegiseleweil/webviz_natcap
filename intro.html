@@ -58,7 +58,9 @@ About 800 scenarios were generated, arising from parametric uncertainty (4 param
 <script>
 
 
-    var colorsRange = ['#FF8888', '#77FF77', '#7777ff'];
+    var colorsRange = ['#333399', '#993333', '#993399'];
+    var sheds = ['./data/intro_all_watersheds/lulc_4_M.tif', './data/intro_all_watersheds/lulc_4_S.tif',
+        './data/intro_all_watersheds/lulc_4_TC.tif'];
     var bitmaps  = [];
     var processing = false;
 
@@ -238,15 +240,6 @@ About 800 scenarios were generated, arising from parametric uncertainty (4 param
 
     var imageData;
     var imgBitmap;
-    var sx = 950 / 1936;
-    var sy = 500 / 599;
-
-    var scaleAccumuled = 1;
-    var lastScale;
-
-    // see http://bl.ocks.org/mbostock/6301817 for a good example on how to constraint the map
-
-
     // open the map, setup center and zoom level
     var map = new L.Map("map", {center: [37.8, -96.9], zoom: 4})
         .addLayer(new L.TileLayer("http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"));
@@ -286,14 +279,14 @@ About 800 scenarios were generated, arising from parametric uncertainty (4 param
             // we make this crap here but it SHOULD BE PULLED OUTSIDE
             if (bitmaps.length === 0 && !processing) {
                 processing = true;
-                var shed1Request = d3.request("./data/intro_all_watersheds/lulc_4_M.tif").responseType('arraybuffer');
-                var shed2Request = d3.request("./data/intro_all_watersheds/lulc_4_S.tif").responseType('arraybuffer');
-                var shed3Request = d3.request("./data/intro_all_watersheds/lulc_4_TC.tif").responseType('arraybuffer');
 
-                d3.queue()
-                    .defer(shed1Request.get)
-                    .defer(shed2Request.get)
-                    .defer(shed3Request.get)
+                var requestQueue = d3.queue();
+                sheds.forEach(function(shed){
+                    var shedRequest = d3.request(shed).responseType('arraybuffer');
+                    requestQueue.defer(shedRequest.get);
+                });
+
+                 requestQueue
                     .awaitAll(function  (error, data) {
                         data.forEach(function(data, index) {
                             var parser = GeoTIFF.parse(data.response);
@@ -313,6 +306,8 @@ About 800 scenarios were generated, arising from parametric uncertainty (4 param
                 // Try to reduce the number of args
                 function render(baseRaster, ext, newExt, image, bound, index) {
 
+                    //TODO find a way to grab the context before, so we can separate the creation
+                    //of the rasters from the map rendering
                     imageData = ctx.createImageData(image.getWidth(), image.getHeight());
                     var data = imageData.data;
                     var o = 0;
@@ -339,12 +334,8 @@ About 800 scenarios were generated, arising from parametric uncertainty (4 param
                     var containerNe = map.latLngToContainerPoint(bound.northEast);
                     createImageBitmap(imageData).then(function (response) {
                         imgBitmap = response;
-                        // commented part is not used anymore
-                        //ctx.save();
-                        //ctx.scale(sx, sy);
                         bitmaps[index] = response;
                         ctx.drawImage(imgBitmap, containerSw.x, containerSw.y, containerNe.x - containerSw.x, containerNe.y - containerSw.y);
-                        //ctx.restore();
                     });
                 }
             } else {
