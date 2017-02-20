@@ -42,8 +42,8 @@ function BtnHelp(){
                 Several model input parameters are subject to uncertainty.\
                 To account for this, the model is run for several possible values of each uncertain parameter." + "<br/><br/>" 
                 + "<ul> The uncertain model input parameters are : \
-                <li> <b> the seasonality factor, Z </b>, an empirical constant used to calculate the AWY in the <a href='http://data.naturalcapitalproject.org/nightly-build/invest-users-guide/html/reservoirhydropowerproduction.html#summary'> hydropower InVEST model</a>. It captures the local precipitation pattern and additional hydrogeological characteristics. No unit. </li> \
-                <li> <b> the soil erodibility value, K </b>, used to calculate the amount of annual soil loss in the <a href='http://data.naturalcapitalproject.org/nightly-build/invest-users-guide/html/sdr.html#summary'> sediment retention InVEST model </a> It measures the susceptibility of soil particles to detach and transport by rainfall and runoff. Unit is ton*ha*hr/(MJ*ha*mm). </li> \
+                <li> <b> seasonality factor, Z</b>, an empirical (unitless) constant used to calculate the AWY in the <a href='http://data.naturalcapitalproject.org/nightly-build/invest-users-guide/html/reservoirhydropowerproduction.html#summary'> hydropower InVEST model</a>. It captures the local precipitation pattern and additional hydrogeological characteristics. </li> \
+                <li> <b> soil erodibility value, K</b>, used to calculate the amount of annual soil loss in the <a href='http://data.naturalcapitalproject.org/nightly-build/invest-users-guide/html/sdr.html#summary'> sediment retention InVEST model </a> It measures the susceptibility of soil particles to detach and transport by rainfall and runoff. Unit is ton*ha*hr/(MJ*ha*mm). </li> \
                 <li> <b> Spatial </b> (**?? bpb ??**),whatisit? </li> \
                 <li> <b> The budget level </b> (*bpb, why specifically these 3 levels?*) </li> </ul>" + "<br/>" + "<br/>" + 
                 "<i> Slide to select a subset of scenarios, according to specific values of these input parameters </i> </div>"
@@ -57,8 +57,8 @@ function BtnHelp(){
               Tradeoff curves display the tradeoffs between each pair of ES objectives. \
               Each plotted point corresponds to a scenario." + "<br/>" + "<br/>" +
               "<i> The colorscale provides additional information about which value of some uncertain input parameters were used: \
-              the orange (respectively blue) points correspond to scenarios generated under the spatial scenario A (respectively B).\
-              The color gradient gives an indication of the budget level (a lighter color is a smaller budget).\
+              the orange points correspond to scenarios generated under the spatial scenario A, the blue ones under scenario B.\
+              The color intensity gives an indication of the budget (a lighter color is a smaller budget).\
               <br/> Lines can be plotted, conecting the dots generated under the same combination of uncertain input parameters values. <i> </div>"
 
       });
@@ -68,7 +68,7 @@ function BtnHelp(){
       {swal({
         title: "Map",
         html: "<div style='text-align: left;'> \
-            Different types of map combining information about the selected scenarios can be displayed, using the map control buttons on the upper left.\
+            Different types of maps combining information about the selected scenarios can be displayed, using the map control buttons on the upper left.\
             <br/> <ul> <h3> Portfolios </h3> \
             <li> <b> Portfolio </b>  map display the modal portfolio (= for each pixel, the most frequently selected intervention across scenarios selected). For the case of a single scenario display, it simply shows the corresponding portfolio. </li>\
             <li> <b>  Footprint map </b> reflects the areas selected consistenly for interventions, across several scenario. For the case of a single scenario display, it is just the overall footprint of its portfolio. </li>\
@@ -89,10 +89,10 @@ function BtnHelp(){
         title: "Optimization results for the Maragua watershed",
         html: "<div style='text-align: left;'> \
                 <br/> \
-                <ul> <h3> ES (ecosystem services) objectives: </h3> <li> maximize annual water yield (AWY in 10<sup>6</sup> m<sup>3</sup>/year) </li> \
+                <ul> <h3> Ecosystem services (ES) objectives: </h3> <li> maximize annual water yield (AWY in 10<sup>6</sup> m<sup>3</sup>/year) </li> \
                 <li> minimize sediment reaching streams (SDE in 10<sup>6</sup> tons of sediments eroded annually)</li>\
                 <li> minimize soil loss for agricultural productivity (SDL) in 10<sup>6</sup> tons lost to stream annually)</li> </ul>" + 
-                "<br/>" + "800 scenarios were generated, arising from parametric uncertainty (4 parameters with 2 to 4 possible values)\
+                "<br/>" + "800 scenarios were generated, arising from parametric uncertainty (4 parameters with 2 to 4 possible values each)\
                 and 15 combinations of objectives weights." +
                 "<hr/>" + " <i> The full dataset table can be viewed. It is also linked to the other views: the dataset shrinks to match the selection when a subset of scenarios is chosen\
                 (upon brush on the parallel coordinates plot, or a slide over a sub-range of the sliders for example). Upon click on a specific row, this solution is highlighted in all\
