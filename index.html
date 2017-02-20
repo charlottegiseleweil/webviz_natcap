@@ -42,9 +42,10 @@
   <script src ='js/map.js'></script>
   <script src ='js/scatterplot.js'></script>
 
- <!--Toggle button-->
+ <!--Fancy buttons-->
  <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
  <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-hover-dropdown/2.2.1/bootstrap-hover-dropdown.min.js"></script>
 
  <!--Fancy alerts-->
  <script src="js/lib/sweetalert2.min.js"></script>
@@ -79,7 +80,7 @@ Pour les sliders:
 -->
 <body onload="main()">
 
-<h1> Multi-objective optimization for the Maragua watershed <button class="h5" id="btnHelp_gnrl">?</button> </h1> 
+<h1> Multi-objective optimization for the Maragua watershed <button class="btn btn-default btn-xs"  id="btnHelp_gnrl">?</button> </h1> 
 
 <!-- Back button to intro page -->
 <button type="button" onclick="location.href='intro.html'" class="btn btn-default btn-sm" style="position:absolute; left:15px; top:35px;">
@@ -90,7 +91,7 @@ Pour les sliders:
 <div id="parcoords_sliders_block">
 
   <!--Paarcoords-->
-  <h4 style="margin-left: 15px"> Objective scores <button class="h5" id="btnHelp_parcoords">?</button> </h4>
+  <h4 style="margin-left: 15px"> Objective scores <button class="btn btn-default btn-xs"  id="btnHelp_parcoords">?</button> </h4>
   <div id="parcoords_canvas" class="parcoords" style="width:960px;height:200px;"> 
   </div> 
 
@@ -98,7 +99,7 @@ Pour les sliders:
   <div class="sliders" id=sliders_canvas >
 
     <div id="sliders_ow_canvas">
-      <h5> Objective weights <button id="btnHelp_sliders_ow">?</button> </h5>
+      <h5> Objective weights <button class="btn btn-default btn-xs" id="btnHelp_sliders_ow">?</button> </h5>
         <div class="slider_ow">
           AWY &nbsp;&nbsp; <b>0</b> &nbsp;
           <input id="obj1_slider" type="text"/> &nbsp;&nbsp; <b>100%</b>
@@ -114,30 +115,31 @@ Pour les sliders:
     </div>
 
     <div id="sliders_pu_canvas">
-      <h5> Key input parameters <button id="btnHelp_sliders_pu">?</button> </h5>
+      <h5> Key input parameters <button class="btn btn-default btn-xs" id="btnHelp_sliders_pu">?</button> </h5>
         <div class="slider_pu">
-          Z: &nbsp;&nbsp; <b>0.5</b> &nbsp;
+          Z &nbsp;&nbsp; <b>0.5</b> &nbsp;
           <input id="pu1_slider" type="text"/> &nbsp;&nbsp; <b>5</b>
         </div>
         <div class="slider_pu">
-          K:&nbsp;&nbsp; <b>1</b> &nbsp;
+          K &nbsp;&nbsp; <b>1</b> &nbsp;
           <input id="pu2_slider" type="text"/> &nbsp;&nbsp; <b>10</b>
         </div>
         <div class="slider_pu">
-          Spatial:&nbsp;&nbsp;  <b>A</b> &nbsp;
+          Spatial &nbsp;&nbsp;  <b>A</b> &nbsp;
           <input id="pu3_slider" type="text"/> &nbsp;&nbsp; <b>B</b>
         </div>
         <div class="slider_pu">
-          Budget:&nbsp;&nbsp; <b>0.5B</b> &nbsp;
+          Budget &nbsp;&nbsp; <b>0.5B</b> &nbsp;
           <input id="pu4_slider" type="text"/> &nbsp;&nbsp; <b>2B</b>
         </div>
 
     </div>
    <!-- Buttons -->
       <div id="buttonzContainer">
-      <button id="btnReset" class="buttonz">Reset all selections</button>
-      <button type="button" class="buttonz" id="ViewData" >View dataset</button>
-      <button onclick="location.href='data/MaraguaFeb15.csv'" class="buttonz" type="button" id="DwnldData" >Download data file</button>
+      <button id="btnReset" class="btn btn-default btn-sm" style="margin-right: 39px;">Reset all selections</button>
+      <button type="button" class="btn btn-default btn-sm" id="ViewData" style="margin-right: 39px;">View dataset</button>
+      <button onclick="location.href='data/MaraguaFeb15.csv'" class="btn btn-default btn-sm" type="button" id="DwnldData" >
+       Download data file <span class="glyphicon glyphicon-save" aria-hidden="true"></span></button>
       </div>
 
 
@@ -197,9 +199,9 @@ Pour les sliders:
         <canvas id="map_canvas" width="1030" height="335"></canvas>
         <canvas id="map_canvas2" class='map_superposee' width="1030" height="335"></canvas>
 
-        <button style="position: absolute; top: 0; right: 0;" id="Calc_map">Calculate map for selection</button>
-        <button style="position: absolute; top: 35px; right: 0;" id="btnZoom">Enable zooming</button> 
-        <button class="h5" style="position: absolute; top: 60px; right: 0;" id="btnHelp_map">?</button> 
+        <button class="btn btn-default btn-sm" style="position: absolute; top: 0; right: 0;" id="Calc_map">Calculate map for selection</button>
+        <button class="btn btn-default btn-sm" style="position: absolute; top: 35px; right: 0;" id="btnZoom">Enable zooming</button> 
+        <button class="btn btn-default btn-xs"  style="position: absolute; top: 70px; right: 0;" id="btnHelp_map">?</button> 
 
 
         <!--<canvas id="map_canvas2" width="1936" height="599"></canvas>-->
@@ -210,9 +212,24 @@ Pour les sliders:
 
 <div id="scatterplots" width="300" style="vertical-align: top;">
 
-<h4> Trade-offs curves <button class="h5" id="btnHelp_scatterplots">?</button>
-<!--Frontiers checkbox-->
+<h4> Trade-offs curves <button class="btn btn-default btn-xs"  id="btnHelp_scatterplots">?</button>
+<!--Dropdown-->
+<div class="btn-group">
+  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+    <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+  </button>
+  <ul class="dropdown-menu">
+    <li><a href="#">Frontiers lines</a></li>
+    <li><a href="#">Ticks</a></li>
+    <li><a href="#">Legend</a></li>
+    <li role="separator" class="divider"></li>
+    <li><a href="#">Boo</a></li>
+  </ul>
+</div>
+
 <input id="scatterplot_frontiers_checkbox" type="checkbox">
+
+
 </h4> 
 
 <div id="scatterplot_legend" style="position:absolute; right:0px; width:60px; height:60px">
@@ -235,19 +252,11 @@ Pour les sliders:
 <footer>
   <div class="container ">
      <p class="footer_text">
-      
-      <a href="https://www.linkedin.com/in/charlotteweil">Charlotte Gisèle Weil</a> 
-      </a>
-      
-      <a href="https://ch.linkedin.com/in/chabbey-françois-755ba754/en"">François Chabbey</a> 
-      </a>
-      
-       <a href="http://www.naturalcapitalproject.org">Natural Capital Project</a> 
-      </a>
-
+      Visualization dashboard developped by <a href="https://www.linkedin.com/in/charlotteweil">Charlotte Gisèle Weil</a> 
+      </a> with the great help of <a href="https://ch.linkedin.com/in/chabbey-françois-755ba754/en"">François Chabbey</a> 
+      </a> in the context of the <a href="http://www.naturalcapitalproject.org">Natural Capital Project</a> 
       <!-- img <a href="http://www.naturalcapitalproject.org"><img HR WIDTH="3%" src="data/images/natcap-logo.png" alt="The Natural Capital Project Img"></a> -->
     </p>
-    
   </div>
 </footer>
 

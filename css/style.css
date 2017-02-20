@@ -11,11 +11,12 @@ footer{
 }
 
 .footer_text{
-	font-size: 12px;
-	color : white;
-	margin-bottom: 5px;
-	margin-top: 5px;
-	vertical-align: center
+	font-size: 11px;
+	color : darkgrey;
+	margin-bottom: 3px;
+	margin-top: 3px;
+	vertical-align: center;
+	font-style:italic ;
 }
 
 p,ul,li,td {
@@ -29,6 +30,7 @@ h1 {
  font-size: 30px;
  font-weight: 20;
  top: 20px;
+
  }
 
 a:link {
@@ -219,11 +221,6 @@ path {
 #buttonzContainer{
 	display:block;
 	margin-top:10px;
-}
-.buttonz{
-	margin-bottom:4px;
-	margin-right: 27px;
-
 }
 
 /*   Table    */
