@@ -89,7 +89,7 @@ function BtnHelp(){
         title: "Optimization results for the Maragua watershed",
         html: "<div style='text-align: left;'> \
                 <br/> \
-                <ul> <h3> ES objectives: </h3> <li> maximize annual water yield (AWY in 10<sup>6</sup> m<sup>3</sup>/year) </li> \
+                <ul> <h3> ES (ecosystem services) objectives: </h3> <li> maximize annual water yield (AWY in 10<sup>6</sup> m<sup>3</sup>/year) </li> \
                 <li> minimize sediment reaching streams (SDE in 10<sup>6</sup> tons of sediments eroded annually)</li>\
                 <li> minimize soil loss for agricultural productivity (SDL) in 10<sup>6</sup> tons lost to stream annually)</li> </ul>" + 
                 "<br/>" + "800 scenarios were generated, arising from parametric uncertainty (4 parameters with 2 to 4 possible values)\

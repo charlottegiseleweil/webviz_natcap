@@ -7,6 +7,8 @@ var map_controls_selection;
 var continuous_scale_categories = [];
 var imageBitmap;
 
+var MAP = {};
+
 function map(){
 
     var baseRaster, ext, newExt, image, rasters, canvas, ctx;
@@ -111,6 +113,7 @@ function map(){
 
         var o = 0;
         baseRaster.forEach(function(r){
+            // ext[0] is the NO-DATA value (ext is [min,max]) so we make it transparent
             if (r === ext[0]) {
                 color_data[o] = 255;
                 color_data[o+1] = 255;
@@ -140,13 +143,18 @@ function map(){
         };
     }
 
-    function render_categorical(ctx,canvas_ID) {
+    function render_categorical(ctx,canvas_ID, raster) {
+        if (!raster) {
+            raster = baseRaster;
+        }
+
         colorScale = d3.scale.ordinal().domain(Land_cover_scale[0]).range(Land_cover_scale[1]);
         var imageData = ctx.createImageData(image.getWidth(), image.getHeight());
         var color_data = imageData.data;
 
         var o = 0;
-        baseRaster.forEach(function(r){
+        raster.forEach(function(r){
+            // ext[0] is the NO-DATA value (ext is [min,max]) so we make it transparent
             if (r === ext[0]) {
                 color_data[o] = 255;
                 color_data[o+1] = 255;
@@ -265,6 +273,9 @@ function map(){
         }
     });
     // ------------ End of zooming functionalities --------------
+
+    MAP.render_categorical = render_categorical;
+    MAP.render_continuous = render_continuous;
 
 };
 
@@ -406,4 +417,5 @@ function choose_map(subset,d) {
             $("#map_canvas2").addClass('invisiblee');
         }
     }
+
 }

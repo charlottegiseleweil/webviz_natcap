@@ -63,7 +63,18 @@ var col_floats= [];
       BtnHelp();
     });
 
-    //Buttons
+    //Buttons 
+    //TODO: RIGHT NOW ONLY DOING IT FOR PORTFOLIOS !
+    d3.select("#Calc_map").on('click',function()  {
+        var filtered_maps = filtered_data.map(function(d){
+        return  ('./data/' + d.port_rast)
+        });
+      rasterComputation(filtered_maps);
+    });
+    //todo : mettre ce button dans le script map/ et choisir le type de map selon la selection des map_controls.
+      
+    
+
     //Other buttons    
     d3.select("#ViewData").on('click',function()
       {

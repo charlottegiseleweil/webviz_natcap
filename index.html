@@ -58,6 +58,9 @@
  <script src="js/lib/divgrid.js"></script>
  <script src ='js/table.js'></script>
 
+<!-- Raster computation -->
+ <script src ='js/rasterComputation.js'></script>
+<script src="http://d3js.org/queue.v1.min.js"></script>
 
 </head>
 
@@ -78,11 +81,16 @@ Pour les sliders:
 
 <h1> Multi-objective optimization for the Tana Waterfund <button class="h5" id="btnHelp_gnrl">?</button> </h1> 
 
+<!-- Back button to intro page -->
+<button type="button" onclick="location.href='intro.html'" class="btn btn-default btn-sm" style="position:absolute; left:15px; top:35px;">
+  <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> All watersheds
+</button>
+
 <div id="parcoords_n_map_block">
 <div id="parcoords_sliders_block">
 
   <!--Paarcoords-->
-  <h4> Objective scores <button class="h5" id="btnHelp_parcoords">?</button> </h4>
+  <h4 style="margin-left: 15px"> Objective scores <button class="h5" id="btnHelp_parcoords">?</button> </h4>
   <div id="parcoords_canvas" class="parcoords" style="width:960px;height:200px;"> 
   </div> 
 
