@@ -1,7 +1,7 @@
 function scatterplots(data,nb_ticks){
-    scatterplot('awy_score','sde_score','#scatterplot1', data);
-    scatterplot('sde_score','sdl_score','#scatterplot2', data);
-    scatterplot('sdl_score','awy_score','#scatterplot3', data);
+    scatterplot('awy_score','sde_score','#scatterplot1', data ,nb_ticks);
+    scatterplot('sde_score','sdl_score','#scatterplot2', data ,nb_ticks);
+    scatterplot('sdl_score','awy_score','#scatterplot3', data ,nb_ticks);
 }
 
 function scatterplot(variable_x,variable_y,location,data_to_plot,nb_ticks){
@@ -68,25 +68,18 @@ function scatterplot(variable_x,variable_y,location,data_to_plot,nb_ticks){
             .text(variable_y)
 
     }
-
-
-//----------------------------------------------------------------------------------------
-// DRAFT ! Color coding corresponding to parametric uncertainty combo
-
-// Goal : si deux solutions ont les mêmes valeurs de chaque pu paramètres (i.e y'a que leurs wieghts qui changent) :display same color
-    var num_pu_combos = 3*3*2*4;
-// En fait: 72 combo, donc on va juste faire colorscale sur 1 ou 2 parametres, je vais explorer le data et regarder lesquels font le + sens
-// CHALLENGING : Comment repérer quel dot corresponds à quelle sol (trier pu_param sur col frontier_id).
-
 //----------------------------------------------------------------------------------------
 
 //Update of the dots for corresponding fed data (data_to_plot)
     svg = d3.select(location).select('svg').select('g');     //selects the node 'g' which is the scatterplot
 
-    //Connect the dots ----------
+     /* Failed attempt to make tick checkbox
+    svg.selectAll(".axis")
+        .ticks(nb_ticks)
+        .innerTickSize(5);*/
 
-
-    //TODO(chab) actually i think we can get of that, and do the sorting in the data-join
+    //Frontier lines
+    //TODO(chab) actually i think we can get of that, and do the sorting in the data-join (??)
     var data_by_frontier_id = [];
     data_to_plot.forEach(function(d){
         if (!data_by_frontier_id[d.frontier_id - 1]){
@@ -116,8 +109,6 @@ function scatterplot(variable_x,variable_y,location,data_to_plot,nb_ticks){
     linesGroup.exit().remove();
 
     //Connect the dots ----------
-
-
     var dots = svg.selectAll(".dot")
         .data(data_to_plot, function(d) { return d.index});
 

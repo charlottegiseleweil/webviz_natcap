@@ -61,6 +61,8 @@ var col_floats= [];
       scatterplots(full_data);
       scatterplotLegend();
       BtnHelp();
+
+
       //wire events
       $('#scatterplot_frontiers_checkbox').change(function() {
           if(this.checked) {
@@ -70,6 +72,17 @@ var col_floats= [];
               $(".frontier").addClass('invisiblee');
           }
       });
+
+      /* Failed attempt to make tick checkbox
+      $('#scatterplot_ticks_checkbox').change(function() {
+          if(this.checked) {
+              scatterplots(filtered_data,6);
+          }
+          else{
+              scatterplots(filtered_data,0);
+          }
+      });
+      */
 
 
     });
