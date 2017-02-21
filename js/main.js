@@ -61,6 +61,17 @@ var col_floats= [];
       scatterplots(full_data);
       scatterplotLegend();
       BtnHelp();
+      //wire events
+      $('#scatterplot_frontiers_checkbox').change(function() {
+          if(this.checked) {
+              $(".frontier").removeClass('invisiblee');
+          }
+          else{
+              $(".frontier").addClass('invisiblee');
+          }
+      });
+
+
     });
 
     //Buttons 

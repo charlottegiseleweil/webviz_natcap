@@ -5,6 +5,14 @@ body {
 	margin: auto !important;
 }
 
+.frontier {
+	cursor: pointer;
+}
+
+.frontier:hover {
+	stroke-width:4px;
+}
+
 footer{
 	width:100%;
 	background-color:lightgrey;

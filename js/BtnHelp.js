@@ -16,7 +16,7 @@ function BtnHelp(){
                 "<ul> <li> Select a subset of solution : by brushing on any axis </li> \
                 <li> Flip axis direction: upon double clicking on their name </li>\
                 <li> Re-order axis: by dragging them</li> </ul> </i> </div>" 
-         });
+         }).catch(swal.noop);
     });
 
 
@@ -30,7 +30,7 @@ function BtnHelp(){
                 (that always sums to 100% : e.g a run where each objective is given equal importance : <i> AWY_weigth = SDE_weight = SDL_weight = 33%). </i> \
                 Here, 15 combinations of objective weights were generated." + "<br/>" + "<br/>" + 
                 "<i> Slide to select a subset of scenarios, giving importance to specific objective(s)</i> </div>"
-         });
+         }).catch(swal.noop);
     });
 
 
@@ -47,7 +47,7 @@ function BtnHelp(){
                 <li> <b> Spatial </b> (**?? bpb ??**),whatisit? </li> \
                 <li> <b> The budget level </b> (*bpb, why specifically these 3 levels?*) </li> </ul>" + "<br/>" + "<br/>" + 
                 "<i> Slide to select a subset of scenarios, according to specific values of these input parameters </i> </div>"
-        });
+        }).catch(swal.noop);
     });
 
     d3.select("#btnHelp_scatterplots").on('click',function()
@@ -61,7 +61,7 @@ function BtnHelp(){
               The color intensity gives an indication of the budget (a lighter color is a smaller budget).\
               <br/> Lines can be plotted, conecting the dots generated under the same combination of uncertain input parameters values. <i> </div>"
 
-      });
+      }).catch(swal.noop);
     });
 
     d3.select("#btnHelp_map").on('click',function()
@@ -81,7 +81,7 @@ function BtnHelp(){
             <li> <b>for a subset of scenarios</b>: these map show results summarizing the scenarios selected through the other views. This situation occurs when the button <i> Calculate map for selection </i> is clicked. </li>\
             <li> <b>for a single scenario</b>: these maps displays the results corresponding to a specific solution; this occurs upon clicking on the corresponding scenario row in the data table. </li> </ul> \
             <hr/><br/> Map control buttons allow to pick the map to be displayed. The legend, as well as corresponding map summary statistics are computed and update automatically. The map window is enhanced with zooming abilities, upon click on the <i> Enable zooming </i> button. </div>"
-      });
+      }).catch(swal.noop);
     });
 
         d3.select("#btnHelp_gnrl").on('click',function()
@@ -98,7 +98,7 @@ function BtnHelp(){
                 (upon brush on the parallel coordinates plot, or a slide over a sub-range of the sliders for example). Upon click on a specific row, this solution is highlighted in all\
                 plots (corresponding point in scatterplots, and line in parallel coordinates plot) and the maps corresponding to this scenario are displayed. </i> </div>"
 
-      });
+      }).catch(swal.noop);
     });
 
 
