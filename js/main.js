@@ -84,6 +84,16 @@ var col_floats= [];
       });
       */
 
+      //Mmmm wonder why this isn't working either?
+      $('#scatterplot_legend_checkbox').change(function() {
+          if(this.checked) {
+              $("#scatterplot_legend").removeClass('invisiblee');
+          }
+          else{
+              $("#scatterplot_legend").addClass('invisiblee');
+          }
+      });
+
 
     });
 
