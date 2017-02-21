@@ -41,6 +41,8 @@ function map(){
     // Update map upon toggling 
     $('#map_toggle').change(function(){
 
+        console.log("is this called")
+
         //Select the first radiobutton if none selected
         if (!(parseFloat($('input[name=radiobutton]:checked').val())>0)){
             $('input[name=radiobutton][value="1"]').attr('checked', true);
