@@ -1,12 +1,16 @@
-function scatterplots(data){
+function scatterplots(data,nb_ticks){
     scatterplot('awy_score','sde_score','#scatterplot1', data);
     scatterplot('sde_score','sdl_score','#scatterplot2', data);
     scatterplot('sdl_score','awy_score','#scatterplot3', data);
 }
 
-function scatterplot(variable_x,variable_y,location,data_to_plot){
+function scatterplot(variable_x,variable_y,location,data_to_plot,nb_ticks){
 
-    var margin = {top: 10, right: 10, bottom: 10, left: 20},
+    if (!nb_ticks){
+        var nb_ticks = 0;
+    }
+
+    var margin = {top: 10, right: 10, bottom: 15, left: 20},
         width = 250 - margin.left - margin.right,
         height = 250 - margin.top - margin.bottom,
         color = "blue";
@@ -20,17 +24,19 @@ function scatterplot(variable_x,variable_y,location,data_to_plot){
     var xAxis = d3.svg.axis()
         .scale(x)
         .orient("bottom")
-        .ticks(0); //Spécifier le nombre de ticks qu'on veut !
+        .ticks(nb_ticks)
+        .innerTickSize(4);
 
     var yAxis = d3.svg.axis()
         .scale(y)
         .orient("left")
-        .ticks(0);
+        .ticks(nb_ticks)
+        .innerTickSize(5);
 
     x.domain(d3.extent(full_data, function(d) { return d[variable_x]; })).nice();
     y.domain(d3.extent(full_data, function(d) { return d[variable_y]; })).nice();
 
-//Creates scatterplot (do this part only the first time)
+    //Creates scatterplot (do this part only the first time)
     if (!d3.select(location).select('svg').node()) { //Checking if the scatterplot 'svg' doesn't exist
 
         var svg = d3.select(location).append("svg")
