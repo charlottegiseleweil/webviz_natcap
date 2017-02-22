@@ -11,19 +11,19 @@ def match_columns(pat, names):
 
 
 #Load data
-df = pd.read_csv('../data/raw_data/master02-16.csv')
+df = pd.read_csv('../data/raw_data/master_table20b.csv')
 
 #Group columns
 col_weights = match_columns(".+_wt$", df.columns)
 col_scores = match_columns(".+_agg_.*", df.columns)
 col_useless = ['wt_case','cost_wt', 'cost','sdr_biophysical_table_path','awy_biophysical_table_uri','esm_case']
+col_piechartstats = ["terracing_npix","grass_strips_npix","riparian_mgmt_npix","agroforestry_npix","reforestation_npix","road_mitigation_npix","terracing_frac_area","grass_strips_frac_area","riparian_mgmt_frac_area","agroforestry_frac_area","reforestation_frac_area","road_mitigation_frac_area","terracing_frac_alloc","grass_strips_frac_alloc","riparian_mgmt_frac_alloc","agroforestry_frac_alloc","reforestation_frac_alloc","road_mitigation_frac_alloc","terracing_budg","grass_strips_budg","riparian_mgmt_budg","agroforestry_budg","reforestation_budg","road_mitigation_budg"]
 
 #Remove useless columns
 df.drop(col_useless, axis=1, inplace=True)
 
 #Trim decimals in objective scores
 #df['SDE_2_agg_delta_abs']=round(df['SDE_2_agg_delta_abs'])
-
 df['SDE_2_agg_delta_abs']=df['SDE_2_agg_delta_abs'].apply(round)
 df['AWY_1_agg_delta_abs']=df['AWY_1_agg_delta_abs'].apply(round)
 df['SDL_3_agg_delta_abs']=df['SDL_3_agg_delta_abs'].apply(round)
@@ -55,4 +55,4 @@ df_reordered = df[['awy_weight','sde_weight', 'sdl_weight','awy_score','sde_scor
 print(df_reordered.columns)
 
 #Write cleaned file
-df_reordered.to_csv('../data/MaraguaFeb16.csv')
+df_reordered.to_csv('../data/MaraguaFeb22.csv')

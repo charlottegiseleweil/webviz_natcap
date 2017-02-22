@@ -9,6 +9,8 @@ var imageBitmap;
 
 var MAP = {};
 
+
+
 function map(){
 
     var baseRaster, ext, newExt, image, rasters, canvas, ctx;
@@ -35,7 +37,6 @@ function map(){
 
     // legend box size
     var ls_w = legend_height/num_legend_boxes, ls_h = legend_height/num_legend_boxes;
-
 
 
     // Update map upon toggling 
@@ -71,7 +72,7 @@ function map(){
         }
     });
 
-
+    
     render_map('map_canvas', map_chosen);
     update_map_stats(full_data);
 
@@ -278,6 +279,7 @@ function map(){
 
     MAP.render_categorical = render_categorical;
     MAP.render_continuous = render_continuous;
+    MAP.render_map = render_map;
 
 };
 
