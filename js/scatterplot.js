@@ -100,11 +100,32 @@ function scatterplot(variable_x,variable_y,location,data_to_plot,nb_ticks){
         cleanedData.push(data_by_frontier_id[i]);
     });
 
+    var areFrontiersHidden = !$('#scatterplot_frontiers_checkbox').prop('checked');
+
     var linesGroup = svg.selectAll('.frontier')
         .data(cleanedData, function(d,i) { if (d.length) return d[0].frontier_id});
     linesGroup.enter()
         .append('path')
-        .classed('frontier', true);
+        .classed('frontier', true)
+        .classed('invisiblee', areFrontiersHidden)
+        .on('click', function(d){
+            // grab values from data
+            // c'est egal quel point on prend, vu qu'ils ont tous la meme value
+            var budgetSliderValue = d[0].input_budget;
+            var spatSliderValue = d[0].input_spat;
+            var zSliderValue = d[0].input_1;
+            var kSliderValue = d[0].input_2;
+            // set slider value
+            // a discuter avec Charlie ski pourrait etre le mieux
+            /*pu1_slider.setValue([zSliderValue - 1, zSliderValue]);
+            pu2_slider.setValue([spatSliderValue - 1, spatSliderValue ]);
+            pu4_slider.setValue([budgetSliderValue - 1, budgetSliderValue ]);
+            */
+
+
+        }); // ici c'est pas grave si on rajoute un listener, parce qu'il est cree que quand on met un
+    // nouvel element
+
     linesGroup.attr("d", line);
     linesGroup.exit().remove();
 
