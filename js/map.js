@@ -38,17 +38,15 @@ function map(){
     // legend box size
     var ls_w = legend_height/num_legend_boxes, ls_h = legend_height/num_legend_boxes;
 
+    // Update map upon toggling
+    $('#map_toggle').on('change', function(){
+        console.log("is this called");
 
-    // Update map upon toggling 
-    $('#map_toggle').change(function(){
-
-        console.log("is this called")
 
         //Select the first radiobutton if none selected
         if (!(parseFloat($('input[name=radiobutton]:checked').val())>0)){
             $('input[name=radiobutton][value="1"]').attr('checked', true);
         }
-
         choose_map("allDataset");
         render_map('map_canvas', map_chosen);
     });
