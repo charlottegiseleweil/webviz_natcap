@@ -2,7 +2,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">
 
 <link rel="stylesheet" type="text/css" href="css/intro.style.css">
-<link rel="stylesheet" type="text/css" href="css/style.css">
+
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
@@ -11,45 +12,117 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 
 <html>
+<div class="container">
 
-<h1> The Upper Tana Nairobi Waterfund (draft intro txt) </h1>
 
-<!-- Links to watersheds pages --> 
+	<h1> The Upper Tana Nairobi Waterfund </h1>
 
-<ul> <h3> Visualization of optimization results for each watersheds: </h3>
-<li> <h4> <a style="color:#993333" href="Sagana.html">Sagana-Gura</a></h4></li>
-<li> <h4> <a style="color:#333399" href="index.html">Maragua</a></h4></li>
-<li> <h4> <a style="color:#993399" href="Thika.html">Thika-Chania</a></h4></li></ul>
+	<!-- Intro paragraph -->
+	<div class="row">
+	    <p>
+		<b>60%</b> of Nairobi’s residents do not have access to a reliable water supply. To solve this issue, the Upper Tana-Nairobi Water Fund undertakes upstream water and soil conservation measures, resulting in improved water quality and supply.
+		The Upper Tana-Nairobi Water Fund is an initiative bringing together [X, Y, Z] to promote [clean and reliable water supplies for downstream stakeholders, while simultaneously fostering sustainable livelihoods for upstream farmers and others.] The main “on-the-ground” action the fund can take is the identification and prioritization of extension activities, whereby actors on the landscape (mainly farmers) are visited by local NGO’s to diagnose and offer incentives for ways to improve their yields and improve water-related outcomes. Ideally, achieving all these good outcomes simultaneously, though in some places there might be trade-offs, which the Fund is interested in minimizing. The priority watersheds under consideration are [the three, link to map below].
+		</p>
+    </div>
 
-<section >
-<div id="map">
+	<!-- Definition section -->
+	<div class="row">
+		<div class="col s4">
+			<i class="material-icons">games</i>
+			<h5>Objectives</h5>
+			<p>The goal is to optimize <b>which interventions to undertake in the Upper Tana basin </b>, in order to improve water quality and quantity supplying Nairobi.</p>
+		</div>
+      	<div class="col s4">
+      		<i class="material-icons">spa</i>
+      		<h5>Ecosystem services (ES)</h5>
+      		<p>ES: Ecosystem services are the benefits natural capital assets provide to humanity</p>
+      		<p>Three <b> ecosystem services (ES) objectives </b>are being acted upon:
+			<ul class='browser_default'> <li> maximize annual water yield (AWY in 10<sup>6</sup> m<sup>3</sup>/year) </li>
+			<li> minimize sediment reaching streams (SDE in 10<sup>6</sup> tons of sediments eroded annually)</li>
+			<li> minimize soil loss for agricultural productivity (SDL) in 10<sup>6</sup> tons lost to stream annually)</li> </ul></p>
+      	</div>
+      	<div class="col s4">
+      		<i class="material-icons">playlist_play</i>
+      		<h5>Scenarios</h5>
+      		<p>scenarios: different runs of the model with varying objective weights and input parameters’ values led to generation of different intervention scenarios… (define scenario well!)</p>
+      		<p>About 800 <b>scenarios</b> were generated, arising from parametric uncertainty (4 parameters with 2 to 4 possible values each) and 15 combinations of objectives weights.</p>
+      	</div>
+    </div>
+
+
+	<!-- Map section -->
+	<div class="row">
+		<div id="map" class="col s8"></div>
+      	<div class="col s4">
+      		<!-- Links to watersheds pages --> 
+			<ul> <h5> Visualization of optimization results for each watersheds: </h5>
+			The watershed dashboards (below) allow to visualize the scenarios generated through optimization ... *Need to explain all this better*
+			<li> <a style="color:#993333" href="Sagana.html">Sagana-Gura</a></li>
+			<li> <a style="color:#333399" href="index.html">Maragua</a></li>
+			<li> <a style="color:#993399" href="Thika.html">Thika-Chania</a></li></ul>
+      	</div>
+    </div>
+
+    <!-- Addl text section -->
+	<div class="row">
+	    <p>The ability to achieve multiple objectives simultaneously while minimizing negative impacts is a function of what is recommended, but also where it is recommended. For example, if one only cares about avoiding sediment in streams, then buffers where agricultural land meets streams may be most effective -- but upland soils could still lose productivity. In this case an intervention that prevents on-field erosion likely will have dual benefits. Yet, at the same time, the increase in yields may reduce water reaching streams as plants utilize additional water. 
+
+		This general problem is one that can be formalized as a “multi-objective optimization” -- ecosystem services models that represent changing management of the landscape can be run in combination with solvers to identify landscape configurations that can approximate the best combination of a given combination of objectives, and also to understand how the recommended configuration changes. Because different actors may have different priorities, and because modeled outcomes can only be modeled imprecisely, it is illuminating to consider how portfolios and their performance change in response to these alternative values and scenarios. By doing so, one can gain insight into relationships and identify recommendations that meet multiple priorities in a variety of possible [future] worlds. 
+
+		The general priorities:
+
+		To begin, we model three related goals: 
+		Annual water yield (to be maximized, as it serves water supply and hydropower needs)
+		Sediment export to streams (to be reduced, as it harms reservoir and water treatment operations, among others). 
+		Soil erosion (to be reduced, as it reduces agricultural productivity.)*
+		 
+		For the time being these are represented in biophysical service terms. Other biophysical objectives we are interested in including are dry season baseflow, and translating soil loss into implications for agricultural productivity or yield. Longer term we may also add valuation associated with different biophysical outputs, or transformation of biophysical outputs to other benefit relevant metrics. The focus of this document is to provide an orientation to the general approach of multi-objective optimization under uncertainty, and the added benefits of the included visualization tool. [ALSO, EQUITY IN SPACE AND POPULATION, SUB-OBJECTIVES ETC]
+
+		What are the high level questions?
+
+		One run of a spatial optimizer answers the question: 
+
+		Given a known weighting on changing objectives (ie, how much increase in sediment export I’m willing to give up for a change in water yield), where are on the landscape are likely to be best places to promote specific activities, and what changes in each objective can I expect to see?
+
+		This results in two main outputs: One is a “portfolio” that is a set of pixels on the landscape, indicating where to do what activity (given a budget constraint). The second is a score for each objective, that can be visualized on a number of 2-d plots, or a parallel coordinate plot [see X].
+
+		When we generate multiple portfolios under different priorities (eg, how much concern is given to sediment, versus water yield), we can trace-out a trade-off curve, under one [scenario/set of assumptions.] 
+
+		We can then use various maps and other statistics to answer questions like:
+
+		How does the portfolio composition change as priorities are changed?
+			In terms of what activities are recommended [answered by pie chart]
+			In terms of where activities are recommended [answered by comparing maps]
+
+		[WHAT DYNAMIC VIZ ADDS: The above could be answered by making plots too, but much easier to see the general response and go back and forth between associated maps.] 
+			
+		What parts of the landscape have high agreement for activities to be chosen, regardless of priorities?  
+		[% agreement map]
+
+		WHAT DYNAMIC VIZ ADDS: In many cases, users may not know ahead of time exactly what regions of the trade-off curve are acceptable or not, but stakeholder discussion can narrow down to parts of the curve -- not focusing on one single exact weighting combination, but also not considering the entire frontier. Brushing helps [YADA YADA].  
+
+		What parts of the landscape should I focus/NOT focus on:
+		Footprint
+
+		See how it expands with budget
+
+
+		What common properties of solutions that do well on one or more objectives?
+
+		How robust is characterization of tradeoffs? 
+		</p>
+
+	</div>
+
+
+	<p> <a href="https://global.nature.org/content/beyond-the-source?src=r.global.beyondthesource">More about source water protection</a></p>
+
+	<p><a href="http://www.nature.org/ourinitiatives/regions/africa/explore/nairobi-water-fund.xml">The Nairobi Water Fund story (The Nature Conservancy)</a></p>
+
+	<p><a href="http://www.nature.org/ourinitiatives/regions/africa/upper-tana-nairobi-water-fund-business-case.pdf">Business case (PDF)</a></p>
+
+
 </div>
-<p>
-(...) 60% of Nairobi’s residents do not have access to a reliable water supply. To solve this issue, the Upper Tana-Nairobi Water Fund undertakes upstream water and soil conservation measures, resulting in improved water quality and supply.
-</p>
-
-<p>
-The goal is to optimize <b>which interventions to undertake in the Upper Tana basin </b>, in order to improve water quality and quantity supplying Nairobi. Three <b> ecosystem services (ES) objectives </b>are being acted upon:
-<ul> <li> maximize annual water yield (AWY in 10<sup>6</sup> m<sup>3</sup>/year) </li>
-<li> minimize sediment reaching streams (SDE in 10<sup>6</sup> tons of sediments eroded annually)</li>
-<li> minimize soil loss for agricultural productivity (SDL) in 10<sup>6</sup> tons lost to stream annually)</li> </ul>
-About 800 <b>scenarios</b> were generated, arising from parametric uncertainty (4 parameters with 2 to 4 possible values each) and 15 combinations of objectives weights. <br/>
-The watershed dashboards (below) allow to visualize the scenarios generated through optimization ... *Need to explain all this better*
-</p>
-</section>
-
-<div>
-<ul> Definitions
- <li> ES: ecosystem services, …</li>
- <li> scenarios: different runs of the model with varying objective weights and input parameters’ values led to generation of different intervention scenarios… (define scenario well!) …</li> </ul>
-</div>
-
-<a href="https://global.nature.org/content/beyond-the-source?src=r.global.beyondthesource">More about source water protection</a>
-
-<a href="http://www.nature.org/ourinitiatives/regions/africa/explore/nairobi-water-fund.xml">The Nairobi Water Fund story (The Nature Conservancy)</a>
-
-<a href="http://www.nature.org/ourinitiatives/regions/africa/upper-tana-nairobi-water-fund-business-case.pdf">Business case (PDF)</a>
-
 <footer>
   <div class="container ">
      <p class="footer_text">
