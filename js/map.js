@@ -9,8 +9,6 @@ var imageBitmap;
 
 var MAP = {};
 
-
-
 function map(){
 
     var baseRaster, ext, newExt, image, rasters, canvas, ctx;
@@ -43,6 +41,10 @@ function map(){
         console.log("is this called");
 
 
+    // Update map upon toggling 
+    $('#map_toggle').change(function(){
+        console.log("is this called")
+        
         //Select the first radiobutton if none selected
         if (!(parseFloat($('input[name=radiobutton]:checked').val())>0)){
             $('input[name=radiobutton][value="1"]').attr('checked', true);
@@ -70,7 +72,7 @@ function map(){
         }
     });
 
-    
+
     render_map('map_canvas', map_chosen);
     update_map_stats(full_data);
 
@@ -277,7 +279,6 @@ function map(){
 
     MAP.render_categorical = render_categorical;
     MAP.render_continuous = render_continuous;
-    MAP.render_map = render_map;
 
 };
 
