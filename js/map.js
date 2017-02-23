@@ -381,7 +381,7 @@ function choose_map(subset,d) {
             map_chosen = "./data/".concat(d[single_maps[s]]);
         }
         $("#map_title").text(map_titles_single_sol[s] + d.index);
-        $("#map_stat").text("Do we want to display smg here ?");
+        $("#map_stat").text("(Pie chart with % composition portoflio here"); 
         console.log("map chosen:" + map_chosen);
     }
     else {
