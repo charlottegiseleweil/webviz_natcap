@@ -178,6 +178,7 @@ path {
 #scatterplots {
 	display:inline-block;
 	margin-left: 10px;
+	position:relative;
 }
 
 #map_controls{

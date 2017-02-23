@@ -37,22 +37,22 @@ function BtnHelp(){
 
     d3.select('#btnHelp_sliders_pu').on('click', function() 
         {swal({
-        title: "Parametric uncertainty sliders",
+        title: "Key input parameters sliders",
         html:  "<div style='text-align: left;'> \
                 Several model input parameters are subject to uncertainty.\
                 To account for this, the model is run for several possible values of each uncertain parameter." + "<br/><br/>" 
                 + "<ul> The uncertain model input parameters are : \
-                <li> <b> seasonality factor, Z</b>, an empirical (unitless) constant used to calculate the AWY in the <a href='http://data.naturalcapitalproject.org/nightly-build/invest-users-guide/html/reservoirhydropowerproduction.html#summary'> hydropower InVEST model</a>. It captures the local precipitation pattern and additional hydrogeological characteristics. </li> \
-                <li> <b> soil erodibility value, K</b>, used to calculate the amount of annual soil loss in the <a href='http://data.naturalcapitalproject.org/nightly-build/invest-users-guide/html/sdr.html#summary'> sediment retention InVEST model </a> It measures the susceptibility of soil particles to detach and transport by rainfall and runoff. Unit is ton*ha*hr/(MJ*ha*mm). </li> \
-                <li> <b> Spatial </b> (**?? bpb ??**),whatisit? </li> \
-                <li> <b> The budget level </b> (*bpb, why specifically these 3 levels?*) </li> </ul>" + "<br/>" + "<br/>" + 
+                <li> <b> seasonality factor, Z</b>, an empirical (unitless) constant used to calculate the AWY in the <a href='http://data.naturalcapitalproject.org/nightly-build/invest-users-guide/html/reservoirhydropowerproduction.html#summary'> InVEST annual water yield model</a>. It captures the local precipitation pattern and additional hydrogeological characteristics. </li> \
+                <li> <b> soil erodibility value, K</b>, used to calculate the amount of annual soil loss in the <a href='http://data.naturalcapitalproject.org/nightly-build/invest-users-guide/html/sdr.html#summary'> sediment delivery ratio InVEST model </a> It measures the susceptibility of soil particles to detach and transport by rainfall and runoff. Unit is ton*ha*hr/(MJ*ha*mm). </li> \
+                <li> <b> Spatial </b> corresponds to different biophysical table tables used. Terrestrial InVEST models require a biophysical table that maps values for various parameters to each land cover class. This allows to switch between the default “biophysical table” constructed for Tana (A), and one with alternate parameter settings (B). </li> \
+                <li> <b> The budget level : this is not itself an uncertain parameter but rather a choice in the optimization. Currently three levels chosen for illustrative purposes (12.5, 25 and 37.5 M USD, presented in Kenyan Shillings at an exchange rate of 50 KSh:USD) </li> </ul>" + "<br/>" + "<br/>" + 
                 "<i> Slide to select a subset of scenarios, according to specific values of these input parameters </i> </div>"
         }).catch(swal.noop);
     });
 
     d3.select("#btnHelp_scatterplots").on('click',function()
       {swal({
-        title: "Trade-offs curves",
+        title: "Trade-off curves",
         html: "<div style='text-align: left;'> \
               Tradeoff curves display the tradeoffs between each pair of ES objectives. \
               Each plotted point corresponds to a scenario." + "<br/>" + "<br/>" +
