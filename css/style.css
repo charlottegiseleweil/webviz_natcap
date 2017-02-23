@@ -33,6 +33,7 @@ p,ul,li,td {
 
 h1 {
  font-size: 400%; 
+ color: blue; 
  text-align: center;
  font-size: 30px;
  font-weight: 20;
