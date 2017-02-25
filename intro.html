@@ -32,48 +32,57 @@
 	<!-- Definition section -->
 	<div class="row">
 		<div class="col s4">
-			<i class="material-icons">games</i>
-			<h5>Objectives</h5>
-			<p>The goal is to optimize <b>which interventions to undertake in the Upper Tana basin </b>, in order to improve water quality and quantity supplying Nairobi.</p>
-		</div>
-      	<div class="col s4">
-      		<i class="material-icons">spa</i>
-      		<h5>Ecosystem services (ES)</h5>
-      		<p>ES: Ecosystem services are the benefits natural capital assets provide to humanity</p>
+			<i class="material-icons">spa</i>
+			<h5>Ecosystem services (ES)</h5>
+			<p>ES: Ecosystem services are the benefits natural capital assets provide to humanity</p>
       		<p>Three <b> ecosystem services (ES) objectives </b>are being acted upon:
 			<ul class='browser_default'> <li> maximize annual water yield (AWY) </li>
 			<li> minimize sediment reaching streams (SDE)</li>
 			<li> minimize soil loss for agricultural productivity (SDL)</li> </ul></p>
+		</div>
+
+      	<div class="col s4">
+      		<i class="material-icons">games</i>
+      		<h5>Interventions</h5>
+      		<p>Objective: Spatially targeting interventions to enhance ecosystem services.</p>
+      		<p>The goal of the Waterfund is to optimize <b><i>which interventions to undertake in the Upper Tana basin</i></b>, in order to improve water quality and quantity supplying Nairobi.</p>
+      		<p>Possible interventions are Road mitigation, Agroforestry, Riparian management, Terracing, Reforestation, Grass strips</p>
+      		<p>The ability to achieve multiple objectives simultaneously while minimizing negative impacts is a function of <b><i>what</i></b> is recommended, but also <b><i>where</i></b> it is recommended. </p>
       	</div>
+
       	<div class="col s4">
       		<i class="material-icons">playlist_play</i>
-      		<h5>Scenarios</h5>
+      		<h5>Portfolios</h5>
       		<p>scenarios: different runs of the model with varying objective weights and input parameters’ values led to generation of different intervention scenarios… (define scenario well!)</p>
-      		<p>About 800 <b>scenarios</b> were generated, arising from parametric uncertainty (4 parameters with 2 to 4 possible values each) and 15 combinations of objectives weights.</p>
+      		<p>About 800 <b>portfolios</b> were generated, arising from parametric uncertainty (4 parameters with 2 to 4 possible values each) and 15 combinations of objectives weights.</p>
+      		<p> ***waiting on final text here!***</p>
       	</div>
     </div>
 
 
 	<!-- Map section -->
 	<div class="row">
-		<div id="map" class="col s8"></div>
+		<div id="map" class="col s8">
+		</div>
       	<div class="col s4">
       		<!-- Links to watersheds pages --> 
-			<ul> <h5> Visualization of optimization results for each watersheds: </h5>
-			The watershed dashboards (below) allow to visualize the scenarios generated through optimization ... *Need to explain all this better*
-			<li> <a style="color:#993333" href="Sagana.html">Sagana-Gura</a></li>
-			<li> <a style="color:#333399" href="index.html">Maragua</a></li>
-			<li> <a style="color:#993399" href="Thika.html">Thika-Chania</a></li></ul>
+			<ul> <h5> Visualization of optimization results for each watershed </h5>
+			<p>Understanding the optimizer results, comparing portfolios, assessing trade-offs and uncertainty is complex due the multiplicity of metrics, objectives, scenarios and the nature of the data (often spatial). In between communication and exploratory purposes, these interactive dashboards allow to explore the large and interconnected dataset, allowing to visualize tradeoffs between objectives, compare scenarios and assess uncertainty.</p>
+			<li> <h5><a style="color:#993333; text-align: center;" href="Sagana.html">Sagana-Gura</a></h5></li>
+			<li> <h5><a style="color:#333399; text-align: center;" href="index.html">Maragua</a></h5></li>
+			<li> <h5><a style="color:#993399;text-align: center;" href="Thika.html">Thika-Chania</a></h5></li></ul>
+			<button id="btn_explain_viz">Visualization dashboard explanations</button>
       	</div>
     </div>
 
     <!-- Addl text section -->
 	<div class="row">
-	    <p>The ability to achieve multiple objectives simultaneously while minimizing negative impacts is a function of what is recommended, but also where it is recommended. For example, if one only cares about avoiding sediment in streams, then buffers where agricultural land meets streams may be most effective -- but upland soils could still lose productivity. In this case an intervention that prevents on-field erosion likely will have dual benefits. Yet, at the same time, the increase in yields may reduce water reaching streams as plants utilize additional water. 
+	    <p>Draft in construction : 
+	    The ability to achieve multiple objectives simultaneously while minimizing negative impacts is a function of what is recommended, but also where it is recommended. For example, if one only cares about avoiding sediment in streams, then buffers where agricultural land meets streams may be most effective -- but upland soils could still lose productivity. In this case an intervention that prevents on-field erosion likely will have dual benefits. Yet, at the same time, the increase in yields may reduce water reaching streams as plants utilize additional water. 
 
 		This general problem is one that can be formalized as a “multi-objective optimization” -- ecosystem services models that represent changing management of the landscape can be run in combination with solvers to identify landscape configurations that can approximate the best combination of a given combination of objectives, and also to understand how the recommended configuration changes. Because different actors may have different priorities, and because modeled outcomes can only be modeled imprecisely, it is illuminating to consider how portfolios and their performance change in response to these alternative values and scenarios. By doing so, one can gain insight into relationships and identify recommendations that meet multiple priorities in a variety of possible [future] worlds. 
 
-		The general priorities:
+		<h5>The general priorities:</h5>
 
 		To begin, we model three related goals: 
 		Annual water yield (to be maximized, as it serves water supply and hydropower needs)
@@ -82,7 +91,15 @@
 		 
 		For the time being these are represented in biophysical service terms. Other biophysical objectives we are interested in including are dry season baseflow, and translating soil loss into implications for agricultural productivity or yield. Longer term we may also add valuation associated with different biophysical outputs, or transformation of biophysical outputs to other benefit relevant metrics. The focus of this document is to provide an orientation to the general approach of multi-objective optimization under uncertainty, and the added benefits of the included visualization tool. [ALSO, EQUITY IN SPACE AND POPULATION, SUB-OBJECTIVES ETC]
 
-		What are the high level questions?
+		<h5>Questions - and how the visualization can help answer</h5>
+		<h6> Question A</h6>
+		<p>Why it's an interesting q?</p>
+		<p> Viz solution</p>
+
+		<h6> How do the portfolios expand with budget ?</h6>
+		<p>Why it's an interesting q?</p>
+		<p> Viz solution (sliders)</p>
+
 
 		One run of a spatial optimizer answers the question: 
 
@@ -110,7 +127,7 @@
 		What parts of the landscape should I focus/NOT focus on:
 		Footprint
 
-		See how it expands with budget
+		
 
 		What common properties of solutions that do well on one or more objectives?
 
@@ -120,12 +137,14 @@
 	</div>
 
 
+	<div class="row">
+	<hr>
 	<p> <a href="https://global.nature.org/content/beyond-the-source?src=r.global.beyondthesource">More about source water protection</a></p>
 
 	<p><a href="http://www.nature.org/ourinitiatives/regions/africa/explore/nairobi-water-fund.xml">The Nairobi Water Fund story (The Nature Conservancy)</a></p>
 
 	<p><a href="http://www.nature.org/ourinitiatives/regions/africa/upper-tana-nairobi-water-fund-business-case.pdf">Business case (PDF)</a></p>
-
+	<div>
 
 </div>
 <footer>
