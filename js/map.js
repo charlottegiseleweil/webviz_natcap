@@ -301,11 +301,14 @@ function calc_tot_obj_score(data_fed,column){
 };
 
 function choose_map(subset,d) {
+    //
+
     //subset can take 3 values: allDataset, filtered, singleSol.
     //allDataset = when no brush: considering full dataset (maps displayed are the overall maps)
     //filtered = displays map correponding to the specific brushed sleection: need to make calculations !
-    // singleSol : displays the map corresponding to solution clicked in table (pull up map from dataset table.)
-    //DRAFT !! To do !
+    //singleSol : displays the map corresponding to solution clicked in table (pull up map from dataset table.)
+    
+    //This function is not finished !
 
 
     console.log('choose_map', subset, d);
@@ -318,18 +321,18 @@ function choose_map(subset,d) {
         "Objective score map for Sediment Loss"];
 
     var map_titles_single_sol = ["Portfolio of run #",
-        "(doesn't make sense)",
-        "(doesn't make sense)",
+        "Footprint of run #",
+        "Footprint of run #",
         "Objective score map for Annual Water Yield, run #",
         "Objective score map for Sediment Export, run #",
         "Objective score map for Sediment Loss, run #"];
 
-    var map_stats_txt = ["over " + num_runs_selected + " runs",
-        "over " + num_runs_selected + " runs",
-        "over " + num_runs_selected + " runs",
-        "Total AWY score = " + (tot_awy_score*1000).toFixed(2) + "*10^3 m3/yr",
-        "Total SDE score = " + (tot_sde_score*1000).toFixed(2) + "*10^3 tons to streams/yr",
-        "Total SDL score = " + (tot_sdl_score*1000).toFixed(2) + "*10^3 tons eroded/yr"];
+    var map_stats_txt = [num_runs_selected + " runs selected",
+        num_runs_selected + " runs selected",
+        num_runs_selected + " runs selected",
+        "Total AWY score = " + (tot_awy_score*1000).toFixed(0) + "000 m3/yr",
+        "Total SDE score = " + (tot_sde_score*1000).toFixed(0) + "000 tons to streams/yr",
+        "Total SDL score = " + (tot_sdl_score*1000).toFixed(0) + "000 tons eroded/yr"];
 
     // For marginal values
     /*var map_stats_txt = ["over " + num_runs_selected + " runs",
@@ -361,10 +364,6 @@ function choose_map(subset,d) {
     //3: AWY, 4: SDE, 5: SDL
 
 
-
-
-
-
     if (subset=="allDataset") {
         map_chosen = initial_maps[s];
         $("#map_stat").text(map_stats_txt[s]);
@@ -372,6 +371,8 @@ function choose_map(subset,d) {
     }
     else if (subset=="filtered"){
         console.log("Je vais display la filtered map dans ce cas là! RASTER ON THE FLY COMPUTATION IS A NEXT STEP");
+        $("#map_stat").text(map_stats_txt[s]);
+        $("#map_title").text(map_titles_many_solns[s]);
     }
 
     else if (subset=="singleSol"){
@@ -402,7 +403,6 @@ function choose_map(subset,d) {
     }
     // Land cover (categorical) maps
     else {
-        console.log('cover');
         $("#label_radio1").text("Modal portfolio");
         $("#label_radio2").text("Percent agreement map");
         $("#label_radio3").text("Footprint of portfolios");

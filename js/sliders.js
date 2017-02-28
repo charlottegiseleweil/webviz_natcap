@@ -126,6 +126,8 @@ function sliders_plot(){
 
         //Update map
         update_map_stats(filtered_data);
+        choose_map('filtered');
+
 
         //Update table
         table(filtered_data);
