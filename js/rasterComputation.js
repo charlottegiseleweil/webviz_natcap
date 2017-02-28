@@ -1,3 +1,4 @@
+
 //Raster computation
 function rasterComputation(maps_selected){
 

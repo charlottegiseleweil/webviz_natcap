@@ -5,6 +5,7 @@ function BtnHelp(){
     //Help buttons
     d3.select('#btnHelp_parcoords').on('click', function() 
       {swal({
+        animation: false,
         title: "Parallel coordinates plot",
         html: "<div style='text-align: left;'> Each vertical axis corresponds to an ES objective, each line represents a portfolio. " +
                 "The values plotted correspond to the overall aggregated objective score, for the scenario considered (the sum of all pixels’ scores for this objective, across the raster)."
@@ -23,6 +24,7 @@ function BtnHelp(){
       
     d3.select('#btnHelp_sliders_ow').on('click', function() 
         {swal({
+        animation: false,
         title: "Objective weights sliders",
         html: "<div style='text-align: left;'> \
                 The objective weights corresponds to the relative importance given to each ES objective in each run."  
@@ -37,6 +39,7 @@ function BtnHelp(){
 
     d3.select('#btnHelp_sliders_pu').on('click', function() 
         {swal({
+        animation: false,
         title: "Key input parameters sliders",
         html:  "<div style='text-align: left;'> \
                 Several model input parameters are subject to uncertainty.\
@@ -52,6 +55,7 @@ function BtnHelp(){
 
     d3.select("#btnHelp_scatterplots").on('click',function()
       {swal({
+        animation: false,
         title: "Trade-off curves",
         html: "<div style='text-align: left;'> \
               Tradeoff curves display the relationship between each pair of ES objectives. \
@@ -66,6 +70,7 @@ function BtnHelp(){
 
     d3.select("#btnHelp_map").on('click',function()
       {swal({
+        animation: false,
         title: "Map",
         html: "<div style='text-align: left;'> \
             Different types of maps combining information about the selected scenarios can be displayed, using the map control buttons on the upper left.\
@@ -86,8 +91,9 @@ function BtnHelp(){
       }).catch(swal.noop);
     });
 
-        d3.select("#btnHelp_gnrl").on('click',function()
+    d3.select("#btnHelp_gnrl").on('click',function()
       {swal({
+        animation: false,
         title: "Optimization results for the Maragua watershed",
         html: "<div style='text-align: left;'> \
                 <br/> \
@@ -105,6 +111,53 @@ function BtnHelp(){
       }).catch(swal.noop);
     });
 
+    //Test pr swal
+    /*d3.select("#btnHelp_gnrl").on('click',function()
+      {swal({title:'e',
+        showCancelButton: true},function(e){
+            console.log("yeag");
+            if (e){console.log(e);}
+        })
+       });*/
+
+
+    d3.select("#Calc_map").on('click',function(){
+        //Map selection : s
+        var s = 3*($('#map_toggle').prop('checked')) + parseFloat($('input[name=radiobutton]:checked').val()) - 1;
+        //0: Porfolio, 1: %, 2: footprint; 3:AWY, 4: SDE, 5: SDL
+
+        if (s === 0){
+            swal({
+                animation: false,
+                showCancelButton: true,
+                confirmButtonText: "Proceed to calculate map",
+                title: "Calculating rasters can be lengthy",
+                html: "<div style='text-align: left;'> \
+                       You have selected" + "num_runs_selected" + 
+                       "maps. The calculation of the modal portfolio for this specific selection should take roughly"+
+                       "num_runs_selected/3" + "seconds </div>"
+
+                },function(isConfirm){
+                    console.log('');
+                    if (isConfirm) {
+                        //Raster computation
+                        //TODO: RIGHT NOW ONLY DOING IT FOR PORTFOLIOS ! In the future adapt for each type of map
+                        //console.log('r');
+                        var filtered_maps = filtered_data.map(function(d){
+                            return  ('./data/' + d.port_rast)
+                            });
+                        rasterComputation(filtered_maps);
+                    }
+                }
+                );
+        }
+        else{
+            swal({
+                title: "This feature is not yet implemented",
+                 html: "Automatic calculation of rasters for the selected type of map is not supported by this prototype. Sorry!"
+            });
+        }
+    });
 
 
 }
