@@ -104,14 +104,11 @@ function scatterplot(variable_x,variable_y,location,data_to_plot,nb_ticks){
         cleanedData.push(data_by_frontier_id[i]);
     });
 
-    var areFrontiersHidden = !$('#scatterplot_frontiers_checkbox').prop('checked');
-
     var linesGroup = svg.selectAll('.frontier')
         .data(cleanedData, function(d,i) { if (d.length) return d[0].frontier_id});
     linesGroup.enter()
         .append('path')
         .classed('frontier', true)
-        .classed('invisiblee', areFrontiersHidden)
         .on('click', function(d){
             // grab values from data
             // c'est egal quel point on prend, vu qu'ils ont tous la meme value
@@ -119,13 +116,35 @@ function scatterplot(variable_x,variable_y,location,data_to_plot,nb_ticks){
             var spatSliderValue = d[0].input_spat;
             var zSliderValue = d[0].input_1;
             var kSliderValue = d[0].input_2;
-            // set slider value
-            // a discuter avec Charlie ski pourrait etre le mieux
-            /*pu1_slider.setValue([zSliderValue - 1, zSliderValue]);
-            pu2_slider.setValue([spatSliderValue - 1, spatSliderValue ]);
-            pu4_slider.setValue([budgetSliderValue - 1, budgetSliderValue ]);
-            */
 
+            var zInterval = [zSliderValue, zSliderValue + 1];
+            var kInterval = [kSliderValue, kSliderValue + 1];
+            var spatInterval = [spatSliderValue, spatSliderValue + 1];
+            var budgetInterval = [budgetSliderValue, budgetSliderValue + 1];
+
+            // set slider value
+            pu1_slider.setValue([zSliderValue, zSliderValue]);
+            pu3_slider.setValue([spatSliderValue, spatSliderValue ]);
+            pu2_slider.setValue([kSliderValue, kSliderValue]);
+            pu4_slider.setValue([budgetSliderValue, budgetSliderValue ]);
+
+
+            var filtered_data = dimensions['input_1'].filter(zInterval).top(Infinity);
+            filtered_data = dimensions['input_2'].filter(kInterval).top(Infinity);
+            filtered_data = dimensions['input_spat'].filter(spatInterval).top(Infinity);
+            filtered_data = dimensions['input_budget'].filter(budgetInterval).top(Infinity);
+
+            var be = parcoords.brushExtents();
+            parcoords
+                .data(filtered_data)
+                .render();
+            parcoords.brushExtents(be);
+            //Update scatterplots
+            scatterplots(filtered_data);
+            //Update map
+            update_map_stats(filtered_data);
+            //Update table
+            table(filtered_data);
 
         }); // ici c'est pas grave si on rajoute un listener, parce qu'il est cree que quand on met un
     // nouvel element
