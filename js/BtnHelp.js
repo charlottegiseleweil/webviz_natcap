@@ -111,14 +111,6 @@ function BtnHelp(){
       }).catch(swal.noop);
     });
 
-    //Test pr swal
-    /*d3.select("#btnHelp_gnrl").on('click',function()
-      {swal({title:'e',
-        showCancelButton: true},function(e){
-            console.log("yeag");
-            if (e){console.log(e);}
-        })
-       });*/
 
 
     d3.select("#Calc_map").on('click',function(){
@@ -133,11 +125,11 @@ function BtnHelp(){
                 confirmButtonText: "Proceed to calculate map",
                 title: "Calculating rasters can be lengthy",
                 html: "<div style='text-align: left;'> \
-                       You have selected" + "num_runs_selected" + 
-                       "maps. The calculation of the modal portfolio for this specific selection should take roughly"+
-                       "num_runs_selected/3" + "seconds </div>"
+                       You have selected " + num_runs_selected + 
+                       " maps. The calculation of the modal portfolio for this specific selection should take roughly "+
+                       (num_runs_selected/3).toFixed(0) + " seconds </div>"
 
-                },function(isConfirm){
+                }).then(function(isConfirm){
                     console.log('');
                     if (isConfirm) {
                         //Raster computation
@@ -148,8 +140,7 @@ function BtnHelp(){
                             });
                         rasterComputation(filtered_maps);
                     }
-                }
-                );
+            }).catch(swal.noop);
         }
         else{
             swal({

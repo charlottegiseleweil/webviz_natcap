@@ -7,7 +7,7 @@ function scatterplots(data,nb_ticks){
 function scatterplot(variable_x,variable_y,location,data_to_plot,nb_ticks){
 
     if (!nb_ticks){
-        var nb_ticks = 0;
+        nb_ticks = 0;
     }
 
     var margin = {top: 10, right: 10, bottom: 15, left: 20},
@@ -72,6 +72,10 @@ function scatterplot(variable_x,variable_y,location,data_to_plot,nb_ticks){
 
 //Update of the dots for corresponding fed data (data_to_plot)
     svg = d3.select(location).select('svg').select('g');     //selects the node 'g' which is the scatterplot
+
+
+    svg.select('.y.axis').call(yAxis);
+    svg.select('.x.axis').call(xAxis);
 
      /* Failed attempt to make tick checkbox
     svg.selectAll(".axis")

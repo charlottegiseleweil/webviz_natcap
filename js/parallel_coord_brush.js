@@ -61,7 +61,7 @@ function parcoords_plot(){
     filtered_data = dimensions['sdl_score'].filter(be3).top(Infinity);
                  //There has to be a more proper way to do this with a joli for loop!
 
-    scatterplots(filtered_data);
+    scatterplots(filtered_data,nbTicks);
 
     //Update map
     update_map_stats(filtered_data);

@@ -122,7 +122,7 @@ function sliders_plot(){
         parcoords.brushExtents(be);
 
         //Update scatterplots
-        scatterplots(filtered_data);
+        scatterplots(filtered_data,nbTicks);
 
         //Update map
         update_map_stats(filtered_data);

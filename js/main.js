@@ -7,15 +7,21 @@ var brushed_data = full_data;
 var parcoords;
 var columns;
 var columnNames;
+var nbTicks = 0;
 
 var col_weights = [];
-var col_score= [];
-var col_inputs= [];
-var col_maps= [];
-var col_floats= [];
+var col_score = [];
+var col_inputs = [];
+var col_maps = [];
+var col_floats = [];
+
+//Prevent Safari users 
+var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+if (is_safari){alert("Safari is not a supported browser for this visualization tool. Please use Chrome or Firefox. Have a nice day!")
 
 
   function main(){
+
 
     //load csv data file & creates plots
     d3.csv(DATA, function(row) { 
@@ -73,16 +79,17 @@ var col_floats= [];
           }
       });
 
-      /* Failed attempt to make tick checkbox
+      //Failed attempt to make tick checkbox
       $('#scatterplot_ticks_checkbox').change(function() {
           if(this.checked) {
-              scatterplots(filtered_data,6);
+              nbTicks=6;
           }
           else{
-              scatterplots(filtered_data,0);
+              nbTicks=0;
           }
+          scatterplots(filtered_data,nbTicks);
       });
-      */
+      
 
       //Mmmm wonder why this isn't working either?
       $('#scatterplot_legend_checkbox').change(function() {
