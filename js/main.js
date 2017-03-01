@@ -15,11 +15,6 @@ var col_inputs = [];
 var col_maps = [];
 var col_floats = [];
 
-//Prevent Safari users 
-var is_safari = navigator.userAgent.indexOf("Safari") > -1;
-if (is_safari){alert("Safari is not a supported browser for this visualization tool. Please use Chrome or Firefox. Have a nice day!")
-
-
   function main(){
 
 
