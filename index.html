@@ -8,7 +8,12 @@
   <title>Multiple scenarios viz prototype</title>
   <link rel="stylesheet" type="text/css" href="css/d3.parcoords.css">
   <link rel="stylesheet" type="text/css" href="css/style.css">
-  
+
+<script>
+//Prevent Safari users 
+var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+if (is_safari){alert("Safari is not a supported browser for this visualization tool. Please use Chrome or Firefox. Have a nice day!")};
+</script>
 
   <!--Crossfilter-->
   <script src='https://cdnjs.cloudflare.com/ajax/libs/crossfilter/1.3.12/crossfilter.min.js'></script>
