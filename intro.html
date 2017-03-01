@@ -7,13 +7,15 @@
 
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+<!-- D3-->
 <script src="https://d3js.org/d3.v4.min.js" charset="utf-8"></script>
+
+<!-- Leaflet et Geotiff (map) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.5/leaflet.js"></script>
 <script src="js/lib/geotiff.js"></script>
+
 <!-- Materialize JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
-
-
 
 <html>
 <div class="container">
@@ -34,11 +36,11 @@
 		<div class="col s4">
 			<i class="material-icons">spa</i>
 			<h5>Ecosystem services (ES)</h5>
-			<p>ES: Ecosystem services are the benefits natural capital assets provide to humanity</p>
-			<p>Three <b> ecosystem services (ES) objectives </b>are being acted upon:
-			<ul class='browser_default'> <li> maximize annual water yield (AWY) </li>
-				<li> minimize sediment reaching streams (SDE)</li>
-				<li> minimize soil loss for agricultural productivity (SDL)</li> </ul></p>
+			<p>Ecosystem services are the benefits natural capital assets provide to humanity</p>
+			<p>Three related <b> ecosystem services (ES) objectives </b>are being acted upon:
+			<ul> <li class='browser_default'> * <em> Annual water yield </em> (AWY) to be maximized, as it serves water supply and hydropower needs </li>
+				<li> * <em> Sediment export to streams </em> (SDE) to be minimized, as it harms reservoir and water treatment operations, among others</li>
+				<li> * <em> Soil erosion </em>  (SDL) to be minimzed, as it reduces agricultural productivity</li> </ul></p>
 		</div>
 
 		<div class="col s4">
@@ -71,7 +73,7 @@
 				<li> <h5><a style="color:#993333; text-align: center;" href="Sagana.html">Sagana-Gura</a></h5></li>
 				<li> <h5><a style="color:#333399; text-align: center;" href="index.html">Maragua</a></h5></li>
 				<li> <h5><a style="color:#993399;text-align: center;" href="Thika.html">Thika-Chania</a></h5></li></ul>
-			<button id="btn_explain_viz">Visualization dashboard explanations</button>
+			<button id="btn_explain_viz" class="btn waves-light" style="font-size: 12px">Details on visualization dashboard</button>
 		</div>
 	</div>
 
@@ -84,10 +86,7 @@
 
 		<h4>The general priorities:</h4>
 
-		To begin, we model three related goals:
-		Annual water yield (to be maximized, as it serves water supply and hydropower needs)
-		Sediment export to streams (to be reduced, as it harms reservoir and water treatment operations, among others).
-		Soil erosion (to be reduced, as it reduces agricultural productivity.)*
+		To begin, we model three related goals, detailed higher in section (ES)
 
 		For the time being these are represented in biophysical service terms. Other biophysical objectives we are interested in including are dry season baseflow, and translating soil loss into implications for agricultural productivity or yield. Longer term we may also add valuation associated with different biophysical outputs, or transformation of biophysical outputs to other benefit relevant metrics. The focus of this document is to provide an orientation to the general approach of multi-objective optimization under uncertainty, and the added benefits of the included visualization tool. [ALSO, EQUITY IN SPACE AND POPULATION, SUB-OBJECTIVES ETC]
 

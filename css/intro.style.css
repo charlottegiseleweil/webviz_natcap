@@ -13,4 +13,13 @@
     	text-align: justify;
     }
 
+    .btn {
+        background-color: lightgrey;
+    }
+
+    .btn:hover{
+        background-color: grey;
+    }
+
+
     
