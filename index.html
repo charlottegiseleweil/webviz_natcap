@@ -11,7 +11,7 @@
 
 <script>
 //Prevent Safari users 
-var is_safari = navigator.userAgent.indexOf("Safari") > -1;
+var is_safari = navigator.vendor === 'Apple Computer, Inc.';
 if (is_safari){alert("Safari is not a supported browser for this visualization tool. Please use Chrome or Firefox. Have a nice day!")};
 </script>
 
