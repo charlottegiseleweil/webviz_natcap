@@ -2,6 +2,7 @@ var colorScale;
 var calc_tot_obj_score;
 var tot_awy_score, tot_sde_score, tot_sdl_score, num_runs_selected;
 var landcovermap = "./data/initial_maps/maragua_base_lulc.tif";
+var areaMap = "./data/initial_maps/maragua_base.tif";
 var map_chosen = landcovermap; //map to display initially
 var map_controls_selection;
 var continuous_scale_categories = [];
@@ -23,7 +24,7 @@ function map(){
         ['Urban and paved roads', 'Bare soil and unpaved roads', 'Grass', 'Shrub', 'General agriculture', 'Tea', 'Coffee', 'Mixed forest', 'Water', 'Evergreen forest', 'Forest plantation', 'Pineapple', 'Wetland', 'Orchard', 'Corn', 'Native montane bunchgrass', 'Bare rock', 'Unpaved road', 'Agroforestry', 'Riparian mgmt', 'Terracing', 'Reforestation', 'Grass strips', 'Road mitigation']];
 
     var Land_cover_scale =[[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-        ['#99a391','#866a4e','#a4c056','#e7cf13','#f77469','#f6c8e3',"#cfb19d",'#a3eba7','#003366','#7aaf54','#467437','#e9f173','#a6c8e3','#b3c01f','#912f5c','#715edc','#a4c056','#474747','#865f36','#6696ad','#7731ad','#4de060','#ef8741','#ea81c9'],
+        ['#e0e0e0','#866a4e','#a4c056','#e7cf13','#f77469','#f6c8e3',"#cfb19d",'#a3eba7','#003366','#7aaf54','#467437','#e9f173','#a6c8e3','#b3c01f','#912f5c','#715edc','#a4c056','#474747','#865f36','#6696ad','#7731ad','#4de060','#ef8741','#ea81c9'],
         ['Urban and paved roads', 'Bare soil and unpaved roads', 'Grass', 'Shrub', 'General agriculture', 'Tea', 'Coffee', 'Mixed forest', 'Water', 'Evergreen forest', 'Forest plantation', 'Pineapple', 'Wetland', 'Orchard', 'Corn', 'Native montane bunchgrass', 'Bare rock', 'Unpaved road', 'Agroforestry', 'Riparian mgmt', 'Terracing', 'Reforestation', 'Grass strips', 'Road mitigation']];
 
     var Land_cover_scale_test =[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
@@ -56,16 +57,19 @@ function map(){
     });
 
     //Overlay on landcover
-    render_map('map_canvas2', landcovermap);
-    $("#map_canvas2").addClass('invisiblee');
+    // --- render_map('map_canvas2', landcoverMap);
+    // --- $("#map_canvas2").addClass('invisiblee');
 
     $('#landcover_checkbox').change(function() {
         if(this.checked) {
-            $("#map_canvas2").removeClass('invisiblee');
+            //$("#map_canvas2").removeClass('invisiblee');
+            var overlayMap = landcovermap;
         }
         else{
-            $("#map_canvas2").addClass('invisiblee');
+            //$("#map_canvas2").addClass('invisiblee');
+            var overlayMap = areaMap;
         }
+        render_map('map_canvas2', overlayMap);
     });
 
 
@@ -267,7 +271,7 @@ function map(){
             $("#btnZoom").html("Reset zoom");
         } else {
             render_map('map_canvas', map_chosen);
-            render_map('map_canvas2', landcovermap);
+            render_map('map_canvas2', overlayMap);
             $("#btnZoom").html("Reset zoom");
         }
     });
@@ -409,12 +413,13 @@ function choose_map(subset,d) {
         $("#landcover_checkbox").removeClass("invisiblee");
         $("#ObjToggle").addClass("invisiblee");
         $("#overlay_txt").removeClass("invisiblee");
+        $("#map_canvas2").removeClass('invisiblee');
         // check if we need to bring back land cover
-        if ($('#landcover_checkbox').prop('checked')) {
+        /*if ($('#landcover_checkbox').prop('checked')) {
             $("#map_canvas2").removeClass('invisiblee');
         } else{
             $("#map_canvas2").addClass('invisiblee');
-        }
+        }*/
     }
 
 }
