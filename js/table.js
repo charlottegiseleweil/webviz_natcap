@@ -23,6 +23,7 @@ var grid= d3.divgrid();
           //here: todo - show corresponding map + map statistics (+ pie plots for weights and land cover)
           choose_map('singleSol',d);
           map(); //just to render map
+          renderPiePlot(d);
           
       },
       "mouseout": function(d) {

@@ -70,6 +70,7 @@ var columnsToCrossfilter = [];
       scatterplots(full_data);
       scatterplotLegend();
       BtnHelp();
+      initPiePlot();
 
 
       //wire events
@@ -119,6 +120,7 @@ var columnsToCrossfilter = [];
         } else {
           $("#table_canvas").addClass('invisiblee');
           $("#ViewData").html("View dataset");
+          $("#pie-chart").addClass('invisiblee').removeClass('inline');
         }
       });
 

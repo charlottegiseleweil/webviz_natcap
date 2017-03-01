@@ -408,22 +408,26 @@ function choose_map(subset,d) {
         map_chosen = initial_maps[s];
         $("#map_stat").text(map_stats_txt[s]);
         $("#map_title").text(map_titles_many_solns[s]);
+        $("#pie-chart").removeClass('inline').addClass('invisiblee');
     }
     else if (subset=="filtered"){
-        console.log("Je vais display la filtered map dans ce cas là! RASTER ON THE FLY COMPUTATION IS A NEXT STEP");
+        //console.log("Click on 'calculate map for selection' for the filtered map !");
         $("#map_stat").text(map_stats_txt[s]);
         $("#map_title").text(map_titles_many_solns[s]);
+        $("#pie-chart").removeClass('inline').addClass('invisiblee');
     }
 
     else if (subset=="singleSol"){
         if (d[single_maps[s]] == undefined){
-            console.log("undefined map chosen !!!"); //make an alert that you cannot choose footrpint nor percent agreement w/ single sol?
+            //console.log("undefined map chosen !!!"); //make an alert that you cannot choose footrpint nor percent agreement w/ single sol?
         }else{
             map_chosen = "./data/".concat(d[single_maps[s]]);
         }
         $("#map_title").text(map_titles_single_sol[s] + d.index);
-        $("#map_stat").text("(Pie chart with % composition portoflio here"); 
+        $("#map_stat").text("Composition:"); 
         console.log("map chosen:" + map_chosen);
+
+        $("#pie-chart").removeClass('invisiblee').addClass('inline');
     }
     else {
         //map chosen remain unchanged
