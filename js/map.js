@@ -14,30 +14,6 @@ function map(){
 
     var baseRaster, ext, newExt, image, rasters, canvas, ctx;
 
-    // continuous scale
-    var startColor = d3.rgb("#a50026");
-    var endColor = d3.rgb("#006837");
-
-    // categorical scale
-    var Land_cover_scale_trial =[[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-        ["#003366", '#f77469','#865f36','#a6c8e3',"#00336f",'#f6c8e3','#a6cee3','#1f78b4','#f77469','#b2df8a','#33a02c','#b2df86','#33002c','#f77469','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928','#b15928','#b15928','#b15928'],
-        ['Urban and paved roads', 'Bare soil and unpaved roads', 'Grass', 'Shrub', 'General agriculture', 'Tea', 'Coffee', 'Mixed forest', 'Water', 'Evergreen forest', 'Forest plantation', 'Pineapple', 'Wetland', 'Orchard', 'Corn', 'Native montane bunchgrass', 'Bare rock', 'Unpaved road', 'Agroforestry', 'Riparian mgmt', 'Terracing', 'Reforestation', 'Grass strips', 'Road mitigation']];
-
-    var Land_cover_scale =[[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
-        ['#e0e0e0','#866a4e','#a4c056','#e7cf13','#f77469','#f6c8e3',"#cfb19d",'#a3eba7','#003366','#7aaf54','#467437','#e9f173','#a6c8e3','#b3c01f','#912f5c','#715edc','#a4c056','#474747','#865f36','#6696ad','#7731ad','#4de060','#ef8741','#ea81c9'],
-        ['Urban and paved roads', 'Bare soil and unpaved roads', 'Grass', 'Shrub', 'General agriculture', 'Tea', 'Coffee', 'Mixed forest', 'Water', 'Evergreen forest', 'Forest plantation', 'Pineapple', 'Wetland', 'Orchard', 'Corn', 'Native montane bunchgrass', 'Bare rock', 'Unpaved road', 'Agroforestry', 'Riparian mgmt', 'Terracing', 'Reforestation', 'Grass strips', 'Road mitigation']];
-
-    var Land_cover_scale_test =[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
-        ["#003366",'#a6c8e3',"#00336f",'#f6c8e3','#a6cee3','#1f78b4','#b2df8a','#33a02c','#b2df86','#33002c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928'],
-        ["Grass","Forest","Road","Land","Dry forest","introduced grassland","Sand","Barren","Woods","Grass green","Forest","Big forest","Awesome forest","Water","Unicorn","Agroforestry","Sand","Moutain","Superurban","Urban"]];
-
-    var num_legend_boxes = Land_cover_scale[0].length + 1;
-    var legend_height = 337; //(max height) chosen same height as map
-
-    // legend box size
-    var ls_w = legend_height/num_legend_boxes, ls_h = legend_height/num_legend_boxes;
-
-
     // Update map upon toggling 
     $('#map_toggle').change(function(){
         console.log("is this called")
@@ -151,7 +127,21 @@ function map(){
             raster = baseRaster;
         }
 
-        colorScale = d3.scale.ordinal().domain(Land_cover_scale[0]).range(Land_cover_scale[1]);
+        //Choose appropriate colorscale
+        if (canvas_ID === 'map_canvas2'){
+            chosenColorscale = Land_cover_scale;
+        }
+        else if (parseFloat($('input[name=radiobutton]:checked').val()) === 1){
+            chosenColorscale = Land_cover_scale;
+        }
+        else if (parseFloat($('input[name=radiobutton]:checked').val()) === 2){
+            chosenColorscale = Agreement_scale;
+        }
+        else if (parseFloat($('input[name=radiobutton]:checked').val()) === 3){
+            chosenColorscale = Footprint_scale;
+        }
+
+        colorScale = d3.scale.ordinal().domain(chosenColorscale[0]).range(chosenColorscale[1]);
         var imageData = ctx.createImageData(image.getWidth(), image.getHeight());
         var color_data = imageData.data;
 
@@ -184,15 +174,61 @@ function map(){
 
     }
 
+    // ------- LEGENDS ----------
+    // continuous scale
+    var startColor = d3.rgb("#a50026");
+    var endColor = d3.rgb("#006837");
+
+    // categorical scales
+    var Land_cover_scale_trial =[[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+        ["#003366", '#f77469','#865f36','#a6c8e3',"#00336f",'#f6c8e3','#a6cee3','#1f78b4','#f77469','#b2df8a','#33a02c','#b2df86','#33002c','#f77469','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928','#b15928','#b15928','#b15928'],
+        ['Urban and paved roads', 'Bare soil and unpaved roads', 'Grass', 'Shrub', 'General agriculture', 'Tea', 'Coffee', 'Mixed forest', 'Water', 'Evergreen forest', 'Forest plantation', 'Pineapple', 'Wetland', 'Orchard', 'Corn', 'Native montane bunchgrass', 'Bare rock', 'Unpaved road', 'Agroforestry', 'Riparian mgmt', 'Terracing', 'Reforestation', 'Grass strips', 'Road mitigation']];
+
+    var Land_cover_scale =[[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24],
+        ['#a6a6a6','#866a4e','#a4c056','#e7cf13','#f77469','#f6c8e3',"#cfb19d",'#a3eba7','#003366','#7aaf54','#467437','#e9f173','#a6c8e3','#b3c01f','#912f5c','#715edc','#a4c056','#474747','#865f36','#6696ad','#7731ad','#4de060','#ef8741','#ea81c9'],
+        ['Urban and paved roads', 'Bare soil and unpaved roads', 'Grass', 'Shrub', 'General agriculture', 'Tea', 'Coffee', 'Mixed forest', 'Water', 'Evergreen forest', 'Forest plantation', 'Pineapple', 'Wetland', 'Orchard', 'Corn', 'Native montane bunchgrass', 'Bare rock', 'Unpaved road', 'Agroforestry', 'Riparian mgmt', 'Terracing', 'Reforestation', 'Grass strips', 'Road mitigation']];
+
+    var Land_cover_scale_test =[[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19],
+        ["#003366",'#a6c8e3',"#00336f",'#f6c8e3','#a6cee3','#1f78b4','#b2df8a','#33a02c','#b2df86','#33002c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928'],
+        ["Grass","Forest","Road","Land","Dry forest","introduced grassland","Sand","Barren","Woods","Grass green","Forest","Big forest","Awesome forest","Water","Unicorn","Agroforestry","Sand","Moutain","Superurban","Urban"]];
+
+    var Footprint_scale =[[1],
+        ['black'],
+        ['Intervention']];
+    
+    var Agreement_scale =[[0, 0.25,0.50,0.75,1],
+        ['white','#404040',' #808080','#bfbfbf','black'],
+        ['0% agreement','25% agreement', '50% agreement', '75% agreement', '100% agreement']];
+
+    chosenColorscale = Land_cover_scale;
+
+    var num_legend_boxes = chosenColorscale[0].length + 1;
+    var legend_height = 337; //(max height) chosen same height as map
+
+    // legend box size
+    var ls_w = legend_height/num_legend_boxes, ls_h = legend_height/num_legend_boxes;
+
     function render_legend_categorical(ctx){
         //remove previous legend
         d3.select("#legend")
             .selectAll("g.legend")
             .remove();
 
+        //Choose appropriate colorscale
+        if (parseFloat($('input[name=radiobutton]:checked').val()) === 1){
+            chosenColorscale = Land_cover_scale;
+        }
+        else if (parseFloat($('input[name=radiobutton]:checked').val()) === 2){
+            chosenColorscale = Agreement_scale;
+        }
+        else if (parseFloat($('input[name=radiobutton]:checked').val()) === 3){
+            chosenColorscale = Footprint_scale;
+        }
+
+        //Make legend
         var legend = d3.select("#legend")
             .selectAll("g.legend")
-            .data(Land_cover_scale[0])
+            .data(chosenColorscale[0])
             .enter().append("g")
             .attr("class", "legend");
 
@@ -201,13 +237,13 @@ function map(){
             .attr("y", function(d, i){ return legend_height - (i*ls_h) - 2*ls_h;})
             .attr("width", ls_w)
             .attr("height", ls_h)
-            .style("fill", function(d, i) { return Land_cover_scale[1][i]; })
+            .style("fill", function(d, i) { return chosenColorscale[1][i]; })
             .style("opacity", 0.8);
 
         legend.append("text")
             .attr("x", 40)
             .attr("y", function(d, i){ return legend_height - (i*ls_h) - ls_h - 4;})
-            .text(function(d, i){ return Land_cover_scale[2][i]; });
+            .text(function(d, i){ return chosenColorscale[2][i]; });
     }
 
     function render_legend_continuous(ctx){
@@ -356,8 +392,8 @@ function choose_map(subset,d) {
         "./data/initial_maps/maragua_obj_sdl.tif"];
 
     var single_maps = ["port_rast",
-        "./data/initial_maps/maragua_modalportfolio.tif",
-        "./data/initial_maps/maragua_modalportfolio.tif",
+        "port_rast",
+        "port_rast",
         'AWY_1_rast_delta_abs',
         'SDE_2_rast_delta_abs',
         'SDL_3_rast_delta_abs',];
