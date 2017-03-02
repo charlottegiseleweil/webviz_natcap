@@ -6,7 +6,10 @@ d3.divgrid = function(config) {
 
     //columns names
     //Generic >>        if (columns.length == 0) columns = d3.keys(selection.data()[0][0]); 
-    columns  = col_floats;
+
+    // Display in table: all columns floats (no maps paths) MINUS columns relative to pie charts
+    columns = col_floats.filter(function(element){return col_piecharts.indexOf(element) == -1})
+
     
     // header
     selection.selectAll(".header")

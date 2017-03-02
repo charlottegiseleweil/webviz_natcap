@@ -1,4 +1,4 @@
-var DATA = 'data/MaraguaFeb16.csv';
+var DATA = 'data/MaraguaMarch1.csv';
 
 var full_data;
 var dimensions = {};
@@ -14,30 +14,38 @@ var col_score = [];
 var col_inputs = [];
 var col_maps = [];
 var col_floats = [];
+var col_piecharts = [];
+var columnsToCrossfilter = [];
 
   function main(){
 
 
     //load csv data file & creates plots
-    d3.csv(DATA, function(row) { 
+    d3.csv(DATA, function(row, i) { 
       columnNames = Object.keys(row);
-
+      
       //Sort out the columns
-      for (var i in columnNames){
-        if (/weight/.exec(columnNames[i])) {
-          col_weights.push(columnNames[i])
-        };
-        if (/score/.exec(columnNames[i])) {
-          col_score.push(columnNames[i])
-        };
-        if (/input/.exec(columnNames[i])) {
-          col_inputs.push(columnNames[i])
-        };
-        if (/rast/.exec(columnNames[i])) {
-          col_maps.push(columnNames[i])
-        };
-      }
-      col_floats = columnNames.filter(x => col_maps.indexOf(x) < 0 );
+      if (i===0){
+        for (var i in columnNames){
+          if (/weight/.exec(columnNames[i])) {
+            col_weights.push(columnNames[i])
+          };
+          if (/score/.exec(columnNames[i])) {
+            col_score.push(columnNames[i])
+          };
+          if (/input/.exec(columnNames[i])) {
+            col_inputs.push(columnNames[i])
+          };
+          if (/rast/.exec(columnNames[i])) {
+            col_maps.push(columnNames[i])
+          };
+          if (/frac|npix|budg$/.exec(columnNames[i])) {
+            col_piecharts.push(columnNames[i])
+          };
+        }
+        col_floats = columnNames.filter(x => col_maps.indexOf(x) < 0 );
+        columnsToCrossfilter = col_score.concat('index').concat(col_weights).concat(col_inputs);
+      };
 
       // This function to parse String data in Floats (only for non-maps columns)
       var final = {};
@@ -62,6 +70,7 @@ var col_floats = [];
       scatterplots(full_data);
       scatterplotLegend();
       BtnHelp();
+      initPiePlot();
 
 
       //wire events
@@ -111,6 +120,7 @@ var col_floats = [];
         } else {
           $("#table_canvas").addClass('invisiblee');
           $("#ViewData").html("View dataset");
+          $("#pie-chart").addClass('invisiblee').removeClass('inline');
         }
       });
 

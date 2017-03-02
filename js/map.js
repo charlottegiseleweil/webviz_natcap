@@ -26,6 +26,11 @@ function map(){
         render_map('map_canvas', map_chosen);
     });
 
+    $('#obj_toggle').change(function(){
+        choose_map("allDataset");
+        render_map('map_canvas', map_chosen);
+    });
+
     // Update map upon radiobutton choices
     $("input[name='radiobutton']").change(function(){
         choose_map("allDataset");
@@ -358,18 +363,27 @@ function choose_map(subset,d) {
         "Footprint of portfolios",
         "Objective score map for Annual Water Yield",
         "Objective score map for Sediment Export",
-        "Objective score map for Sediment Loss"];
+        "Objective score map for Sediment Loss",
+        "(Implementation in process- need map)",
+        "(Implementation in process- need map)",
+        "(Implementation in process- need map)"];
 
     var map_titles_single_sol = ["Portfolio of run #",
         "Footprint of run #",
         "Footprint of run #",
-        "Objective score map for Annual Water Yield, run #",
-        "Objective score map for Sediment Export, run #",
-        "Objective score map for Sediment Loss, run #"];
+        "Absolute score map for Annual Water Yield, run #",
+        "Absolute score map for Sediment Export, run #",
+        "Absolute score map for Sediment Loss, run #",
+        "Marginal score map for Annual Water Yield, run #",
+        "Marginal score map for Sediment Export, run #",
+        "Marginal score map for Sediment Loss, run #"];
 
     var map_stats_txt = [num_runs_selected + " runs selected",
         num_runs_selected + " runs selected",
         num_runs_selected + " runs selected",
+        "Total AWY score = " + (tot_awy_score*1000).toFixed(0) + "000 m3/yr",
+        "Total SDE score = " + (tot_sde_score*1000).toFixed(0) + "000 tons to streams/yr",
+        "Total SDL score = " + (tot_sdl_score*1000).toFixed(0) + "000 tons eroded/yr",
         "Total AWY score = " + (tot_awy_score*1000).toFixed(0) + "000 m3/yr",
         "Total SDE score = " + (tot_sde_score*1000).toFixed(0) + "000 tons to streams/yr",
         "Total SDL score = " + (tot_sdl_score*1000).toFixed(0) + "000 tons eroded/yr"];
@@ -389,41 +403,52 @@ function choose_map(subset,d) {
         "./data/initial_maps/maragua_footprint.tif",
         "./data/initial_maps/maragua_obj_awy.tif",
         "./data/initial_maps/maragua_obj_sde.tif",
-        "./data/initial_maps/maragua_obj_sdl.tif"];
+        "./data/initial_maps/maragua_obj_sdl.tif",
+         "./data/initial_maps/maragua_obj_awy.tif", //DATA NEEDED !
+        "./data/initial_maps/maragua_obj_sde.tif", //DATA NEEDED !
+        "./data/initial_maps/maragua_obj_sdl.tif"]; //DATA NEEDED !
 
     var single_maps = ["port_rast",
         "port_rast",
         "port_rast",
+        'AWY_1_rast_abs',
+        'SDE_2_rast_abs',
+        'SDL_3_rast_abs',
         'AWY_1_rast_delta_abs',
         'SDE_2_rast_delta_abs',
-        'SDL_3_rast_delta_abs',];
+        'SDL_3_rast_delta_abs'];
 
     //Map selection : s
-    var s = 3*($('#map_toggle').prop('checked')) + parseFloat($('input[name=radiobutton]:checked').val()) - 1;
+    var s = 3*($('#map_toggle').prop('checked')) + parseFloat($('input[name=radiobutton]:checked').val()) - 1 + 3*($('#obj_toggle').prop('checked'))*($('#map_toggle').prop('checked'));
     //0: Porfolio, 1: %, 2: footprint
-    //3: AWY, 4: SDE, 5: SDL
+    //3: AWY, 4: SDE, 5: SDL (absolute)
+    //4: AWY, 5: SDE, 6: SDL (marginal)
 
 
     if (subset=="allDataset") {
         map_chosen = initial_maps[s];
         $("#map_stat").text(map_stats_txt[s]);
         $("#map_title").text(map_titles_many_solns[s]);
+        $("#pie-chart").removeClass('inline').addClass('invisiblee');
     }
     else if (subset=="filtered"){
-        console.log("Je vais display la filtered map dans ce cas là! RASTER ON THE FLY COMPUTATION IS A NEXT STEP");
+        //console.log("Click on 'calculate map for selection' for the filtered map !");
         $("#map_stat").text(map_stats_txt[s]);
         $("#map_title").text(map_titles_many_solns[s]);
+        $("#pie-chart").removeClass('inline').addClass('invisiblee');
     }
 
     else if (subset=="singleSol"){
         if (d[single_maps[s]] == undefined){
-            console.log("undefined map chosen !!!"); //make an alert that you cannot choose footrpint nor percent agreement w/ single sol?
+            //console.log("undefined map chosen !!!"); //make an alert that you cannot choose footprint nor percent agreement w/ single sol?
         }else{
             map_chosen = "./data/".concat(d[single_maps[s]]);
         }
         $("#map_title").text(map_titles_single_sol[s] + d.index);
-        $("#map_stat").text("(Pie chart with % composition portoflio here"); 
+        $("#map_stat").text("Composition:"); 
         console.log("map chosen:" + map_chosen);
+
+        $("#pie-chart").removeClass('invisiblee').addClass('inline');
     }
     else {
         //map chosen remain unchanged
@@ -457,5 +482,7 @@ function choose_map(subset,d) {
             $("#map_canvas2").addClass('invisiblee');
         }*/
     }
+
+console.log(map_chosen)
 
 }

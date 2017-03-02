@@ -228,10 +228,6 @@ path {
     margin-top: 15px;
 
 }
-.invisiblee{
-	display: none;
-	max-height:0px;
-}
 
 #buttonzContainer{
 	display:block;
@@ -292,4 +288,20 @@ path {
 
 .sliders .tooltip {
 	font-size: 10px;
+}
+
+#pie-chart{
+	width:80px;
+	height:80px;
+}
+
+.pie-slice {
+	stroke: #fefefe;
+	stroke-width: 0.5;
+}
+
+
+.invisiblee{
+	display: none;
+	max-height:0px;
 }
