@@ -295,6 +295,12 @@ path {
 	height:80px;
 }
 
+.pie-slice {
+	stroke: #fefefe;
+	stroke-width: 0.5;
+}
+
+
 .invisiblee{
 	display: none;
 	max-height:0px;
