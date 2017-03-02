@@ -97,12 +97,25 @@ Pour les sliders:
 -->
 <body onload="main()">
 
-<h1> Multi-objective optimization for the Maragua watershed <button class="btn btn-default btn-xs"  id="btnHelp_gnrl">?</button> </h1> 
+<h1> Multi-objective optimization for the Maragua watershed <button class="btn btn-default btn-sm" id="btnHelp_gnrl" style="margin-bottom:7px;">?</button> </h1> 
 
 <!-- Back button to intro page -->
-<button type="button" onclick="location.href='intro.html'" class="btn btn-default btn-sm" style="position:absolute; left:15px; top:35px;">
+<button type="button" onclick="location.href='intro.html'" class="btn btn-default btn-sm" style="position:absolute; left:15px; top:25px;">
   <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> All watersheds
 </button>
+
+<!-- Bug dropdown button -->
+<div class="btn-group" style="position:absolute; right:15px; top:25px;">
+  <button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown" >
+    <span class="glyphicon glyphicon-bell"></span></button>
+  <ul class="dropdown-menu dropdown-menu-right">
+    <li><a href="https://github.com/charlottegiseleweil/webviz_natcap/issues/new">Report bug</a></li>
+    <li><a href="https://charlottegiseleweil.github.io/webviz_natcap/">Reset page</a></li>
+    <li><a href="www.charlotteweil.fr/masterthesis.html">About</a></li>
+    <li><a href="mailto:weilcharlotte@gmail.com">Contact</a></li>
+  </ul>
+</div>
+
 
 <div id="parcoords_n_map_block">
 <div id="parcoords_sliders_block">
