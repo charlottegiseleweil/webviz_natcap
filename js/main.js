@@ -44,7 +44,7 @@ var columnsToCrossfilter = [];
           };
         }
         col_floats = columnNames.filter(x => col_maps.indexOf(x) < 0 );
-        columnsToCrossfilter = col_score.concat('index').concat(col_weights);
+        columnsToCrossfilter = col_score.concat('index').concat(col_weights).concat(col_inputs);
       };
 
       // This function to parse String data in Floats (only for non-maps columns)
