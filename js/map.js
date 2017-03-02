@@ -26,6 +26,11 @@ function map(){
         render_map('map_canvas', map_chosen);
     });
 
+    $('#obj_toggle').change(function(){
+        choose_map("allDataset");
+        render_map('map_canvas', map_chosen);
+    });
+
     // Update map upon radiobutton choices
     $("input[name='radiobutton']").change(function(){
         choose_map("allDataset");
@@ -359,9 +364,9 @@ function choose_map(subset,d) {
         "Objective score map for Annual Water Yield",
         "Objective score map for Sediment Export",
         "Objective score map for Sediment Loss",
-        "Objective score map for Annual Water Yield",
-        "Objective score map for Sediment Export",
-        "Objective score map for Sediment Loss"];
+        "(Implementation in process- need map)",
+        "(Implementation in process- need map)",
+        "(Implementation in process- need map)"];
 
     var map_titles_single_sol = ["Portfolio of run #",
         "Footprint of run #",
@@ -399,9 +404,9 @@ function choose_map(subset,d) {
         "./data/initial_maps/maragua_obj_awy.tif",
         "./data/initial_maps/maragua_obj_sde.tif",
         "./data/initial_maps/maragua_obj_sdl.tif",
-        "MISSING_THIS_MAP",
-        "MISSING_THIS_MAP",
-        "MISSING_THIS_MAP"]; //DATA NEEDED !
+         "./data/initial_maps/maragua_obj_awy.tif", //DATA NEEDED !
+        "./data/initial_maps/maragua_obj_sde.tif", //DATA NEEDED !
+        "./data/initial_maps/maragua_obj_sdl.tif"]; //DATA NEEDED !
 
     var single_maps = ["port_rast",
         "port_rast",
@@ -414,7 +419,7 @@ function choose_map(subset,d) {
         'SDL_3_rast_delta_abs'];
 
     //Map selection : s
-    var s = 3*($('#map_toggle').prop('checked')) + parseFloat($('input[name=radiobutton]:checked').val()) - 1 + 3*($('#obj_toggle').prop('checked'));
+    var s = 3*($('#map_toggle').prop('checked')) + parseFloat($('input[name=radiobutton]:checked').val()) - 1 + 3*($('#obj_toggle').prop('checked'))*($('#map_toggle').prop('checked'));
     //0: Porfolio, 1: %, 2: footprint
     //3: AWY, 4: SDE, 5: SDL (absolute)
     //4: AWY, 5: SDE, 6: SDL (marginal)
