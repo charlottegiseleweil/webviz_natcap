@@ -122,9 +122,14 @@ function map(){
 
         // Continuous scale
         continuous_scale_categories = [];
-        for (var i = newExt[0]; i <= newExt[1]; i+=((newExt[1]-newExt[0])/19)){
-            continuous_scale_categories.push(i);
-        };
+
+        if (newExt[0] == newExt[1]) {
+           continuous_scale_categories.push(newExt[0]);
+        } else {
+            for  (var i = newExt[0]; i <= newExt[1]; i+=((newExt[1]-newExt[0])/19)){
+                continuous_scale_categories.push(i);
+            }
+        }
     }
 
     function render_categorical(ctx,canvas_ID, raster) {
