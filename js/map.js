@@ -38,7 +38,7 @@ function map(){
     });
 
     //Overlay on landcover
-    // --- render_map('map_canvas2', landcoverMap);
+    render_map('map_canvas2', areaMap);
     // --- $("#map_canvas2").addClass('invisiblee');
 
     $('#landcover_checkbox').change(function() {

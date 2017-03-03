@@ -63,7 +63,7 @@ function BtnHelp(){
               "<i> The colorscale provides additional information about which value of some uncertain input parameters were used: \
               the orange points correspond to scenarios generated under the spatial scenario A, the blue ones under scenario B.\
               The color intensity gives an indication of the budget (a lighter color is a smaller budget).\
-              <br/> Lines can be plotted, connecting the dots generated under the same combination of input parameters values. These correspond to the trade-off frontier for a particular set of assumptions about model inputs, and a specific budget<i> </div>"
+              <br/> Lines can be plotted, connecting the dots generated under the same combination of input parameters values. These correspond to the trade-off frontier for a particular set of assumptions about model inputs, and a specific budget. The specific combination of input parameters corresponding to each line can be viewed on the sliders, upon clicking on the frontier line. <i> </div>"
 
       }).catch(swal.noop);
     });
@@ -84,7 +84,7 @@ function BtnHelp(){
             <hr/><br/> The maps can be calculated from 3 distinct selection cases: \
             <ul> <li> <b>for all scenarios</b>: these map show results summarizing all scenarios. By default, they are displayed initially when no selection have occurred. </li> \
             <li> <b>for a subset of scenarios</b>: these map show results summarizing the scenarios selected through the other views. This situation occurs when the button <i> Calculate map for selection </i> is clicked. </li>\
-            <li> <b>for a single scenario</b>: these maps display the results corresponding to a specific solution; this occurs upon clicking on the corresponding scenario row in the data table. </li> </ul> \
+            <li> <b>for a single scenario</b>: these maps display the results corresponding to a specific solution; this occurs upon clicking on the corresponding scenario row in the data table. In this case, a pie chart also appears displaying the composition of the portfolio. </li> </ul> \
             <hr/><br/> Map control buttons (upper left) allow users to pick the type of map being displayed.\
             The legend, as well as corresponding map summary statistics are computed and update automatically. /!\\ The map statistics <i>(e.g Total AWY score)</i> is calculated for the current selection (so it does not correspond to the map if the map wasn't calculated for selection yet)\
             <br>The map window is enhanced with zooming abilities, upon click on the <i> Enable zooming </i> button. </div>"
