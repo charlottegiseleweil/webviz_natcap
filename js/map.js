@@ -364,9 +364,9 @@ function choose_map(subset,d) {
         "Objective score map for Annual Water Yield",
         "Objective score map for Sediment Export",
         "Objective score map for Sediment Loss",
-        "(Implementation in process- need map)",
-        "(Implementation in process- need map)",
-        "(Implementation in process- need map)"];
+        "Annual Water Yield marginal score map",
+        "Sediment Export marginal score map",
+        "Sediment Loss marginal score map"];
 
     var map_titles_single_sol = ["Portfolio of run #",
         "Footprint of run #",
@@ -384,9 +384,12 @@ function choose_map(subset,d) {
         "Total AWY score = " + (tot_awy_score*1000).toFixed(0) + "000 m3/yr",
         "Total SDE score = " + (tot_sde_score*1000).toFixed(0) + "000 tons to streams/yr",
         "Total SDL score = " + (tot_sdl_score*1000).toFixed(0) + "000 tons eroded/yr",
-        "Total AWY score = " + (tot_awy_score*1000).toFixed(0) + "000 m3/yr",
-        "Total SDE score = " + (tot_sde_score*1000).toFixed(0) + "000 tons to streams/yr",
-        "Total SDL score = " + (tot_sdl_score*1000).toFixed(0) + "000 tons eroded/yr"];
+        "Total (abs.) AWY score = " + (tot_awy_score*1000).toFixed(0) + "000 m3/yr",
+        "Total (abs.) SDE score = " + (tot_sde_score*1000).toFixed(0) + "000 tons to streams/yr",
+        "Total (abs.) SDL score = " + (tot_sdl_score*1000).toFixed(0) + "000 tons eroded/yr"];
+        /*"Total change in AWY score = " + (tot_marg_awy_score*1000).toFixed(0) + "000 m3/yr",
+        "Total change in SDE score = " + (tot_marg_sde_score*1000).toFixed(0) + "000 tons to streams/yr",
+        "Total change in SDL score = " + (tot_marg_sdl_score*1000).toFixed(0) + "000 tons eroded/yr"];*/
 
     // For marginal values
     /*var map_stats_txt = ["over " + num_runs_selected + " runs",
@@ -401,12 +404,12 @@ function choose_map(subset,d) {
     var initial_maps = ["./data/initial_maps/maragua_modalportfolio.tif",
         "./data/initial_maps/maragua_frequency.tif",
         "./data/initial_maps/maragua_footprint.tif",
-        "./data/initial_maps/maragua_obj_awy.tif",
-        "./data/initial_maps/maragua_obj_sde.tif",
-        "./data/initial_maps/maragua_obj_sdl.tif",
-         "./data/initial_maps/maragua_obj_awy.tif", //DATA NEEDED !
-        "./data/initial_maps/maragua_obj_sde.tif", //DATA NEEDED !
-        "./data/initial_maps/maragua_obj_sdl.tif"]; //DATA NEEDED !
+        "./data/initial_maps/maragua_obj_abs_awy.tif",
+        "./data/initial_maps/maragua_obj_abs_sde.tif",
+        "./data/initial_maps/maragua_obj_abs_sdl.tif",
+         "./data/initial_maps/maragua_obj_marg_awy.tif",
+        "./data/initial_maps/maragua_obj_marg_sde.tif", 
+        "./data/initial_maps/maragua_obj_marg_sdl.tif"]; 
 
     var single_maps = ["port_rast",
         "port_rast",
