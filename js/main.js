@@ -71,6 +71,7 @@ var columnsToCrossfilter = [];
       scatterplotLegend();
       BtnHelp();
       initPiePlot();
+      hover_map();
 
 
       //wire events

@@ -59,6 +59,9 @@ if (is_safari){alert("Safari is not a supported browser for this visualization t
   <script src="js/lib/geotiff.js"></script>
   <!-- script src="js/plotty.js/dist/plotly.min.js"></script-->
   <script src ='js/map.js'></script>
+  <script src ='js/hover_map.js'></script>
+
+  <!--Scatterplot-->
   <script src ='js/scatterplot.js'></script>
 
  <!--Fancy alerts-->
@@ -229,7 +232,7 @@ Pour les sliders:
         <!--Map-->
         <canvas id="map_canvas" width="1030" height="335"></canvas>
         <canvas id="map_canvas2" class='map_superposee' width="1030" height="335"></canvas>
-
+        
         <button class="btn btn-default btn-sm" style="position: absolute; top: 0; right: 0;" id="Calc_map">Calculate map for selection</button>
         <button class="btn btn-default btn-sm" style="position: absolute; top: 35px; right: 0;" id="btnZoom">Enable zooming</button> 
         <button class="btn btn-default btn-xs"  style="position: absolute; top: 70px; right: 0;" id="btnHelp_map">?</button> 

@@ -12,7 +12,7 @@ var MAP = {};
 
 function map(){
 
-    var baseRaster, ext, newExt, image, rasters, canvas, ctx;
+    var baseRaster, ext, newExt, image, rasters, canvas, ctx, overlayMap;
 
     // Update map upon toggling 
     $('#map_toggle').change(function(){
@@ -44,11 +44,11 @@ function map(){
     $('#landcover_checkbox').change(function() {
         if(this.checked) {
             //$("#map_canvas2").removeClass('invisiblee');
-            var overlayMap = landcovermap;
+            overlayMap = landcovermap;
         }
         else{
             //$("#map_canvas2").addClass('invisiblee');
-            var overlayMap = areaMap;
+             overlayMap = areaMap;
         }
         render_map('map_canvas2', overlayMap);
     });
@@ -202,9 +202,9 @@ function map(){
         ["#003366",'#a6c8e3',"#00336f",'#f6c8e3','#a6cee3','#1f78b4','#b2df8a','#33a02c','#b2df86','#33002c','#fb9a99','#e31a1c','#fdbf6f','#ff7f00','#cab2d6','#6a3d9a','#ffff99','#b15928'],
         ["Grass","Forest","Road","Land","Dry forest","introduced grassland","Sand","Barren","Woods","Grass green","Forest","Big forest","Awesome forest","Water","Unicorn","Agroforestry","Sand","Moutain","Superurban","Urban"]];
 
-    var Footprint_scale =[[1],
-        ['black'],
-        ['Intervention']];
+    var Footprint_scale =[[1,0],
+        ['black','white'],
+        ['Intervention',' ']];
     
     var Agreement_scale =[[0, 0.25,0.50,0.75,1],
         ['white','#404040',' #808080','#bfbfbf','black'],
