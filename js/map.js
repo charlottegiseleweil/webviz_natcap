@@ -325,6 +325,7 @@ function map(){
 
     MAP.render_categorical = render_categorical;
     MAP.render_continuous = render_continuous;
+    MAP.render_map = render_map;
 
 };
 

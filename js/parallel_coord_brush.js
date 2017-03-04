@@ -62,6 +62,7 @@ function parcoords_plot(){
                  //There has to be a more proper way to do this with a joli for loop!
 
     scatterplots(filtered_data,nbTicks);
+    parcoords.data(filtered_data).render();
 
     //Update map
     update_map_stats(filtered_data);
