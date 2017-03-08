@@ -21,13 +21,20 @@
 <div class="container">
 
 
-	<h1> The Upper Tana Nairobi Waterfund </h1>
+	<h1> The Upper-Tana Nairobi Water Fund </h1>
 
 	<!-- Intro paragraph -->
 	<div class="row">
 		<p>
-			<!--<b>60%</b> of Nairobi’s residents do not have access to a reliable water supply. To solve this issue, the Upper Tana-Nairobi Water Fund undertakes upstream water and soil conservation measures, resulting in improved water quality and supply.-->
-			The Upper Tana-Nairobi Water Fund is an initiative bringing together [X, Y, Z] to promote [clean and reliable water supplies for downstream stakeholders, while simultaneously fostering sustainable livelihoods for upstream farmers and others.] The main “on-the-ground” action the fund can take is the identification and prioritization of extension activities, whereby actors on the landscape (mainly farmers) are visited by local NGO’s to diagnose and offer incentives for ways to improve their yields and improve water-related outcomes. Ideally, achieving all these good outcomes simultaneously, though in some places there might be trade-offs, which the Fund is interested in minimizing. The priority watersheds under consideration are [the three, link to map below].
+			<i>The Tana River supplies 95% of the water for a total of 9 million people living in Nairobi and surroundings, feeds one of the country’s most important agricultural areas and provides half of the country’s hydropower output. In the past decades, many forests and wetlands have been converted to agriculture, therefore decreasing the natural landscape capacity to store runoff water and retain sediments and soil in place – changes which have negatively impacting hydropower and drinking water supply. </i></p>
+
+			The Upper Tana-Nairobi Water Fund is an initiative bringing together representatives of government, NGO, and private entities to promote clean and reliable water supplies for downstream stakeholders, while simultaneously fostering sustainable livelihoods for upstream farmers and others. The main “on-the-ground” action the fund can take is the identification and prioritization of extension activities, whereby actors on the landscape (mainly farmers) are visited by local NGO’s to diagnose and offer incentives for ways to improve farm and water-related outcomes. Ideally, achieving agricultural livelihood outcomes and improvements to the water supply can be achieved simultaneously, though in some places there might be trade-offs, which the Fund is interested in minimizing. The priority watersheds under consideration are 
+			<a style="color:#333399;" href="index.html">Maragua</a>,
+			<a style="color:#993333;" href="Sagana.html">Sagana-Gura</a> and
+			<a style="color:#993399;" href="Thika.html">Thika-Chania</a> (see map below). The approach and visualizations highlight ways to better identify win-wins and tradeoffs.
+
+			<i>Read also <a href="http://www.nature.org/ourinitiatives/regions/africa/explore/nairobi-water-fund.xml">the Nairobi Water Fund story (The Nature Conservancy website)</a>, <a href="http://www.nature.org/ourinitiatives/regions/africa/upper-tana-nairobi-water-fund-business-case.pdf"> the Nairobi Water Fund Business case (PDF)</a> <a href="https://global.nature.org/content/beyond-the-source?src=r.global.beyondthesource">and more about source water protection</a>.</i>
+			
 		</p>
 	</div>
 
@@ -40,21 +47,21 @@
 			Here, the objective is to improve three related ES metrics:
 			<ul> <li class='browser_default'> * <em> Annual water yield </em> (AWY) to be maximized, as it serves water supply and hydropower needs </li>
 				<li> * <em> Sediment export to streams </em> (SDE) to be minimized, as it harms reservoir and water treatment operations, among others</li>
-				<li> * <em> Soil erosion </em>  (SDL) to be minimzed, as it reduces agricultural productivity</li> </ul></p>
+				<li> * <em> Soil erosion </em>  (SDL) to be minimized, as it reduces agricultural productivity.</li> </ul></p>
 		</div>
 
 		<div class="col s4">
 			<i class="material-icons">games</i>
 			<h5>Interventions</h5>
 			<p>The goal of the Waterfund is to optimize <b><i>which</i></b> interventions to undertake and <i><b>where</b></i> in the Upper Tana basin, in order to improve water quality and quantity supplying Nairobi. In other words, spatially targeting interventions to enhance ecosystem services objectives.</p>
-			<p>Possible interventions are road mitigation, agroforestry, riparian management, terracing, reforestation, grass strips</p>
+			<p>Possible interventions are road mitigation, agroforestry, riparian management, terracing, reforestation, grass strips.</p>
 		</div>
 
 		<div class="col s4">
 			<i class="material-icons">playlist_play</i>
 			<h5>Portfolios</h5>
-			<p>810 scenarios (possible futures) were considered, varying objective weights and input parameters' values. The models were run for each scenarios, leading to the generation of different portoflios (intervention maps). (<i> Ben: more on workflow?</i>)</p>
-			<p>The 810 scenarios arise from parametric uncertainty (4 parameters with 2 to 4 possible values each) and 15 combinations of objectives weights.</p>
+			<p>Many scenarios (possible futures) were considered, varying objective weights and input parameters' values. The models were run for each scenarios, leading to the generation of different portoflios (intervention maps). </p>
+			<p>The 810 portfolios arise from uncertain or scenario-based input variables (4 parameters with 2 to 4 possible values each) and 15 combinations of objectives weights (<i>details on portfolio generation below</i>).</p>
 		</div>
 	</div>
 
@@ -76,77 +83,81 @@
 
 	<!-- Addl text section -->
 	<div class="row">
-		<p>Draft in construction :
-			The ability to achieve multiple objectives simultaneously while minimizing negative impacts is a function of what is recommended, but also where it is recommended. For example, if one only cares about avoiding sediment in streams, then buffers where agricultural land meets streams may be most effective -- but upland soils could still lose productivity. In this case an intervention that prevents on-field erosion likely will have dual benefits. Yet, at the same time, the increase in yields may reduce water reaching streams as plants utilize additional water.
+		<p>
+			The ability to achieve multiple objectives simultaneously while minimizing negative impacts is a function of <b><i>what</i></b> is recommended, but also <b><i>where</i></b> it is recommended. For example, if one only cares about avoiding sediment in streams, then buffers where agricultural land meets streams may be most effective -- but upland soils could still lose productivity. In this case an intervention that prevents on-field erosion likely will have dual benefits. Yet, at the same time, the increase in yields may reduce water reaching streams as plants utilize additional water.
 
-			This general problem is one that can be formalized as a “multi-objective optimization” -- ecosystem services models that represent changing management of the landscape can be run in combination with solvers to identify landscape configurations that can approximate the best combination of a given combination of objectives, and also to understand how the recommended configuration changes. Because different actors may have different priorities, and because modeled outcomes can only be modeled imprecisely, it is illuminating to consider how portfolios and their performance change in response to these alternative values and scenarios. By doing so, one can gain insight into relationships and identify recommendations that meet multiple priorities in a variety of possible [future] worlds.
-
-		<h4>Theis is just a very drafty draft:</h4>
-
-		To begin, we model three related goals, detailed higher in section (ES)
-
-		For the time being these are represented in biophysical service terms. Other biophysical objectives we are interested in including are dry season baseflow, and translating soil loss into implications for agricultural productivity or yield. Longer term we may also add valuation associated with different biophysical outputs, or transformation of biophysical outputs to other benefit relevant metrics. The focus of this document is to provide an orientation to the general approach of multi-objective optimization under uncertainty, and the added benefits of the included visualization tool. [ALSO, EQUITY IN SPACE AND POPULATION, SUB-OBJECTIVES ETC]
+			This general problem is one that can be formalized as a “multi-objective optimization” -- ecosystem services models that represent changing management of the landscape can be run in combination with solvers to identify landscape configurations that can approximate the best combination of a given combination of objectives, and also to understand how the recommended configuration changes. Because different actors may have different priorities, and because modeled outcomes can only be modeled imprecisely, it is illuminating to consider how portfolios and their performance change in response to these alternative values and scenarios. By doing so, one can gain insight into relationships and identify recommendations that meet multiple priorities in a variety of possible [future] worlds.</p>
 
 		<hr>
-		<h5> Question A</h5>
-		<p>Why it's an interesting q?</p>
-		<p> Viz solution</p>
+		<h4>Examples of questions the visualization dashboards help answer</h4>
 
-		<h5> How do the portfolios expand with budget ?</h5>
+		<p> <i> Disclaimer: The focus of this document is to provide an orientation to the general approach of multi-objective optimization under uncertainty, and the added benefits of dynamic visualization, as implemented in this context. It is important to note that the objectives modeled here do not include all objectives of the water fund, and are preliminary results designed to illustrate the tool and the questions it can answer. Later work will vet the analysis for use in actual decision making, and consider additional biophysical and economic objectives.
+			</i></p>
 
-		<p>Why it's an interesting q?</p>
-		<p> Viz solution (sliders)</p>
+		<br>
 
+			<h5><b><i>Where</i></b> should I do <b><i>what</i></b> on the landscape, with full knowledge of preferences and minimal uncertainty?</h5>
+			<p>This is the question answered by a single run of the spatial optimization problem: <em>Given a known weighting on objectives (i.e., how much increase in sediment export would I be willing to give up for a change in water yield), where are on the landscape should interventions be promoted for specific activities, and what changes in each objective can I expect to see?</em></p>
 
-		One run of a spatial optimizer answers the question:
+			<p>This basic question results in two main outputs: One is a <b>portfolio</b> that is a set of pixels on the landscape, indicating where to do what activity (given a budget constraint). The second is a score for each objective, both at the pixel level, and at the landscape level. Pixel level scores can be visualized as <b>objective score maps</b> (one per objective), while overall landscape scores can be visualized on a number of 2-d plots, or a parallel coordinate plot. The content of a portfolio can also be summarized by the relative composition of each type of intervention (eg, 20% grass strips, 80% road mitigation). </p>
 
-		Given a known weighting on changing objectives (ie, how much increase in sediment export I’m willing to give up for a change in water yield), where are on the landscape are likely to be best places to promote specific activities, and what changes in each objective can I expect to see?
+			<h5>How does my ability to achieve each objective trade-off with my ability to achieve the others, under a single set of assumptions about model inputs?</h5>
+			<p>This question is answered by a single trade-off curve or “trade-off frontier” -- these curves are generated under common assumptions about model inputs and also common budget and cost assumptions. Different points on the frontier correspond to different weightings on the objectives. One can examine a frontier in three separate scatterplots for the three combinations of objectives, or by assessing connected lines in the parallel coordinate plot. </p>
 
-		This results in two main outputs: One is a “portfolio” that is a set of pixels on the landscape, indicating where to do what activity (given a budget constraint). The second is a score for each objective, that can be visualized on a number of 2-d plots, or a parallel coordinate plot [see X].
+			<h5>How robust are tradeoffs? </h5>
+			<p>This can be answered by examining the shapes and location of multiple trade-off frontiers at once -- under some input assumptions, they may be fairly constraint, while other assumptions may suggest that gains in one objective can come at minimal cost to another.</p>
 
-		When we generate multiple portfolios under different priorities (eg, how much concern is given to sediment, versus water yield), we can trace-out a trade-off curve, under one [scenario/set of assumptions.]
+			<h5>How does changing the priority on different objectives affect which activities are done, and where?</h5>
+			<p>We can see the effect of changing objective weights on portfolio composition by examining the pie charts as one inspects different portfolios on a single budget frontier. One can also see broader patterns by selecting subsets of the dataset by brushing, and examining the differences in <b>modal portfolios</b> for different groups -- which represent the intervention most commonly chosen on each pixel across the set of selected runs.</p>
 
+			<h5>What parts of the landscape have high agreement for activities to be chosen?</h5>
+			<p>This question is answered by the “frequency map” in the portfolio view, which shows the fraction of times the modal portfolio was chosen. This can be examined for the entire dataset, or for specific weight or input combinations.</p>
 
-		We can then use various maps and other statistics to answer questions like:
+			<h5>Broadly, what parts of the landscape merit attention for interventions, and which do not? How does this change based on priorities or input assumptions?</h5>
+			<p>The footprint map denotes the extent of all pixels where interventions where considered. Outside this footprint (for a given budget level), there is little reason to consider interventions, while inside. One can also use this limiting footprint as a way to examine how the focus of intervention areas shrinks as one reduces uncertainty in inputs or relative priorities on different ES objectives.</p>
 
-
-		<h5>How does the portfolio composition change as priorities are changed? </h5>
-		<p>In terms of what activities are recommended [answered by pie chart]
-		In terms of where activities are recommended [answered by comparing maps]
-
-		Dynamic features : The above could be answered by making plots too, but much easier to see the general response and go back and forth between associated maps.] </p>
-			
-		<h5>What parts of the landscape have high agreement for activities to be chosen, regardless of priorities?  
-		[% agreement map]</h5>
-
-
-		<p>WHAT DYNAMIC VIZ ADDS: In many cases, users may not know ahead of time exactly what regions of the trade-off curve are acceptable or not, but stakeholder discussion can narrow down to parts of the curve -- not focusing on one single exact weighting combination, but also not considering the entire frontier. Brushing helps [YADA YADA].  </p>
+			<h5>How do the portfolios expand with budget ?</h5>
+			<p>Similarly to other model input parameters and to objective weights, the budget effect on the results can be visualized by selecting a subrange of budget levels on the corresponding slider, and viewing the impact on ES metrics in both the parallel coordinate plot and the scatterplot, plus examining the map summary statistics that updates according to the selection.</p>
 
 
-		<h5>What parts of the landscape should I focus/NOT focus on:</h5>
-		<p>Footprint</p>
+		<hr>
 
+			<h4> Workflow to generate the dataset <i><a style="font-size:12px;" href=”bpbryant@stanford.edu”> Benjamin Bryant </a></i></h4>
+			As implemented here, the spatial optimization consists of a non-trivial series of steps and intermediate products. The basic workflow to generate a single trade-off frontier is as follows:
+			<ol><li>Generate static marginal value maps for each intervention by running each ecosystem service model with each intervention implemented wherever it is feasible to do so, and differencing with respect to ES provisioning levels on the default “base” landcover.</li><li>
+			Generate a set of weight combinations, and specify cost for each intervention and total budget.
+			</li><li>For each weight combinations:
+			<ol><li>Create weighted objective scores for each pixel, for each intervention.
+			</li><li>Create weighted cost-effectiveness scores for each pixel, for each intervention, by dividing by the cost.
+			</li><li>Sort at each pixel to identify the intervention with the highest weighted cost-effectiveness score for each pixel.
+			</li><li> Use a greedy search to select the highest cost-effectiveness pixels until the budget constraint can no longer be satisfied. The set of chosen pixels defines a portfolio.  
+			</li><li>Extract the base value and change in each objective score for each pixel by indexing the portfolio against the static marginal value maps. This defines the objective score map and marginal value objective score maps.
+			</li><li>Sum pixel-level scores to identify aggregate landscape-wide objective score values for a particular run.</li></ol>
+			</li><li>Repeat for each weight combination to complete a frontier.</ol>
 
-		What common properties of solutions that do well on one or more objectives?
+			To generate many portfolios, the above steps are wrapped, by:
+			<ol><li>Specifying an experimental design for ES model inputs.
+			</li><li>Specifying an experimental design for optimization parameters (budget, other constraints).
+			</li><li>Generating unique index encodings for groupings that maybe relevant for visualization or analysis (eg, indexing tradeoff curves, or objective weight combinations).
+			</li><li>Running the frontier-generating procedure defined above for each “row” of the full experimental design.</li></ol>
 
-		How robust is characterization of tradeoffs?
-		</p>
+			<i>R-based code to achieve the above workflow can be requested from <a href=”bpbryant@stanford.edu”> Benjamin Bryant </a>, and is currently (as of March 2017) in the process of being packaged for distribution. </i>
+
+		
 
 	</div>
 
-
-	<div class="row">
-		<hr>
-		<p> <a href="https://global.nature.org/content/beyond-the-source?src=r.global.beyondthesource">More about source water protection</a></p>
-
-		<p><a href="http://www.nature.org/ourinitiatives/regions/africa/explore/nairobi-water-fund.xml">The Nairobi Water Fund story (The Nature Conservancy)</a></p>
-
-		<p><a href="http://www.nature.org/ourinitiatives/regions/africa/upper-tana-nairobi-water-fund-business-case.pdf">Business case (PDF)</a></p>
-
-	</div>
 </div>
-<footer>
 
+<footer>
+  <div class="container ">
+  	<br>
+     <p class="footer_text">
+      Web visualization developed by <a href="https://www.linkedin.com/in/charlotteweil" target="_blank">Charlotte Gisèle Weil</a> (<a href="http://www.charlotteweil.fr/masterthesis.html">Master thesis </a>) for the project led by <a href="https://www.linkedin.com/in/bpbryant" target="_blank">Dr Benjamin Bryant</a> at the <a href="http://www.naturalcapitalproject.org" target="_blank">Natural Capital Project</a> 
+      <!--<a href="http://www.naturalcapitalproject.org"><img HR WIDTH="8%" src="data/images/natcap-logo.png" alt="The Natural Capital Project Img" href="http://www.naturalcapitalproject.org" target="_blank"></a>-->
+      </p>
+      
+  </div>
 </footer>
 
 

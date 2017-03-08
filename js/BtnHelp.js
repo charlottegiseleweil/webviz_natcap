@@ -87,7 +87,8 @@ function BtnHelp(){
             <li> <b>for a single scenario</b>: these maps display the results corresponding to a specific solution; this occurs upon clicking on the corresponding scenario row in the data table. In this case, a pie chart also appears displaying the composition of the portfolio. </li> </ul> \
             <hr/><br/> Map control buttons (upper left) allow users to pick the type of map being displayed.\
             The legend, as well as corresponding map summary statistics are computed and update automatically. /!\\ The map statistics <i>(e.g Total AWY score)</i> is calculated for the current selection (so it does not correspond to the map if the map wasn't calculated for selection yet)\
-            <br>The map window is enhanced with zooming abilities, upon click on the <i> Enable zooming </i> button. </div>"
+            <br>The map window is enhanced with zooming abilities, upon click on the <i> Enable zooming </i> button.\
+            <br>Plus, the landcover type appears upon hovering over the area. </div>"
       }).catch(swal.noop);
     });
 
