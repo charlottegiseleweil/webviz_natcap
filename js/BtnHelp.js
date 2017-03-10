@@ -9,7 +9,7 @@ function BtnHelp(){
         title: "Parallel coordinates plot",
         html: "<div style='text-align: left;'> Each vertical axis corresponds to an ES objective, each line represents a portfolio. " +
                 "The values plotted correspond to the overall aggregated objective score, for the scenario considered (the sum of all pixels’ scores for this objective, across the raster)."
-                + "<br/>" + 
+                + "<i><a href='http://www.charlotteweil.fr/masterthesis/toolbox#sec:parcoords'> More on parallel coordinates plots</a></i>"+"<br/>" + 
                 "<ul> <h3> ES objectives: </h3>  <li> <b> AWY: Annual water yield </b>in 10<sup>6</sup> m<sup>3</sup>/year </li> \
                 <li> <b> SDE: Sediment export to stream </b>in 10<sup>6</sup> tons of sediments eroded annually</li>\
                 <li> <b> SDL: Soil loss to stream </b>in 10<sup>6</sup> tons lost to stream annually</li> </ul>" + "<hr/>" +
@@ -59,7 +59,8 @@ function BtnHelp(){
         title: "Trade-off curves",
         html: "<div style='text-align: left;'> \
               Tradeoff curves display the relationship between each pair of ES objectives. \
-              Each plotted point corresponds to a portfolio." + "<br/>" + "<br/>" +
+              Each plotted point corresponds to a portfolio." + "<i><a href='http://www.charlotteweil.fr/masterthesis/toolbox#sec:scatterplots'> More on scatterplots</a></i>" + 
+              "<br/>" + "<br/>" +
               "<i> The colorscale provides additional information about which value of some uncertain input parameters were used: \
               the orange points correspond to scenarios generated under the spatial scenario A, the blue ones under scenario B.\
               The color intensity gives an indication of the budget (a lighter color is a smaller budget).\
@@ -75,13 +76,18 @@ function BtnHelp(){
         html: "<div style='text-align: left;'> \
             Different types of maps combining information about the selected scenarios can be displayed, using the map control buttons on the upper left.\
             <br/> <ul> <h3> Portfolios </h3> \
-            <li> <b> The portfolio </b> displays the modal portfolio (= for each pixel, the most frequently selected intervention across scenarios selected). For the case of a single scenario display, it simply shows the corresponding portfolio. </li>\
-            <li> <b>  Footprint map </b> reflects the areas selected consistently for interventions, across several scenario. For the case of a single scenario display, it is just the overall footprint of its portfolio. </li>\
+            <li> <b> The portfolio </b> displays the modal portfolio (= for each pixel, the most frequently selected intervention across portfolios selected). For the case of a single scenario display, it simply shows the corresponding portfolio. </li>\
+            <li> <b>  Footprint map </b> reflects the areas selected for any interventions in any of the selected portfolios. For the case of a single scenario display, it is just the overall footprint of its portfolio. </li>\
             <li> <b>  Agreement map </b> is an expression of the consistency between runs. It displays for each pixel, the % of scenarios in which the modal intervention was chosen <i>(modal intervention is the most chosen one, displayed on the modal portfolio). </i> It is not relevant for the case of a single scenario display. </li>\
             <li> <b>  Current land cover map </b>provides additional context. Any categorical map (such as a portfolio) may be overlayed on top. </li> </ul>\
             <br/> <ul> <h3> Objective score maps </h3> \
-            <li> <b> Absolute objective score maps </b> for each ES objective display the pixel-level objective scores averaged over the selected scenarios. </li> <li> <b> Marginal objective score maps </b> show the change in objective score between the current situation (baseline) and the scenario considered. Therefore they are calculated as the difference between the absolute objective score map of the scenario, and the absolute objective score map of the baseline. </li> </ul>\
-            <hr/><br/> The maps can be calculated from 3 distinct selection cases: \
+            <li> <b> Absolute objective score maps </b> for each ES objective display the pixel-level objective scores averaged over the selected scenarios. </li> <li> <b> Marginal objective score maps </b> show the change in objective score between the current situation (baseline) and the scenario considered. Therefore they are calculated as the difference between the absolute objective score map of the scenario, and the absolute objective score map of the baseline. </li> </ul>"
+            
+            + "<br> <i> Detailed explanations of <a href='http://www.charlotteweil.fr/masterthesis/toolbox#sec:portfolios'>portfolios, </a></i>"
+            + "<i> <a href='http://www.charlotteweil.fr/masterthesis/toolbox#sec:objs'>objective score maps, </a></i>"
+            + "<i> <a href='http://www.charlotteweil.fr/masterthesis/toolbox#sec:comp_map'>footprint maps, modal portfolios and agreement maps </a></i>"
+            
+            + "<hr/><br/> The maps can be calculated from 3 distinct selection cases: \
             <ul> <li> <b>for all scenarios</b>: these map show results summarizing all scenarios. By default, they are displayed initially when no selection have occurred. </li> \
             <li> <b>for a subset of scenarios</b>: these map show results summarizing the scenarios selected through the other views. This situation occurs when the button <i> Calculate map for selection </i> is clicked. </li>\
             <li> <b>for a single scenario</b>: these maps display the results corresponding to a specific solution; this occurs upon clicking on the corresponding scenario row in the data table. In this case, a pie chart also appears displaying the composition of the portfolio. </li> </ul> \
