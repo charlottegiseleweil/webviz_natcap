@@ -33,7 +33,7 @@
 			<b><a style="color:#993333;" href="Sagana.html">Sagana-Gura</a></b> and
 			<b><a style="color:#993399;" href="Thika.html">Thika-Chania</a></b> (see map below). The approach and visualizations highlight ways to better identify win-wins and tradeoffs.
 
-			<i>Read also <a href="http://www.nature.org/ourinitiatives/regions/africa/explore/nairobi-water-fund.xml">the Nairobi Water Fund story (The Nature Conservancy website)</a>, <a href="http://www.nature.org/ourinitiatives/regions/africa/upper-tana-nairobi-water-fund-business-case.pdf"> the Nairobi Water Fund Business case (PDF)</a> <a href="https://global.nature.org/content/beyond-the-source?src=r.global.beyondthesource">and more about source water protection</a>.</i>
+			<i>Read also <a target="_blank" href="http://www.nature.org/ourinitiatives/regions/africa/explore/nairobi-water-fund.xml">the Nairobi Water Fund story (The Nature Conservancy website)</a>, <a target="_blank" href="http://www.nature.org/ourinitiatives/regions/africa/upper-tana-nairobi-water-fund-business-case.pdf"> the Nairobi Water Fund Business case (PDF)</a> <a htarget="_blank" ref="https://global.nature.org/content/beyond-the-source?src=r.global.beyondthesource">and more about source water protection</a>.</i>
 			
 		</p>
 	</div>
@@ -44,7 +44,7 @@
 			<i class="material-icons">spa</i>
 			<h5>Ecosystem services (ES)</h5>
 			<p><b>Ecosystem services are the benefits natural capital assets provide to humanity.</b>
-			This case shows how to improve three ES metrics of interest to the Water Fund::
+			Here, the objective is to improve three ES metrics:
 			<ul> <li class='browser_default'> * <em> Annual water yield </em> (AWY) to be maximized, as it serves water supply and hydropower needs </li>
 				<li> * <em> Sediment export to streams </em> (SDE) to be minimized, as it harms reservoir and water treatment operations, among others</li>
 				<li> * <em> Soil erosion </em>  (SDL) to be minimized, as it reduces agricultural productivity.</li> </ul></p>
@@ -61,7 +61,7 @@
 			<i class="material-icons">playlist_play</i>
 			<h5>Portfolios</h5>
 			<p>Many scenarios (possible futures) were considered, varying objective weights and input parameters' values. The models were run for each scenario, leading to the generation of different portfolios (intervention maps). </p>
-			<p>The 810 portfolios arise from uncertain or scenario-based input variables (4 parameters with 2 to 4 possible values each) and 15 combinations of objectives weights (<i>details on portfolio generation below</i>).</p>
+			<p>The 810 portfolios arise from uncertain or scenario-based input variables (4 parameters with 2 to 4 possible values each) and 15 combinations of objectives weights (<i><a href="intro.html#workflow">details</a></i>).</p>
 		</div>
 	</div>
 
@@ -77,7 +77,7 @@
 				<li> <h5><a style="color:#333399; text-align: center;" href="index.html">Maragua</a></h5></li>
 				<li> <h5><a style="color:#993333; text-align: center;" href="Sagana.html">Sagana-Gura</a></h5></li>
 				<li> <h5><a style="color:#993399;text-align: center;" href="Thika.html">Thika-Chania</a></h5></li></ul>
-			<button onclick="location.href='http://www.charlotteweil.fr/masterthesis/thesis#tour-of-the-dashboard-and-main-features'" id="btn_explain_viz" class="btn waves-light" style="font-size: 12px">Details on visualization dashboard</button>
+			<button target="_blank" onclick="location.href='http://www.charlotteweil.fr/masterthesis/thesis#tour-of-the-dashboard-and-main-features'" id="btn_explain_viz" class="btn waves-light" style="font-size: 12px">Details on visualization dashboard</button>
 		</div>
 	</div>
 
@@ -122,7 +122,7 @@
 
 		<hr>
 
-			<h4> Workflow to generate the dataset <i><a style="font-size:12px;" href=”bpbryant@stanford.edu”> Benjamin Bryant </a></i></h4>
+			<h4 id="workflow"> Workflow to generate the dataset <i><a style="font-size:12px;" href=”mailto:bpbryant@stanford.edu”> Benjamin Bryant </a></i></h4>
 			As implemented here, the spatial optimization consists of a non-trivial series of steps and intermediate products. The basic workflow to generate a single trade-off frontier is as follows:
 			<ol><li>Generate static marginal value maps for each intervention by running each ecosystem service model with each intervention implemented wherever it is feasible to do so, and differencing with respect to ES provisioning levels on the default “base” landcover.</li><li>
 			Generate a set of weight combinations, and specify cost for each intervention and total budget.
@@ -141,7 +141,7 @@
 			</li><li>Generating unique index encodings for groupings that maybe relevant for visualization or analysis (eg, indexing tradeoff curves, or objective weight combinations).
 			</li><li>Running the frontier-generating procedure defined above for each “row” of the full experimental design.</li></ol>
 
-			<i>R-based code to achieve the above workflow can be requested from <a href=”bpbryant@stanford.edu”> Benjamin Bryant </a>, and is currently (as of March 2017) in the process of being packaged for distribution. </i>
+			<i>R-based code to achieve the above workflow can be requested from <a href=”mailto:bpbryant@stanford.edu”> Benjamin Bryant </a>, and is currently (as of March 2017) in the process of being packaged for distribution. </i>
 
 		
 

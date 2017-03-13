@@ -135,6 +135,8 @@ var columnsToCrossfilter = [];
         scatterplots(full_data);
 
         table(full_data);
+
+        update_map_stats(full_data);
         
         obj1_slider.setValue([0, 100]);
         obj2_slider.setValue([0, 100]); 
