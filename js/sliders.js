@@ -1,5 +1,7 @@
 var obj1_slider, obj2_slider, obj3_slider, pu1_slider, pu2_slider, pu3_slider, pu4_slider ;
 
+var slideDimension;
+
 function sliders_plot(){
 
 // OBJECTIVE WEIGHTS SLIDERS
@@ -109,29 +111,25 @@ function sliders_plot(){
         slideDimension(interval, 'input_budget');
     });
 
-
-    function slideDimension(interval, dimensionName) {
-        inclusive_interval = [interval[0]-0.0001,interval[1]+0.0001];
-        var be = parcoords.brushExtents();
-        var filtered_data = dimensions[dimensionName].filter(inclusive_interval).top(Infinity);
-
-        // Update Pacoords + recalculate brushes
-        parcoords
-            .data(filtered_data)
-            .render();
-        parcoords.brushExtents(be);
-
-        //Update scatterplots
-        scatterplots(filtered_data,nbTicks);
-
-        //Update map
-        update_map_stats(filtered_data);
-        choose_map('filtered');
-
-
-        //Update table
-        table(filtered_data);
-    }
 }
 
-           
+// TODO should be removed from the global scope
+function slideDimension(interval, dimensionName) {
+    inclusive_interval = [interval[0]-0.0001,interval[1]+0.0001];
+    var be = parcoords.brushExtents();
+    var filtered_data = dimensions[dimensionName].filter(inclusive_interval).top(Infinity);
+
+    // Update Pacoords + recalculate brushes
+    parcoords
+        .data(filtered_data)
+        .render();
+    parcoords.brushExtents(be);
+
+    //Update scatterplots
+    scatterplots(filtered_data,nbTicks);
+    //Update map
+    update_map_stats(filtered_data);
+    choose_map('filtered');
+    //Update table
+    table(filtered_data);
+}

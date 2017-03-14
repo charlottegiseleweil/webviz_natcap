@@ -129,19 +129,17 @@ var columnsToCrossfilter = [];
         filtered_data = full_data;
 
         parcoords.brushReset();
-        
         parcoords
             .data(full_data)
             .render();
-
         scatterplots(full_data);
-
         table(full_data);
 
         update_map_stats(full_data); 
         choose_map('AllDataset');
-        //render_map('map_canvas', map_chosen);
-        
+        // render_map('map_canvas', map_chosen);
+        // this will not be enough, because we listen to the slide event, and not to the change event
+        // so we need to slide 'manually'
         obj1_slider.setValue([0, 100]);
         obj2_slider.setValue([0, 100]); 
         obj3_slider.setValue([0, 100]); 
@@ -149,6 +147,12 @@ var columnsToCrossfilter = [];
         pu2_slider.setValue([1, 10]); 
         pu3_slider.setValue([0, 1]);
         pu4_slider.setValue([1, 4]);
+        //and as paarcoords does not know about parcoords, we need to reset the dimensions used in parcoords
+        var dimensionsName = Object.keys(dimensions);
+        // RESET ALL FILTERS
+        dimensionsName.forEach((dimension, index) => {
+            dimensions[dimension].filter().top(Infinity);
+        });
         // todo sortir all var sliders and todo
 
       });
