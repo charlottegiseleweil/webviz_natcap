@@ -126,6 +126,8 @@ var columnsToCrossfilter = [];
       });
 
       d3.select('#btnReset').on('click', function() {
+        filtered_data = full_data;
+
         parcoords.brushReset();
         
         parcoords
@@ -136,7 +138,9 @@ var columnsToCrossfilter = [];
 
         table(full_data);
 
-        update_map_stats(full_data);
+        update_map_stats(full_data); 
+        choose_map('AllDataset');
+        //render_map('map_canvas', map_chosen);
         
         obj1_slider.setValue([0, 100]);
         obj2_slider.setValue([0, 100]); 
