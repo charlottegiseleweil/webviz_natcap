@@ -16,7 +16,6 @@ function map(){
 
     // Update map upon toggling 
     $('#map_toggle').change(function(){
-        console.log("is this called")
 
         //Select the first radiobutton if none selected
         if (!(parseFloat($('input[name=radiobutton]:checked').val())>0)){
@@ -362,7 +361,7 @@ function choose_map(subset,d) {
     //This function is not finished !
 
 
-    console.log('choose_map', subset, d);
+    //console.log('choose_map', subset, d);
 
     var map_titles_many_solns = ["Modal portfolio",
         "Percent agreement map",
@@ -455,7 +454,7 @@ function choose_map(subset,d) {
         }
         $("#map_title").text(map_titles_single_sol[s] + d.index);
         $("#map_stat").text("Composition:"); 
-        console.log("map chosen:" + map_chosen);
+        //console.log("map chosen:" + map_chosen);
 
         $("#pie-chart").removeClass('invisiblee').addClass('inline');
     }
@@ -492,6 +491,6 @@ function choose_map(subset,d) {
         }*/
     }
 
-console.log(map_chosen)
+//console.log(map_chosen)
 
 }
