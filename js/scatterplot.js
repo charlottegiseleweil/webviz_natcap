@@ -107,6 +107,10 @@ function scatterplot(variable_x,variable_y,location,data_to_plot,nb_ticks){
     var showFrontiers = $('#scatterplot_frontiers_checkbox').prop('checked');
     var linesGroup = svg.selectAll('.frontier')
         .data(cleanedData, function(d,i) { if (d.length) return d[0].frontier_id});
+
+
+
+
     linesGroup.enter()
         .append('path')
         .classed('frontier', true)
