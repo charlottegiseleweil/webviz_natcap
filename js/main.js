@@ -143,7 +143,7 @@ var columnsToCrossfilter = [];
           pu1_slider.setValue([0.5, 5]);
           pu2_slider.setValue([1, 10]);
           pu3_slider.setValue([0, 1]);
-          pu4_slider.setValue([1, 4]);
+          pu4_slider.setValue([5e8, 2e9]); 
           //and as paarcoords does not know about parcoords, we need to reset the dimensions used in parcoords
           var dimensionsName = Object.keys(dimensions);
           // RESET ALL FILTERS
