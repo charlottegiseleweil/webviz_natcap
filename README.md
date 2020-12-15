@@ -52,41 +52,28 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 # Haïku(s)
 
-Oublie une commande
-Et c’est le bordel François,
-C’est la sarabande !
-
-sur ce les loulous
-tout en faisant un haiku
-je vous dit "bisous"
 
 J'apprécie l'idée,
 Mais sans vouloir t'embêter
 c'est 5-7-5 pieds !
 
-Ah la meuffe reloue,
-C'est sacré un Haïku,
-Déconn' pas c'est tout
 
-Ne chipotons pas
-On s'en fout de deux ou trois
-François c'est le roi !
 
 C'est très perturbant
 La position relative
 Pour les débutants
 
-Le scaterpelote
+Le scaterplot
 A San Fransico, dans un
 coffeeshop, Hop ! 
-
-Le scater pelotte ?
-C'est cochon ça ho dis donc !
-Et ça choque Charlotte !
 
 Et oui, j'ai craque
 Et remis l'opacite
 Dans le commit, j'ai 
+
+sur ce les loulous
+tout en faisant un haiku
+je vous dit "bisous"
 
 # Contributors
 Charlotte Weil (primary author)
